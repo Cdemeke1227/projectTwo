@@ -1,0 +1,2 @@
+# projectTwo
+MVP1 Create a website for a service provider business (Kelly’s House of Colour) that will allow customers to check availability, book appointments, select services or products, get pricing, store history for users.  The app will have a front end for customers as well as an admin mode to allow service providers to add/edit/remove the site with employees, services, calendar data, and pricing.

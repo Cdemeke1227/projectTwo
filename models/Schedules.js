@@ -4,7 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     weekday: DataTypes.STRING,
     start_time: DataTypes.TIME,
     end_time: DataTypes.TIME,
-    available: DataType.BOOLEAN
+    available: DataTypes.BOOLEAN
   }, {});
   Schedules.associate = function(models) {
     // associations can be defined here

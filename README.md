@@ -1,23 +1,53 @@
-# projectTwo
-## MVP1 
-Create a website for a service provider business (Kelly’s House of Colour) that will allow customers to check availability, book appointments, select services or products, get pricing, store history for users.  
+# Project Title: House of Style
+ 
+Create a website for Kelly’s House of Colour 
 
-The app will have a front end for customers as well as an admin mode to allow service providers to add/edit/remove the site with employees, services, calendar data, and pricing.
+### Prerequisites
 
-## Technology
-*   Express.js
-*   Node.js
-*   Sequelize
-*   Bootstrap
-*   Heroku
-*   Library/Package:
-*   Passport.js or similar login npm package (need to research)
-*   Calendar package (need to research)
-*   Express-Handlebars
+The package.json lists dependent node packages as listed below:
 
-## Team roles
-*   Korshid - database
-*   Michael - backend primarily/authentication/backend logic / api routes
-*   Kathy/Chris - share front end UI/UX / html routes
-*   Chris - responsive design
-*   Kathy - ScrumMaster
+#### express
+```$npm install express```
+
+[express](https://www.npmjs.com/package/express)
+
+#### express-handlebars
+```$npm install express```
+
+[express-handlebars](https://www.npmjs.com/package/express-handlebars)
+
+#### mysql2
+```$ npm install mysql2```
+
+[mysql2](https://www.npmjs.com/package/mysql2)
+
+#### body parser
+```$npm install body-parser```
+
+[body parser](https://www.npmjs.com/package/body-parser)
+
+#### sequelize
+```$npm install sequelize```
+
+[sequelize](https://www.npmjs.com/package/sequelize)
+
+#### passport
+```$npm install passport```
+
+[passport](https://www.npmjs.com/package/passport)
+
+#### appointment-picker
+```$npm install appointment-picker```
+
+[appointment-picker](https://www.npmjs.com/package/appointment-picker)
+
+What things you need to install the software and how to install them
+
+[Node JS] (https://nodejs.org/en/)
+
+
+## Authors
+* **Abdolbaghi Teygh khorshid** - *Database/* - [Teygh](https://github.com/Teygh)
+* **Michael Tran** - *Back End/ Authentication/ Back End Logic/ API Routes/* - [tranmikde270](https://github.com/tranmike270)
+* **Kathy Kennedy** - *Front End UI/UX/ html Routes/ScrumMaster* - [nomamanomama](https://github.com/nomamanomama)
+* **Christopher Demeke** - *Front End UI/UX/ html Routes/Express Server/ Responsive Design/* - [Cdemeke1227](https://github.com/Cdemeke1227)

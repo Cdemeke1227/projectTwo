@@ -17,6 +17,16 @@ module.exports = function(app) {
     
     res.render("index");
   });
+  
+    //Register Render
+    app.get('/register', function(req,res, next){
+      res.render('register', {success : false});
 
+  });
+
+  //Log in renger
+  app.get('/login', function(req,res){
+      res.render('login');
+  });
 
 };

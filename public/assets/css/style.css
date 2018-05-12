@@ -1,5 +1,38 @@
-body {
-    background-color: #74747474;
-    color: #FFFFFF;
-    margin-left: 50px;
+.page-header{
+    margin-top: 0;
+}
+
+footer {
+    margin-top: 40px;
+}
+
+
+.alerts {
+    display: none;
+    background: #f1f1f1;
+    padding: 20px;
+    margin-top: 0px;
+    margin-bottom: 4px;
+}
+
+
+/* Add Green text color and a checkmark when meet reqs */
+.valid {
+    color: green;
+}
+
+.valid:before{
+    position: relative;
+    left: -10px;
+    content: '✔';
+}
+   /* Add Red text color and an x when not meet reqs yet */
+.invalid {
+    color: red;
+}
+
+.invalid:before {
+    position: relative;
+    left: -10px;
+    content: '✖';
 }

@@ -1,0 +1,40 @@
+<h2 class="page-header">Register</h2>
+{{#if success}}
+    <section class="success">
+        <h2>Successful Validation</h2>
+    </section>
+{{else}}
+
+<div class ="row alerts" id="sign-up-message">
+    <p id="name-alert" class="invalid"><b>Allowed Alphabet characters (required); spaces; ' </b></p>
+    <p id="username-alert" class="invalid">Username must be Minimum <b>6 characters</b>; Maximum <b>13 characters</b><b>; No special characters allowed</b></p>
+    <p id="email-alert" class="invalid"><b>Enter a valid email</b></p>
+    <p class="row justify-content-md-center">Password matches the following</p>
+    <p><span id="capital" class="invalid">At least 1 Uppercase Letter</span> ; <span id="lower" class="invalid">At least 1 lowercase Letter</span> ; <span id="number" class="invalid">At least 1 Number</span> ; <span id="special" class="invalid">At least 1 Special Character</span> ; <span id="length" class="invalid">At least 8 characters</span></p>
+    <p id="pass-match" class="invalid">Both passwords match</p>
+</div>
+
+<form method="post" action="/users/register">
+    <div class="form-group">
+        <label>Name</label>
+        <input type = "text" class="form-control sign-up-input" pattern="^(?=.*[a-zA-Z])[a-zA-Z\s']{1,}$" placeholder="Your Name" id="name" name="name" required>
+    </div>
+    <div class="form-group">
+        <label>Username</label>
+        <input type = "text" class="form-control sign-up-input" pattern="[a-zA-Z0-9]{6,13}" placeholder="Username" id="username" name="username" required>
+    </div>
+    <div class="form-group">
+        <label>Email</label>
+        <input type = "email" class="form-control sign-up-input" placeholder="Email" id="email" name="email" required>
+    </div>
+    <div class="form-group">
+        <label>Password</label>
+        <input type = "password" class="form-control sign-up-input" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$" placeholder="Password" id="password" name="password" required>
+    </div>
+    <div class="form-group">
+        <label>Confirm Password</label>
+        <input type = "password" class="form-control sign-up-input" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$" placeholder="Password" id="password2"  required>
+    </div>
+    <button type = "submit" class= "btn btn-default">Submit</button>
+</form>
+{{/if}}

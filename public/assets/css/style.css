@@ -1,5 +1,42 @@
 body {
+    background-color: #000000;
+    color: #FFFFFF;
+    /* margin-left: 50px; */
+}
+nav {
+    background-color: #FFFFFF;
+    height: 50px;
+}
+nav button {
+    margin: 20px;
+}
+
+.background-color1 {
+    height: 430px;
+    /* margin-top: 50px; */
+    background-color: #FFFFFF;
+    color: #000000;
+}
+.break {
+    height: 30px;
+/* background-color: red; */
+}
+#greeting {
+    height: 200px;
+    /* margin-top: 50px; */
     background-color: #74747474;
     color: #FFFFFF;
-    margin-left: 50px;
+}
+#infoSection {
+    height: 200px;
+    /* margin-top: 50px; */
+    background-color: #74747474;
+    color: #FFFFFF;
+}
+
+.background-color2 {
+    height: 430px;
+    /* margin-top: 50px; */
+    background-color: #74747474;
+    color: #000000;
 }

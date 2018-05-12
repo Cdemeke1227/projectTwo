@@ -4,8 +4,8 @@ module.exports = (sequelize, DataTypes) => {
     firstName: DataTypes.STRING,
     lastName: DataTypes.STRING,
     email: DataTypes.STRING,
-    phone: DaraType.INTEGER,
-    notes: DataType.TEXT
+    phone: DataTypes.INTEGER,
+    notes: DataTypes.TEXT
  
   }, {});
   Customers.associate = function(models) {

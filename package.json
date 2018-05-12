@@ -18,7 +18,9 @@
   },
   "homepage": "https://github.com/Cdemeke1227/projectTwo#readme",
   "dependencies": {
+    "appointment-picker": "^1.0.6",
     "body-parser": "^1.18.2",
+    "dotenv": "^5.0.1",
     "express": "^4.16.3",
     "express-handlebars": "^3.0.0",
     "mysql2": "^1.5.3",

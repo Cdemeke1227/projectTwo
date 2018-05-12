@@ -19,4 +19,29 @@ module.exports = function(app) {
   });
 
 
+  // schedule route loads schedule.handlebar view
+  app.get("/customer/schedule", function (req, res) {
+    console.log("showing customer appointment scheduler");
+    res.render("schedule");
+  });
+
+  // about route loads about.handlebar view
+  app.get("/about", function (req, res) {
+
+    res.render("about");
+  });
+
+  // about provider loads provider.handlebar view 
+  app.get("/provider", function (req, res) {
+
+    res.render("provider");
+  });
+
+  // service route loads service.handlebar view
+  app.get("/service", function (req, res) {
+
+    res.render("service");
+  });
+
+
 };

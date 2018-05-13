@@ -1,0 +1,106 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light" id="navbar-hover">
+    <div class="contianer" id="navLinks">
+        <div class="row">
+            <div class="col" id="navSiteLinks">
+                <ul class="navbar-nav mr-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="col" id="navTitle">
+                <a class="navbar-brand" href="#">HOUSE OF STYLE</a>
+            </div>
+            <div class="col" id="navSiteLinks">
+                <ul class="navbar-nav mr-auto">
+
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Appointments</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+        {{>navbar/nav-home}}
+    </div>
+    {{>navbar/nav-user}} 
+    {{>navbar/nav-login}}
+    {{!-- {{#if loggedIn}} {{>nav-user}} {{else}} {{>nav-login}} {{/if}} --}}
+</nav>
+
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4">Fluid jumbotron</h1>
+        <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+    </div>
+</div>
+
+<div class="background-color1">
+    <div class="container sectionRow" id="greeting">
+        Welcome to House of Styles
+    </div>
+    <div class="break"></div>
+    <div class="container sectionRow" id="infoSection">
+        Google or Other Data embedded
+    </div>
+</div>
+
+
+<div class="background-color1">
+    {{!-- Blank for picture --}}
+    <div id="placeholder1" class="container">
+        <div class="clearing">
+        </div>
+    </div>
+</div>
+
+<div class="background-color1">
+    <div class="container sectionRow" id="team">
+        Meet the team
+    </div>
+    <div class="break"></div>
+</div>
+
+<div class="background-color1">
+    {{!-- Blank for picture --}}
+    <div id="placeholder2" class="container">
+        <div class="clearing2">
+        </div>
+    </div>
+</div>
+
+<div class="background-color1">
+    <div class="container sectionRow" id="history">
+        History
+    </div>
+</div>
+
+
+<div class="background-color1">
+    <div class="container sectionRow" id="products">
+        Products
+    </div>
+</div>
+
+<div class="background-color1">
+    <div class="container sectionRow" id="comments">
+        Comments
+    </div>
+</div>
+
+<footer>
+    <div class="footText">
+        <p> &copy; Copyright 2018 KiCKeM</p>
+    </div>
+</footer>

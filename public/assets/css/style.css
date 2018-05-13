@@ -92,6 +92,11 @@ body {
   margin-top: 150px;
   /* max-width: 1280px; */
 }
+
+#signupModal {
+  background-color: #FFFFFF;
+}
+
 /* ========================== */
 .background-color1 .container {
   max-width: 1280px;

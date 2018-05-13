@@ -23,11 +23,11 @@ body {
   width: 80%;
   max-width: 1280px;
   /* height: 100px; */
-  z-index: 999;
+  /* z-index: 999; */
   top: 20px;
   margin-left: 10%;
   margin-right: 10%;
-  border: 1px solid green;  
+  /* border: 1px solid #000000;   */
 }
 #navLinks {
   /* border: 1px solid red; */
@@ -75,6 +75,17 @@ body {
 .navbar button {
   margin-right: 10px;
   margin-left: 10px;
+}
+
+#loginModal .modal-dialog .row {
+  background-color: #FFFFFF;
+}
+.fa-google {
+  color: #db3236;
+}
+
+.fa-facebook {
+  color: #3b5998;
 }
 /* ========================== */
 .jumbotron {

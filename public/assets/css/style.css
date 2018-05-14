@@ -150,10 +150,52 @@ body {
     border: 1px solid green;
 }
 
-#comments {
+#overview {
     height: 300px;
     border: 1px solid green;
 }
+
+#featuredStylist1 {
+    height: 300px;
+    border: 1px solid green;
+}
+
+#featuredStylist2 {
+    height: 300px;
+    border: 1px solid green;
+}
+
+
+#partners {
+    height: 300px;
+    border: 1px solid green;
+}
+
+#contact {
+    height: 300px;
+    border: 1px solid green;
+}
+
+#service1 {
+    height: 300px;
+    border: 1px solid green;
+}
+
+#service2 {
+    height: 300px;
+    border: 1px solid green;
+}
+
+#serviceMenu {
+    height: 300px;
+    border: 1px solid green;
+}
+
+#summary {
+    height: 300px;
+    border: 1px solid green;
+}
+
 
 /* ========================== */
 

@@ -4,8 +4,54 @@ body {
     margin-left: 50px;
 }
 
-/* Appointment Picker Styling */
 
+
+=======
+.fa-facebook {
+  color: #3b5998;
+}
+/* ========================== */
+.jumbotron {
+  margin-top: 150px;
+  /* max-width: 1280px; */
+}
+
+#signupModal {
+  background-color: #FFFFFF;
+}
+
+/* ========================== */
+.background-color1 .container {
+  max-width: 1280px;
+  /* padding: 0px 0px 0px 0px; */
+  /* margin: 0px 0px 0px 0px; */
+  background: #FFFFFF;
+}
+/* ========================== */
+.sectionRow{
+  padding-top: 10px;
+}
+#greeting {
+  height: 300px;
+  border: 1px solid green;
+}
+
+#infoSection {
+  height: 300px;
+  border: 1px solid green;
+}
+
+#team {
+  height: 300px;
+  border: 1px solid green;
+}
+
+#history {
+  height: 300px;
+  border: 1px solid green;
+}
+
+/* Appointment Picker Styling */
 .appo-picker {
     color: #74747474;
 }

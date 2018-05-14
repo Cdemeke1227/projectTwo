@@ -1,13 +1,47 @@
-'use strict';
-module.exports = (sequelize, DataTypes) => {
+module.exports = function (sequelize, DataTypes) {
   var Schedules = sequelize.define('Schedules', {
-    weekday: DataTypes.STRING,
-    start_time: DataTypes.TIME,
-    end_time: DataTypes.TIME,
-    available: DataTypes.BOOLEAN
-  }, {});
-  Schedules.associate = function(models) {
+    weekday: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [4, 10],
+      }
+    },
+
+    start_time: {
+      type: DataTypes.TIME,
+      allowNull: false,
+    },
+
+    end_time: {
+      type: DataTypes.TIME,
+      allowNull: false,
+    },
+
+    available: {
+
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      validate: {
+        isBoolean: true,
+      }
+    },
+  });
+  Schedules.associate = function (models) {
     // associations can be defined here
+    Schedules.belongsTo(models.Providers, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+
+    Schedules.hasMany(models.Appointments, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+
+
   };
   return Schedules;
 };

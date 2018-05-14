@@ -1,4 +1,0 @@
-
-
-
-2- sequelize model:generate --name Schedules --attributes firstName:string,lastName:string,email:string

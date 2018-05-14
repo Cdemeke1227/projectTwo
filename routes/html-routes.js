@@ -4,7 +4,7 @@
 
 // Dependencies
 // =============================================================
-var path = require("path");
+var goTo = require('../controllers/routes.js');
 
 // Routes
 // =============================================================
@@ -12,21 +12,25 @@ module.exports = function(app) {
 
   // Each of the below routes just handles the HTML page that the user gets sent to.
 
-  // index route loads view.html
-  app.get("/", function(req, res) {
-    
-    res.render("index");
-  });
-  
-    //Register Render
-    app.get('/register', function(req,res, next){
-      res.render('register', {success : false});
+  //When users visit the page or go home
+  app.get('/', goTo.home);
 
-  });
 
-  //Log in renger
-  app.get('/login', function(req,res){
-      res.render('login');
-  });
+  // Customers sign-up/log-in
+  app.get('/home/customer', goTo.loggedIn);
+
+
+  // schedule route loads schedule.handlebar view
+  app.get("/customer/schedule", goTo.schedule);
+
+  // about route loads about.handlebar view
+  app.get("/about", goTo.about);
+
+  // about provider loads provider.handlebar view 
+  app.get("/provider", goTo.provider);
+
+  // service route loads service.handlebar view
+  app.get("/service", goTo.service);
+
 
 };

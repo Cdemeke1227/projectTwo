@@ -6,11 +6,13 @@
 // =============================================================
 var express = require("express");
 var bodyParser = require("body-parser");
+require('dotenv').config();
+
+// DEpendencies for passport
 var cookieParser = require('cookie-parser');
 var flash = require('connect-flash');
 var session = require('express-session');
 var passport = require('passport');
-var LocalStrategy = require('passport-local'),Strategy;
 // Sets up the Express App
 // =============================================================
 var app = express();
@@ -25,7 +27,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // parse application/json
 app.use(bodyParser.json());
 app.use(cookieParser());
-
 // Static directory
 app.use(express.static("public"));
 
@@ -39,8 +40,8 @@ app.set("view engine", "handlebars");
 // // Express Session
 app.use(session({
     secret: 'secret',
-    saveUninitialized: false,
-    resave: false
+    saveUninitialized: true,
+    resave: true
   })); 
   
   // // Passport init
@@ -59,13 +60,14 @@ app.use(session({
     next();
   });
 
-  
 // Routes
 // =============================================================
 require("./routes/html-routes.js")(app);
-require("./routes/customer-api-routes.js")(app);
-require("./routes/owner-api-routes.js")(app);
-// require("...")(app);
+require('./routes/api-routes.js')(app,passport)
+
+//load passport strategies
+ 
+require('./config/passport/passport.js')(passport, db.user);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================

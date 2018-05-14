@@ -1,0 +1,42 @@
+{{!-- Schedule View - Here we make an appointment --}}
+Hello Schedule Page
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-12 d-flex justify-content-center">
+      <h1>Schedule an Appointment</h1>
+    </div>
+    <div class="col-12 d-flex justify-content-center">
+      <img src="/" alt="banner pic">
+    </div>
+  </div>
+  <div id="apptSearchModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="apptSearchLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 id="search"></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          {{!-- add form with search options --}}
+        </div>
+        <div class="modal-footer">
+          <button id="add-fav" type="button" class="btn" data-burgerid="">Search</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 calendar">
+      <h2>Available Appointments</h2>
+      {{!-- show appointment picker here --}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 calendar">
+      <h2>Search by...</h2>
+      {{!-- add button here to bring search modal--}}
+    </div>
+  </div>
+</div>

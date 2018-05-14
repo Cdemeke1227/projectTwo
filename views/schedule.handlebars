@@ -1,5 +1,7 @@
 {{!-- Schedule View - Here we make an appointment --}}
 Hello Schedule Page
+
+
 <div class="container">
   <div class="row d-flex justify-content-center">
     <div class="col-12 d-flex justify-content-center">
@@ -31,6 +33,9 @@ Hello Schedule Page
     <div class="col-12 calendar">
       <h2>Available Appointments</h2>
       {{!-- show appointment picker here --}}
+      <div id="calender">
+        <input id="time" type="text">
+      </div>
     </div>
   </div>
   <div class="row">
@@ -40,3 +45,6 @@ Hello Schedule Page
     </div>
   </div>
 </div>
+<link rel="stylesheet" href="/assets/css/appointment-picker.css">
+<script src="/assets/js/appointment-picker.min.js"></script>
+

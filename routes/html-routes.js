@@ -11,7 +11,6 @@ var goTo = require('../controllers/routes.js');
 module.exports = function(app) {
 
   // Each of the below routes just handles the HTML page that the user gets sent to.
-
   //When users visit the page or go home
   app.get('/', goTo.home);
 
@@ -31,6 +30,7 @@ module.exports = function(app) {
 
   // service route loads service.handlebar view
   app.get("/service", goTo.service);
+
 
 
 };

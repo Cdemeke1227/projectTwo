@@ -1,5 +1,5 @@
 {{!-- Schedule View - Here we make an appointment --}}
-Hello Schedule Page
+
 
 
 <div class="container">
@@ -24,8 +24,21 @@ Hello Schedule Page
           {{!-- add form with search options --}}
         </div>
         <div class="modal-footer">
-          <button id="add-fav" type="button" class="btn" data-burgerid="">Search</button>
+          <button id="add-fav" type="button" class="btn">Search</button>
         </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <h2>Select the service you need</h2>
+      {{!-- show appointment picker here --}}
+      <div>
+        <form>
+          <div class="form-group" id="services">
+            {{!-- insert options dynamically --}}
+          </div>
+        </form>
       </div>
     </div>
   </div>

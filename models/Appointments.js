@@ -1,6 +1,7 @@
 // var Sequelize = require('sequelize');
 module.exports = function (sequelize, DataTypes) {
   var Appointments = sequelize.define('Appointments', {
+
     customer: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -23,8 +24,20 @@ module.exports = function (sequelize, DataTypes) {
      }
 
      },
-    start_time: DataTypes.TIME,
-    duration: DataTypes.TIME
+    start_time: {
+      type: DataTypes.TIME,
+      validate: {
+        isDate: true, 
+       }
+    }, 
+
+    duration: {
+      type: DataTypes.TIME,
+      validate: {
+        isDate: true, 
+       }
+
+    }
 
   });
   Appointments.associate = function (models) {

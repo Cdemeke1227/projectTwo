@@ -1,5 +1,6 @@
 module.exports = function (sequelize, DataTypes) {
   var Schedules = sequelize.define('Schedules', {
+
     weekday: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -26,6 +27,21 @@ module.exports = function (sequelize, DataTypes) {
         isBoolean: true,
       }
     },
+
+    'created_at': {
+      type: DataTypes.DATE(3),
+      defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3)'),
+    },
+    'updated_at': {
+      type: DataTypes.DATE(3),
+      defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3)'),
+    },
+  }, {
+    timestamps: true,
+    tableName: Schedules,
+    paranoid: true,
+    underscored: true,
+
   });
   Schedules.associate = function (models) {
     // associations can be defined here

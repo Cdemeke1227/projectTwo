@@ -1,5 +1,14 @@
 module.exports = function (sequelize, DataTypes) {
   var Customers = sequelize.define('Customers', {
+
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+      unique: true,
+      field: 'id',
+    },
+
     firstName: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -9,14 +18,6 @@ module.exports = function (sequelize, DataTypes) {
     },
 
     lastName: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [1, 50]
-      }
-    },
-
-    username: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
@@ -40,7 +41,7 @@ module.exports = function (sequelize, DataTypes) {
     },
 
     phone: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: true,
       // validate: {
       //   isNumeric: true,
@@ -60,18 +61,26 @@ module.exports = function (sequelize, DataTypes) {
       }
     },
 
-
-    // timestamps: false
-
-
-
+    'created_at': {
+      type: DataTypes.DATE(3),
+      defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3)'),
+    },
+    'updated_at': {
+      type: DataTypes.DATE(3),
+      defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3)'),
+    },
+  }, {
+    timestamps: true,
+    tableName: Customers,
+    paranoid: true,
+    underscored: true,
   });
   Customers.associate = function (models) {
     // Providers has many Services
     Customers.hasMany(models.Appointments, {
       onDelete: "cascade"
     });
-    
+
   };
   return Customers;
 };

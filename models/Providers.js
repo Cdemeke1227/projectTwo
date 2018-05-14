@@ -1,5 +1,14 @@
 module.exports = function (sequelize, DataTypes) {
   var Providers = sequelize.define('Providers', {
+
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+      unique: true,
+      field: 'id',
+    },
+
     firstName: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -15,7 +24,7 @@ module.exports = function (sequelize, DataTypes) {
         len: [1, 50]
       }
     },
-    
+
     username: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -46,14 +55,14 @@ module.exports = function (sequelize, DataTypes) {
       }
     },
     experience: {
-      type: DataTypes.DECIMAL, // Enter the Years of experience per year and months as decimal
+      type: DataTypes.INTEGER, // We need to convert the years inserted by the user to months
       allowNull: false,
       validate: {
         isDecimal: true
       }
     },
     phone: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: true,
       // validate: {
       //   isNumeric: true,
@@ -72,14 +81,19 @@ module.exports = function (sequelize, DataTypes) {
         // Need to make sure it's a link
       }
     },
-
-    
-
-    
-      // timestamps: false,
-    
-
-
+    'created_at': {
+      type: DataTypes.DATE(3),
+      defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3)'),
+    },
+    'updated_at': {
+      type: DataTypes.DATE(3),
+      defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3)'),
+    },
+  }, {
+    timestamps: true,
+    tableName: Providers,
+    paranoid: true,
+    underscored: true,
   });
   Providers.associate = function (models) {
     // Providers has many Services

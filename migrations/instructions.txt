@@ -1,0 +1,4 @@
+
+
+
+2- sequelize model:generate --name Services --attributes firstName:string,lastName:string,email:string

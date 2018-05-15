@@ -1,6 +1,72 @@
 {{!-- Schedule View - Here we make an appointment --}}
-Hello Schedule Page
+<nav class="navbar navbar-expand-lg navbar-light bg-light" id="navbar-hover">
+  <div class="contianer" id="navLinks">
+    <div class="row">
+      <div class="col" id="navSiteLinks">
+        <ul class="navbar-nav mr-auto">
+
+          <li class="nav-item">
+            <a class="nav-link" href="/home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/about">About</a>
+          </li>
+
+        </ul>
+      </div>
+
+      <div class="col" id="navTitle">
+        <a class="navbar-brand" href="/home">HOUSE OF STYLE</a>
+      </div>
+      <div class="col" id="navSiteLinks">
+        <ul class="navbar-nav mr-auto">
+
+
+          <li class="nav-item">
+            <a class="nav-link" href="/service">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/customer/schedule">Appointments</a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+    {{!-- Navbar Partial for home page section links --}} {{>navbar/nav-home}}
+  </div>
+
+  {{#if LoggedIn}} {{>navbar/nav-user}} {{else}} {{>navbar/nav-login}} {{/if}}
+
+</nav>
+{{!-- Log in Modal --}}
+
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+
+    {{>navbar/modal/login-modal}}
+
+  </div>
+</div>
+
+{{!-- Signup Modal --}}
+<div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+
+    {{>navbar/modal/signup-modal}}
+
+  </div>
+</div>
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Fluid jumbotron</h1>
+    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+  </div>
+</div>
+
+
 <div class="container">
+  {{!--
   <div class="row d-flex justify-content-center">
     <div class="col-12 d-flex justify-content-center">
       <h1>Schedule an Appointment</h1>
@@ -8,7 +74,7 @@ Hello Schedule Page
     <div class="col-12 d-flex justify-content-center">
       <img src="/" alt="banner pic">
     </div>
-  </div>
+  </div> --}}
   <div id="apptSearchModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="apptSearchLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-sm">
       <div class="modal-content">
@@ -27,16 +93,39 @@ Hello Schedule Page
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-12 calendar">
-      <h2>Available Appointments</h2>
-      {{!-- show appointment picker here --}}
+
+  <div class="background-color1">
+    <div class="container" class="appo-picker">
+      <div class="row">
+        <div class="col-12 calendar">
+          <h2>Available Appointments</h2>
+          {{!-- show appointment picker here --}}
+          <div id="calender">
+            <input id="time" type="text">
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-12 calendar">
-      <h2>Search by...</h2>
-      {{!-- add button here to bring search modal--}}
+  <div class="background-color1">
+    {{!-- Blank for picture --}}
+    <div id="placeholder" class="container">
+      <div class="clearing">
+      </div>
     </div>
   </div>
-</div>
+
+  <div class="background-color1">
+    <div class="container sectionRow" id="team">
+      <div class="row">
+        <div class="col-12 calendar">
+          <h2>Search by...</h2>
+          {{!-- add button here to bring search modal--}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <link rel="stylesheet" href="/assets/css/appointment-picker.css">
+  <script src="/assets/js/appointment-picker.min.js"></script>

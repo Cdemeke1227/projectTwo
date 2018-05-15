@@ -1,207 +1,322 @@
-html, body {
-  background: #747474;
-  font-family: 'Open Sans', sans-serif !important;
-  background-image: url("../images/backgrounds/large_leather/large_leather.png");
-}
+html,
 body {
-  /* background: #74747474; */
-  background-image: url("../images/backgrounds/large_leather/large_leather.png");
-  font-size: 15px;
-  line-height: 1.64;
-  /* margin-left: 20px; */
+    background: #747474;
+    font-family: 'Open Sans', sans-serif !important;
+    background-image: url("../images/backgrounds/large_leather/large_leather.png");
 }
+
+body {
+    /* background: #74747474; */
+    background-image: url("../images/backgrounds/large_leather/large_leather.png");
+    font-size: 15px;
+    line-height: 1.64;
+    /* margin-left: 20px; */
+}
+
 /* ========================== */
+
 /* fonts */
+
 /* ========================== */
+
 /* Navbar Style */
+
 .navbar {
-  padding: 0px 0px 0px 0px;
-  /* margin: 0px 0px 0px 0px; */
+    padding: 0px 0px 0px 0px;
+    /* margin: 0px 0px 0px 0px; */
 }
+
 #navbar-hover {
-  position: fixed;
-  width: 80%;
-  max-width: 1280px;
-  /* height: 100px; */
-  /* z-index: 999; */
-  top: 20px;
-  margin-left: 10%;
-  margin-right: 10%;
-  /* border: 1px solid #000000;   */
+    position: fixed;
+    width: 80%;
+    max-width: 1280px;
+    /* height: 100px; */
+    /* z-index: 999; */
+    top: 20px;
+    margin-left: 10%;
+    margin-right: 10%;
+    /* border: 1px solid #000000;   */
 }
+
 #navLinks {
-  /* border: 1px solid red; */
-  width: 100%;
-  text-align: center;
-  margin-bottom: 0px;
-
+    /* border: 1px solid red; */
+    width: 100%;
+    text-align: center;
+    margin-bottom: 0px;
 }
-
 
 #navTitle a {
-  width: 100%;
-  height: 60px;
+    width: 100%;
+    height: 60px;
 }
 
 #navSiteLinks ul {
-  width: 100%;
+    width: 100%;
 }
+
 #navSiteLinks ul li {
-  width: 100%;
-  display: inline-block;
-  height: 30px;
+    width: 100%;
+    display: inline-block;
+    height: 30px;
 }
 
 #navPageLinks {
-  background-color: #747474;
-  width: 100%;
-  display: inline-block;
+    background-color: #747474;
+    width: 100%;
+    display: inline-block;
 }
 
 #navPageLinks ul {
-  width: 100%;
+    width: 100%;
 }
+
 #navPageLinks ul li {
-  width: 100%;
-  /* display: inline-block; */
-  color: #FFFFFF;
+    width: 100%;
+    /* display: inline-block; */
+    color: #FFFFFF;
 }
+
 #navPageLinks ul li a {
-  color: #FFFFFF;
-  font-size: .8rem;
-  padding: 0px 0px 0px 0px;
+    color: #FFFFFF;
+    font-size: .8rem;
+    padding: 0px 0px 0px 0px;
 }
 
 .navbar button {
-  margin-right: 10px;
-  margin-left: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
 }
 
 #loginModal .modal-dialog .row {
-  background-color: #FFFFFF;
+    background-color: #FFFFFF;
 }
+
 .fa-google {
-  color: #db3236;
+    color: #db3236;
 }
 
 .fa-facebook {
-  color: #3b5998;
+    color: #3b5998;
 }
+
 /* ========================== */
+
 .jumbotron {
-  margin-top: 150px;
-  /* max-width: 1280px; */
+    margin-top: 150px;
+    /* max-width: 1280px; */
 }
 
 #signupModal {
-  background-color: #FFFFFF;
+    background-color: #FFFFFF;
 }
 
 /* ========================== */
+
 .background-color1 .container {
-  max-width: 1280px;
-  /* padding: 0px 0px 0px 0px; */
-  /* margin: 0px 0px 0px 0px; */
-  background: #FFFFFF;
+    max-width: 1280px;
+    /* padding: 0px 0px 0px 0px; */
+    /* margin: 0px 0px 0px 0px; */
+    background: #FFFFFF;
 }
+
 /* ========================== */
-.sectionRow{
-  padding-top: 120px;
+
+.sectionRow {
+    padding-top: 10px;
 }
+
 #greeting {
-  height: 300px;
-  border: 1px solid green;
+    height: 300px;
+    border: 1px solid green;
 }
 
 #infoSection {
-  height: 300px;
-  border: 1px solid green;
+    height: 300px;
+    border: 1px solid green;
 }
 
 #team {
-  height: 300px;
-  border: 1px solid green;
+    height: 300px;
+    border: 1px solid green;
 }
 
 #history {
-  height: 300px;
-  border: 1px solid green;
+    height: 300px;
+    border: 1px solid green;
 }
 
 #products {
-  height: 300px;
-  border: 1px solid green;
+    height: 300px;
+    border: 1px solid green;
 }
 
 #comments {
-  height: 300px;
-  border: 1px solid green;
+    height: 300px;
+    border: 1px solid green;
 }
+
+#overview {
+    height: 300px;
+    border: 1px solid green;
+}
+
+#featuredStylist1 {
+    height: 300px;
+    border: 1px solid green;
+}
+
+#featuredStylist2 {
+    height: 300px;
+    border: 1px solid green;
+}
+
+
+#partners {
+    height: 300px;
+    border: 1px solid green;
+}
+
+#contact {
+    height: 300px;
+    border: 1px solid green;
+}
+
+#service1 {
+    height: 300px;
+    border: 1px solid green;
+}
+
+#service2 {
+    height: 300px;
+    border: 1px solid green;
+}
+
+#serviceMenu {
+    height: 300px;
+    border: 1px solid green;
+}
+
+#summary {
+    height: 300px;
+    border: 1px solid green;
+}
+
+
 /* ========================== */
+/* Placeholder */
+
+#placeholder {
+    background-color: red;
+    background-image: url("../images/backgrounds/large_leather/large_leather.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-origin: right;
+    background-attachment: fixed;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+
+#placeholder .container {
+    position: relative;
+    text-align: center;
+    z-index: 4;
+    color: #FFFFFF;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding: 0px;
+}
+
+.clearing {
+    height: 200px;
+}
+
+
 /* Placeholder1 */
+
 #placeholder1 {
-  background-color: red;
-  background-image: url("../images/backgrounds/haircut-834280_1280.jpg");
-  background-position: center; 
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-origin: right;
-  background-attachment: fixed;
-  padding-bottom: 0px;
-  margin-bottom: 0px;
+    background-color: red;
+    background-image: url("../images/backgrounds/haircut-834280_1280.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-origin: right;
+    background-attachment: fixed;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
 }
+
 #placeholder1 .container {
-  position: relative;
-  text-align: center;
-  z-index: 4;
-  color: #FFFFFF;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  padding: 0px;
+    position: relative;
+    text-align: center;
+    z-index: 4;
+    color: #FFFFFF;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding: 0px;
 }
-.clearing  {
-  height: 200px;
+
+.clearing {
+    height: 200px;
 }
+
 /* ========================== */
+
 /* Placeholder2 */
+
 #placeholder2 {
-  background-color: red;
-  background-image: url("../images/backgrounds/hairdressing-salon-2693077_1280.jpg");
-  background-position: center; 
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-origin: right;
-  background-attachment: fixed;
-  padding: 0px 0px 0px 0px;
-  margin: 0px 0px 0px 0px;
-  width: 100%;
-  
+    background-color: red;
+    background-image: url("../images/backgrounds/hairdressing-salon-2693077_1280.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-origin: right;
+    background-attachment: fixed;
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+    width: 100%;
 }
+
 #placeholder2 .container {
-  position: relative;
-  text-align: center;
-  z-index: 4;
-  color: #FFFFFF;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  padding: 0px;
+    position: relative;
+    text-align: center;
+    z-index: 4;
+    color: #FFFFFF;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding: 0px;
 }
-.clearing2  {
-  height: 300px;
+
+.clearing2 {
+    height: 300px;
 }
+
 /* ========================== */
+
 /* ========================== */
+
 footer {
-  /* position: fixed; */
-  bottom: 0;
-  border-top: 5px solid #222222;
-  background-color: #747474;
-  /* height: 10px; */
-  width: 100%;
+    /* position: fixed; */
+    bottom: 0;
+    border-top: 5px solid #222222;
+    background-color: #747474;
+    /* height: 10px; */
+    width: 100%;
 }
+
 .footText p {
-  padding: 12px;
-  color: #FFFFFF;
-  text-align: center;
-  margin-bottom: 0px;
+    padding: 12px;
+    color: #FFFFFF;
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+/* Appointment Picker Styling */
+
+.appo-picker {
+    color: #74747474;
+}
+
+.appo-picker-list-item {
+    color: #50bcc0;
 }

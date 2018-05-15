@@ -11,7 +11,7 @@ $(document).ready(function(){
   };
 
 
-  var $picker = $('#time').appointmentPicker({
+  var picker = $('#time').appointmentPicker({
     title: "Available Appointments",
     interval: 30,
     mode: '12h',
@@ -58,27 +58,30 @@ $(document).ready(function(){
     });
   }  
 
-  function calculateApptTime (){
+  function calculateApptDuration (){
     //loop through checkboxes in $("#services") element and calculate the total appointment time needed for checked boxes
-    var serviceOptions = $("#services").children();
-    console.log(serviceOptions.length);
+    
     var duration = 0;
-    for(var i= 0; i < serviceOptions.length; i++) {
-      console.log(serviceOptions[i]);
-      if ($("#service" + i).val()){
-        duration += $("#service" + i).data("time");
-        console.log("duration adding: " + $("#service" + i).data("time"));
-      }
-    }
 
+    var serviceList = "";
+    $('input[type=checkbox]').each(function () {
+     if(this.checked){
+       var serviceTime = $(this).data("time");
+       duration += serviceTime;
+       console.log(`adding ${serviceTime} minutes to total service`);
+     }
 
+    });
     console.log("total appointment duration " + duration);
     return duration;
   }
 
   $(".checkbox-service").change( function (e){
-    var timeNeeded = calculateApptTime();
-    console.log("checkbox changed " + timeNeeded);
+    var timeNeeded = calculateApptDuration();
+    //adjust the appointment interval on the appointment picker
+    picker = $('#time').appointmentPicker({
+      interval: timeNeeded
+    });
   });
 
   $('#time').on("change", function() {

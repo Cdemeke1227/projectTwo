@@ -12,5 +12,17 @@ $('#navPageLinks ul li a').click(function(event) {
 
 
 
+// SignUp modeal open
+function signupModal () {
+    event.preventDefault();
+    $('#signupModal').modal('toggle');
+    $('#signupModal').modal('show');
+console.log("hello");
+}
+
+
+// In order launch sign up modal place targer #placeholder
+$(document).on('click', '#placeholder',  signupModal);
+
 
 });

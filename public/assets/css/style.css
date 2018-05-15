@@ -150,6 +150,11 @@ body {
     border: 1px solid green;
 }
 
+#comments {
+    height: 300px;
+    border: 1px solid green;
+}
+
 #overview {
     height: 300px;
     border: 1px solid green;

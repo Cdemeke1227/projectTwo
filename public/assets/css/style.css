@@ -201,6 +201,27 @@ body {
     border: 1px solid green;
 }
 
+#calendar {
+    height: 300px;
+    border: 1px solid green;
+}
+#mesages {
+    height: 300px;
+    border: 1px solid green;
+}
+#customers {
+    height: 300px;
+    border: 1px solid green;
+}
+#transactions {
+    height: 300px;
+    border: 1px solid green;
+}
+#productInventory {
+    height: 300px;
+    border: 1px solid green;
+}
+
 
 /* ========================== */
 /* Placeholder */

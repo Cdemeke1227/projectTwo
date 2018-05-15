@@ -21,8 +21,17 @@ console.log("hello");
 }
 
 
-// In order launch sign up modal place targer #placeholder
-$(document).on('click', '#placeholder',  signupModal);
+// In order launch sign up modal place targer #placeholde
+var signupErr = $("#sign-up-error-msg").text().trim().length;
+var loginErr = $("#login-error-msg").text().trim().length;;
 
-
+console.log(signupErr);
+if(signupErr > 1){
+    $('#signupModal').modal('toggle');
+    $('#signupModal').modal('show');
+};
+if(loginErr > 1){
+    $('#loginModal').modal('toggle');
+    $('#loginModal').modal('show');
+};
 });

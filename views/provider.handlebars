@@ -6,7 +6,7 @@
         <ul class="navbar-nav mr-auto">
 
           <li class="nav-item">
-            <a class="nav-link" href="/home">Home</a>
+            <a class="nav-link" href="/">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/about">About</a>
@@ -16,7 +16,7 @@
       </div>
 
       <div class="col" id="navTitle">
-        <a class="navbar-brand" href="/home">HOUSE OF STYLE</a>
+        <a class="navbar-brand" href="/">HOUSE OF STYLE</a>
       </div>
       <div class="col" id="navSiteLinks">
         <ul class="navbar-nav mr-auto">
@@ -40,14 +40,21 @@
 
 </nav>
 {{!-- Admin Add/Edit Provider Modal --}}
-<div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel" aria-hidden="true">
+<div class="modal fade" id="providerModal" tabindex="-1" role="dialog" aria-labelledby="providerModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
 
-        {{>navbar/modal/signup-modal}}
+        {{>navbar/modal/provider-modal}}
 
     </div>
 </div>
+{{!-- Admin Add/Edit schedule Modal --}}
+<div class="modal fade" id="scheduleModal" tabindex="-1" role="dialog" aria-labelledby="scheduleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
 
+        {{>navbar/modal/schedule-modal}}
+
+    </div>
+</div>
 
 <div class="jumbotron jumbotron-fluid">
     <div class="container">

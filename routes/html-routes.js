@@ -12,18 +12,18 @@ module.exports = function(app) {
 
   // Each of the below routes just handles the HTML page that the user gets sent to.
   //When users visit the page or go home
-  app.get('/home', goTo.home);
+  app.get('/', goTo.home);
 
 
   // Customers sign-up/log-in
-  app.get('/home/customer', goTo.loggedIn);
+  app.get('/home/customer/:firstName/:lastName',isLoggedIn, goTo.loggedIn);
 
 
   // schedule route loads schedule.handlebar view
-  app.get("/customer/schedule", goTo.schedule);
+  app.get("/customer/schedule",isLoggedIn, goTo.schedule);
 
   // about route loads about.handlebar view
-  app.get("/about", goTo.about);
+  app.get("/about",isLoggedIn, goTo.about);
 
   // about provider loads provider.handlebar view 
   app.get("/provider", goTo.provider);
@@ -32,5 +32,13 @@ module.exports = function(app) {
   app.get("/service", goTo.service);
 
 
+  function isLoggedIn(req, res, next) {
+ 
+    if (req.isAuthenticated())
 
+        return next();
+
+    res.redirect('/');
+
+}
 };

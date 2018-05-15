@@ -53,10 +53,8 @@ module.exports = function(passport, user) {
              
                 {
              
-                    return done(null, false, {
-                        message: 'That email is already taken'
-                    });
-             
+                    return done(null, false, req.flash('signUpMessage','That email is already taken'));
+       
                 } else
              
                 {
@@ -70,17 +68,21 @@ module.exports = function(passport, user) {
              
                             password: userPassword,
              
-                            name: req.body.name
+                            firstName: req.body.firstName,
+
+                            lastName: req.body.lastName,
+
+                            phone: req.body.phone
              
              
                         };
              
              
                     User.create(data).then(function(newUser, created) {
-             
+                        console.log(created);
                         if (!newUser) {
              
-                            return done(null, false);
+                            return done(null, false, req.flash('signUpMessage', "There was an error in creating your account!"));
              
                         }
              
@@ -133,22 +135,25 @@ module.exports = function(passport, user) {
  
             if (!user) {
  
-                return done(null, false, {
-                    message: 'Email does not exist'
-                });
- 
+                return done(null, false, req.flash('logInMessage', 'Email does not exist'));
+
             }
  
             if (!isValidPassword(user.password, password)) {
  
-                return done(null, false, {
-                    message: 'Incorrect password.'
-                });
- 
+                return done(null, false, req.flash('logInMessage','Incorrect password.'));
+
             }
  
- 
-            var userinfo = user.get();
+
+
+            var userinfo = {
+                id : user.id,
+                firstName : user.firstName,
+                lastName : user.lastName,
+                phoneNum : user.phone
+
+            };
             return done(null, userinfo);
  
  
@@ -156,10 +161,8 @@ module.exports = function(passport, user) {
  
             console.log("Error:", err);
  
-            return done(null, false, {
-                message: 'Something went wrong with your Signin'
-            });
- 
+            return done(null, false, req.flash('logInMessage','Something went wrong with your Signin'));
+
         });
  
  

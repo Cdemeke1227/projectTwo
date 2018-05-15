@@ -5,27 +5,27 @@
                 <ul class="navbar-nav mr-auto">
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Home</a>
+                        <a class="nav-link" href="/home">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
+                        <a class="nav-link" href="/about">About</a>
                     </li>
 
                 </ul>
             </div>
 
             <div class="col" id="navTitle">
-                <a class="navbar-brand" href="#">HOUSE OF STYLE</a>
+                <a class="navbar-brand" href="/home">HOUSE OF STYLE</a>
             </div>
             <div class="col" id="navSiteLinks">
                 <ul class="navbar-nav mr-auto">
 
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Services</a>
+                        <a class="nav-link" href="/service">Services</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Appointments</a>
+                        <a class="nav-link" href="/customer/schedule">Appointments</a>
                     </li>
                 </ul>
             </div>
@@ -33,90 +33,26 @@
         </div>
         {{!-- Navbar Partial for home page section links --}} {{>navbar/nav-home}}
     </div>
-    
-{{#if LoggedIn}} {{>navbar/nav-user}} {{else}} {{>navbar/nav-login}} {{/if}}
+
+    {{#if LoggedIn}} {{>navbar/nav-user}} {{else}} {{>navbar/nav-login}} {{/if}}
 
 </nav>
 {{!-- Log in Modal --}}
 
 <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="loginModalLabel">Login to House of Styles</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form method="post" action='' name="login_form">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Sign in</button>
-                    <a href="#">Forgot Password?</a>
-                    </p>
-                    <p>
-                        Or Use Google of Facebook
-                    </p>
-                    <i class="fab fa-google fa-5x"></i>
-                    <i class="fab fa-facebook fa-5x"></i>
-                </form>
-            </div>
-            <div class="modal-footer">
-                New To House of Styles
-                <hr>
-                <div>
-                    <button type="button" class="btn btn-outline-secondary my-2 my-sm-0" data-toggle="modal" data-target="#signupModal">Sign Up</button>
-                </div>
-            </div>
-        </div>
+
+        {{>navbar/modal/login-modal}}
+
     </div>
 </div>
 
+{{!-- Signup Modal --}}
 <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="signupModalLabel">Sign Up for House of Styles</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form method="post" action='' name="login_form">
-                    <div class="form-group">
-                        <label for="inputFirstName">First Name</label>
-                        <input type="firstName" class="form-control" id="inputFirstName" placeholder="First Name">
-                    </div>
-                     <div class="form-group">
-                        <label for="inputLastName">Last Name</label>
-                        <input type="Lastname" class="form-control" id="inputLastName" placeholder="Last Name">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                    </div>
-                     <div class="form-group">
-                        <label for="inputPhoneNumber">Phone Number</label>
-                        <input type="phoneNumber" class="form-control" id="inputPhoneNumber" placeholder="555 555 5555">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
-            </div>
 
-        </div>
+        {{>navbar/modal/signup-modal}}
+
     </div>
 </div>
 
@@ -138,7 +74,6 @@
         Google or Other Data embedded
     </div>
 </div>
-
 
 <div class="background-color1">
     {{!-- Blank for picture --}}

@@ -155,7 +155,103 @@ body {
     border: 1px solid green;
 }
 
+#overview {
+    height: 300px;
+    border: 1px solid green;
+}
+
+#featuredStylist1 {
+    height: 300px;
+    border: 1px solid green;
+}
+
+#featuredStylist2 {
+    height: 300px;
+    border: 1px solid green;
+}
+
+
+#partners {
+    height: 300px;
+    border: 1px solid green;
+}
+
+#contact {
+    height: 300px;
+    border: 1px solid green;
+}
+
+#service1 {
+    height: 300px;
+    border: 1px solid green;
+}
+
+#service2 {
+    height: 300px;
+    border: 1px solid green;
+}
+
+#serviceMenu {
+    height: 300px;
+    border: 1px solid green;
+}
+
+#summary {
+    height: 300px;
+    border: 1px solid green;
+}
+
+#calendar {
+    height: 300px;
+    border: 1px solid green;
+}
+#mesages {
+    height: 300px;
+    border: 1px solid green;
+}
+#customers {
+    height: 300px;
+    border: 1px solid green;
+}
+#transactions {
+    height: 300px;
+    border: 1px solid green;
+}
+#productInventory {
+    height: 300px;
+    border: 1px solid green;
+}
+
+
 /* ========================== */
+/* Placeholder */
+
+#placeholder {
+    background-color: red;
+    background-image: url("../images/backgrounds/large_leather/large_leather.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-origin: right;
+    background-attachment: fixed;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+
+#placeholder .container {
+    position: relative;
+    text-align: center;
+    z-index: 4;
+    color: #FFFFFF;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding: 0px;
+}
+
+.clearing {
+    height: 200px;
+}
+
 
 /* Placeholder1 */
 

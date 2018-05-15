@@ -203,6 +203,34 @@ body {
 
 
 /* ========================== */
+/* Placeholder */
+
+#placeholder {
+    background-color: red;
+    background-image: url("../images/backgrounds/large_leather/large_leather.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-origin: right;
+    background-attachment: fixed;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+
+#placeholder .container {
+    position: relative;
+    text-align: center;
+    z-index: 4;
+    color: #FFFFFF;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding: 0px;
+}
+
+.clearing {
+    height: 200px;
+}
+
 
 /* Placeholder1 */
 

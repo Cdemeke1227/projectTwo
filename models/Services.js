@@ -1,14 +1,14 @@
-module.exports = (sequelize, DataTypes) => {
+module.exports = function (sequelize, DataTypes)  {
   var Services = sequelize.define('Services', {
 
-    id: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true,
-      unique: true,
-      field: 'id',
-  },
-    name: {
+    // id: {
+    //   type: DataTypes.INTEGER,
+    //   primaryKey: true,
+    //   autoIncrement: true,
+    //   unique: true,
+    //   field: 'id',
+    // },
+    service_name: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
@@ -32,13 +32,12 @@ module.exports = (sequelize, DataTypes) => {
         isDecimal: true
       }
     },
-   
+
     photolinks: {
       type: DataTypes.STRING, // We need t ohave data type array here since we are going to have many links to images. (Ask DAN!)
       allowNull: true,
 
     },
-
     'created_at': {
       type: DataTypes.DATE(3),
       defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3)'),
@@ -49,13 +48,19 @@ module.exports = (sequelize, DataTypes) => {
     },
   }, {
     timestamps: true,
-    tableName: Services,
+    tableName: 'services',
     paranoid: true,
     underscored: true,
-  }, {});
-  Services.associate = function(models) {
-    // Services Belongs to Providers
-    Services.belongsTo(models.Providers, {foreignKey: 'providersId'});
+  });
+
+  Services.associate = function (models) {
+    //The services belong to Providers
+    //We can not have  a  Service  without having a Provider.
+    Services.belongsTo(models.Providers, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
   };
   return Services;
 };

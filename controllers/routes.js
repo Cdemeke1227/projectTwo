@@ -20,6 +20,7 @@ exports.home = function(req, res){
         admin: false
     }
 
+
     if(req.user){
         viewBuilder.LoggedIn = true;
         viewBuilder.userId = req.user.id;
@@ -43,7 +44,7 @@ exports.home = function(req, res){
 
 }
 
-
+// EVERYTHING UNDER HERE WILL BE UPDATED!!!!
 exports.appointment = function (req, res) {
    
     res.render('appointments');

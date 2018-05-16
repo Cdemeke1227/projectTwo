@@ -29,12 +29,15 @@ module.exports = function(app) {
 
 
 
+
   // schedule route loads schedule.handlebar view
   app.get("/customer/schedule",isLoggedIn, goTo.schedule);
 
 
   // about route loads about.handlebar view
+
   app.get("/about/:type/:firstName", goTo.about);
+
 
   // about provider loads provider.handlebar view 
   app.get("/provider", goTo.provider);

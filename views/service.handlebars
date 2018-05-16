@@ -1,68 +1,15 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light" id="navbar-hover">
-    <div class="contianer" id="navLinks">
-        <div class="row">
-            <div class="col" id="navSiteLinks">
-                <ul class="navbar-nav mr-auto">
+{{>navbar/nav}}
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="/">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/about">About</a>
-                    </li>
-
-                </ul>
-            </div>
-
-            <div class="col" id="navTitle">
-                <a class="navbar-brand" href="/">HOUSE OF STYLE</a>
-            </div>
-            <div class="col" id="navSiteLinks">
-                <ul class="navbar-nav mr-auto">
-
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="/service">Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/customer/schedule">Appointments</a>
-                    </li>
-                </ul>
-            </div>
-
-        </div>
-        {{!-- Navbar Partial for home page section links --}} {{>navbar/nav-services}}
-    </div>
-    
-{{#if LoggedIn}} {{>navbar/nav-user}} {{else}} {{>navbar/nav-login}} {{/if}}
-
-</nav>
-{{!-- Log in Modal --}}
-
-<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        
-            {{>navbar/modal/login-modal}}
-        
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 >Services</h1>
+        <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
     </div>
 </div>
-
-{{!-- Signup Modal --}}
-<div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-       
-            {{>navbar/modal/signup-modal}}
-        
-    </div>
-</div>
-
-
-
-
 
 <div class="background-color1">
     <div class="container sectionRow" id="service1">
-        Servie1
+        Service1
     </div>
 </div>
 

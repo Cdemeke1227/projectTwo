@@ -16,11 +16,11 @@ module.exports = function(app) {
 
 
   // Customers sign-up/log-in
-  app.get('/home/customer', goTo.loggedIn);
+  app.get('/home/customer', goTo.customer);
 
 
   // schedule route loads schedule.handlebar view
-  app.get("/customer/schedule", goTo.schedule);
+  app.get("/providers/schedule", goTo.schedule);
 
   // about route loads about.handlebar view
   app.get("/about", goTo.about);
@@ -31,6 +31,8 @@ module.exports = function(app) {
   // service route loads service.handlebar view
   app.get("/service", goTo.service);
 
+  app.get("/api/stylist/:id", goTo.stylist);
 
+  app.get("/bookings", goTo.bookings);
 
 };

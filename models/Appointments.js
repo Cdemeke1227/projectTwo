@@ -2,64 +2,75 @@
 module.exports = function (sequelize, DataTypes) {
   var Appointments = sequelize.define('Appointments', {
 
-    customer: {
-      type: DataTypes.STRING,
-      allowNull: false,
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+      unique: true,
+      field: 'id',
+    },
+    appointStart: {
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW,
       validate: {
-        len: [1, 160]
+        isDate: true,
+      }
+
+    },
+    appointEnd: {
+      type: DataTypes.DATE,
+      validate: {
+        isDate: true,
       }
     },
-    stylist: {
-       type: DataTypes.STRING,
-      allowNull: false,
-       validate: {
-         len: [1, 160]
-       }
-     },
-     date: {
-       type: DataTypes.DATE,
-     defaultValue: DataTypes.NOW,
-     validate: {
-      isDate: true, 
-     }
-
-     },
-    start_time: {
-      type: DataTypes.TIME,
-      validate: {
-        isDate: true, 
-       }
-    }, 
 
     duration: {
       type: DataTypes.TIME,
       validate: {
-        isDate: true, 
-       }
+        isDate: true,
+      }
 
-    }
+    },
 
+
+    'created_at': {
+      type: DataTypes.DATE(3),
+      defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3)'),
+    },
+    'updated_at': {
+      type: DataTypes.DATE(3),
+      defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3)'),
+    },
+  }, {
+    timestamps: true,
+    tableName: Appointments,
+    paranoid: true,
+    underscored: true,
   });
-  Appointments.associate = function (models) {
-    // associations can be defined here
-    Appointments.belongsTo(models.Providers, {
-      foreignKey: {
-        allowNull: false
-      }
-    });
+  // Appointments.associate = models => {
+  //   Appointments.belongsTo(models.Customers, {
 
-    Appointments.belongsTo(models.Customers, {
-      foreignKey: {
-        allowNull: false
-      }
-    });
 
-    Appointments.belongsTo(models.Schedules, {
-      foreignKey: {
-        allowNull: false
-      }
-    });
 
-  };
-  return Appointments;
+
+  //   });
+
+
+return Appointments;
 };
+
+
+
+// Appointments.associate = function (models) {
+//   // associations can be defined here
+//   Appointments.belongsTo(models.Providers, {
+//     foreignKey: {
+//       allowNull: false
+//     }
+//   });
+
+// Appointments.associate = models => {
+//   Appointments.belongsTo(models.Customers, {
+
+//   })
+// }

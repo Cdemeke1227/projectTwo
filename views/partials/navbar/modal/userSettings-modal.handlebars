@@ -8,6 +8,10 @@
     <div class="modal-body">
         {{!-- These are just basic options for both customers and admins --}}
         <form method='post' action="{{updateRoute}}" name="changeSettings-form">
+            <div id="settings-error-msg">
+                {{settingsMessage}}
+            </div>
+            
             <h7>Click on any information you wish to change</h7>
             <div class="form-group">
                 <label>First Name</label>
@@ -43,10 +47,10 @@
                 </div>
             </div>
             {{!-- Needs logic to make sure verify password before allowing change of password --}}
-            {{!-- <div class="form-group">
+            <div class="form-group">
                 <label >Password</label>
-                <input type="password" class="form-control settingsChild"  placeholder="Password" name="password" value="" required>
-            </div> --}}
+                <input type="password" class="form-control"  placeholder="Please input your password to verify changes" name="password" required>
+            </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
 

@@ -18,6 +18,7 @@ exports.home = function(req, res){
         LoggedIn : false,
         messageLogIn : req.flash('logInMessage'), 
         messageSignIn: req.flash('signUpMessage'),
+        messagesettingsMessage: req.flash('settingsMessage'),
         admin: false
     }
 
@@ -44,7 +45,7 @@ exports.home = function(req, res){
         }
     };
 
-    console.log(viewBuilder);
+    // console.log(viewBuilder);
 
     res.render('home', viewBuilder);
 

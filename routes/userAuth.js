@@ -1,9 +1,9 @@
 module.exports = function(app,passport){
 
 
-
+//***********************************CUSTOMER AUTHORIZATIONS********************************** */
     //Register
-    app.post('/users/register', passport.authenticate('local-signup',{
+    app.post('/users/register', passport.authenticate('customer-local-signup',{
         failureRedirect: '/',
         failureFlash: true,
 
@@ -14,7 +14,7 @@ module.exports = function(app,passport){
     });
 
     //Log in
-    app.post('/users/login', passport.authenticate('local-signin', {
+    app.post('/users/login', passport.authenticate('customer-local-signin', {
         failureRedirect: '/',
 
         failureFlash: true
@@ -23,18 +23,21 @@ module.exports = function(app,passport){
         function(req,res){
         console.log(req.user);
 
-        res.redirect('/home/customer/' + req.user.id + "/" + req.user.firstName + "/" + req.user.lastName)
+        res.redirect('/home/customer/' + req.user.id)
     });
 
 
     //Update Customer
 
-    app.post('/customer/update', passport.authenticate('local-update',{
+    app.post('/update/:userType/:userId', passport.authenticate('customer-local-update',{
         failureRedirect: '/',
-        failureFlash: true,
-        successFlash: true
+        failureFlash: true
     }),
         function(req,res){
-            res.redirect('/home/customer/' + req.user.id + "/" + req.user.firstName + "/" + req.user.lastName)
+            console.log("!!!!!!!!!!!!!!!")
+            res.redirect('/home/customer/' + req.user.id)
         });
+
+
+//*****************************************ADMIN AUTHORIZATIONS******************************************* */
 }

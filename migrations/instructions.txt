@@ -10,3 +10,4 @@ Table 2 - Services
     providers, basically a drop down menu with a list of the names of the providers.
 -- If we can somehow be able to select multiple providers that give that service and not have to do for each seperately 
     would save alot of time.
+© 2018 GitHub, Inc.

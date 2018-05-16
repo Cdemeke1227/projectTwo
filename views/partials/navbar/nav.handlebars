@@ -10,12 +10,23 @@
         <div class="col-4" id="navSiteLinks">
             <ul class="navbar-nav mr-auto">
 
+      
+
+                {{#if LoggedIn}}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{homeRoute}}">Home</a>
+                </li> 
+                <li class="nav-item">
+                    <a class="nav-link" href="{{aboutRoute}}">About</a>
+                </li> 
+                {{else}} 
                 <li class="nav-item">
                     <a class="nav-link" href="/">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/about">About</a>
                 </li>
+                {{/if}}
 
             </ul>
         </div>
@@ -28,14 +39,21 @@
         </div>
         <div class="col-4" id="navSiteLinks">
             <ul class="navbar-nav mr-auto">
-
-
+                {{#if LoggedIn}}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{homeRoute}}">Home</a>
+                </li> 
+                <li class="nav-item">
+                    <a class="nav-link" href="{{scheduleRoute}}">Book</a>
+                </li> 
+                {{else}} 
                 <li class="nav-item">
                     <a class="nav-link" href="/service">Services</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/customer/schedule">Book</a>
+                    <a class="nav-link" href="/schedule">Book</a>
                 </li>
+                {{/if}}
             </ul>
         </div>
 

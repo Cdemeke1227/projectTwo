@@ -11,36 +11,35 @@ var goTo = require('../controllers/routes.js');
 module.exports = function(app) {
 
   // Each of the below routes just handles the HTML page that the user gets sent to.
+    //For any route that requires a user to be logged in simply add isLoggedIn before you call the function to goTo.somefunction
   //When users visit the page 
-  app.get('/', isLoggedIn ,goTo.Welcome);
+  app.get('/',goTo.Welcome);
 
 
   //When users go to the home page
 
-  app.get('/home/:userType?/:id?/:firstName?/:lastName?/', goTo.home)
+  app.get('/home/:userType?/:id?', goTo.home)
 
+  //When users go to the about page
+
+  app.get('/about/:userType?/:id?', goTo.about)
+
+
+  // schedule route loads schedule.handlebar view and makes sure the user is logged in before they can access the page
+  app.get("/schedule/:userType?/:id?",isLoggedIn, goTo.schedule);
+
+// service route loads service.handlebar view
+  app.get("/service", goTo.service);
 
 
   // EVERYTHING UNDER HERE WILL BE UPDATED
 
-  
-  // schedule route loads schedule.handlebar view
-  app.get("/providers/schedule", goTo.schedule);
 
-
-
-  // schedule route loads schedule.handlebar view
-  app.get("/customer/schedule",isLoggedIn, goTo.schedule);
-
-
-  // about route loads about.handlebar view
-  app.get("/about/:type/:firstName", goTo.about);
 
   // about provider loads provider.handlebar view 
   app.get("/provider", goTo.provider);
 
-  // service route loads service.handlebar view
-  app.get("/service", goTo.service);
+
 
   app.get("/api/stylist/:id", goTo.stylist);
 
@@ -51,9 +50,11 @@ module.exports = function(app) {
  
     if (req.isAuthenticated())
 
-        return next(true);
+        return next();
+    //Redirects home with a loginMessage flash message
+    req.flash('logInMessage',"Please Log in to access that option");
 
-    return next(false);
+    res.redirect('/');
 
 }
 };

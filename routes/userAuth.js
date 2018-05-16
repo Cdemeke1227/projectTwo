@@ -10,7 +10,7 @@ module.exports = function(app,passport){
     }),
     function(req,res){
     
-        res.redirect('/home/user/' + req.user.id + "/" + req.user.firstName + "/" + req.user.lastName)
+        res.redirect('/home/customer/' + req.user.id)
     });
 
     //Log in
@@ -23,7 +23,7 @@ module.exports = function(app,passport){
         function(req,res){
         console.log(req.user);
 
-        res.redirect('/home/user/' + req.user.id + "/" + req.user.firstName + "/" + req.user.lastName)
+        res.redirect('/home/customer/' + req.user.id + "/" + req.user.firstName + "/" + req.user.lastName)
     });
 
 
@@ -35,6 +35,6 @@ module.exports = function(app,passport){
         successFlash: true
     }),
         function(req,res){
-            res.redirect('/home/user/' + req.user.id + "/" + req.user.firstName + "/" + req.user.lastName)
+            res.redirect('/home/customer/' + req.user.id + "/" + req.user.firstName + "/" + req.user.lastName)
         });
 }

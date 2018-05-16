@@ -2,21 +2,54 @@ var db = require("../models");
 
 var exports = module.exports = {};
 
-exports.home = function (req, res) {
-    res.render('home', {
-        LoggedIn: false
-    });
-};
+exports.Welcome = function(req,res, next){
+    if(req.user){
+        res.redirect('/home/' + req.user.userType + '/' + req.user.id + '/' + req.user.firstName + '/' + req.user.lastName)
+    }else {
+        res.redirect('/home');
+    }
+    
+}
 
+exports.home = function(req, res){
+
+    var viewBuilder = {
+        LoggedIn : false,
+        messageLogIn : req.flash('logInMessage'), 
+        messageSignIn: req.flash('signUpMessage'),
+        admin: false
+    }
+
+
+    if(req.user){
+        viewBuilder.LoggedIn = true;
+        viewBuilder.userId = req.user.id;
+        viewBuilder.firstName = req.user.firstName;
+        viewBuilder.lastName = req.user.lastName;
+        viewBuilder.email = req.user.email;
+        viewBuilder.phoneNumber = req.user.phone;
+        viewBuilder.notes = req.user.notes;
+        viewBuilder.photoLink = req.user.photoLink;
+        viewBuilder.userType = req.user.userType;
+        viewBuilder.updateRoute = "/update/" + req.user.userType + "/" + req.user.id
+
+        if(req.user.userType === 'admin'){
+            viewBuilder.admin = true;
+        }
+    };
+
+    console.log(viewBuilder);
+
+    res.render('home', viewBuilder);
+
+}
+
+// EVERYTHING UNDER HERE WILL BE UPDATED!!!!
 exports.appointment = function (req, res) {
    
-    // res.render('appointments');
+    res.render('appointments');
 };
-// exports.loggedIn = function (req, res) {
-//     res.render('home', {
-//         LoggedIn: true
-//     });
-// };
+
 
 exports.schedule = function (req, res) {
     db.Schedule.findAll({
@@ -53,21 +86,9 @@ exports.provider = function (req, res) {
     // res.render('provider')
 };
 
-    exports.home = function(req,res){
-        res.render('home', {LoggedIn : false, messageLogIn : req.flash('logInMessage'), messageSignIn: req.flash('signUpMessage')});
-    };
 
-    exports.loggedIn = function(req,res){
-        console.log(req.user);
 
-        var firstName = req.user.firstName;
-        var lastName = req.user.lastName;
-        var email = req.user.email;
-        var phone = req.user.phone;
-        var notes = req.user.notes;
-        var photoLink = req.user.photoLink;
-        res.render('home', {LoggedIn : true});
-    };
+
     
     exports.schedule = function(req,res){
         res.render('schedule');

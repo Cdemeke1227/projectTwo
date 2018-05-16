@@ -34,4 +34,11 @@ if(loginErr > 1){
     $('#loginModal').modal('toggle');
     $('#loginModal').modal('show');
 };
+
+
+// Changes what's being displayed in settingsModal as the user changes the value of the input
+$('.settingsChild').keyup(function(){
+
+    $(this).closest('.settingsParent').children('.childText').text($(this).val().trim());
+});
 });

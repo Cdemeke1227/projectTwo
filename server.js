@@ -63,12 +63,13 @@ app.use(session({
 
 // Routes
 // =============================================================
+require("./routes/api-routes.js")(app);
 require("./routes/html-routes.js")(app);
-require('./routes/api-routes.js')(app,passport)
+require('./routes/userAuth.js')(app,passport)
 
 //load passport strategies
  
-require('./config/passport/passport.js')(passport, db.Customers);
+require('./config/passport/passport.js')(passport, db.Customers, db.Providers);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================

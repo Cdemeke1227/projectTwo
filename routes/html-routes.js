@@ -11,19 +11,23 @@ var goTo = require('../controllers/routes.js');
 module.exports = function(app) {
 
   // Each of the below routes just handles the HTML page that the user gets sent to.
-  //When users visit the page or go home
-  app.get('/', goTo.home);
+  //When users visit the page 
+  app.get('/', isLoggedIn ,goTo.Welcome);
 
 
-  // Customers sign-up/log-in
+  //When users go to the home page
 
-  app.get('/home/customer', goTo.customer);
+  app.get('/home/:userType?/:id?/:firstName?/:lastName?/', goTo.home)
 
 
+
+  // EVERYTHING UNDER HERE WILL BE UPDATED
+
+  
   // schedule route loads schedule.handlebar view
   app.get("/providers/schedule", goTo.schedule);
 
-  app.get('/home/customer/:firstName/:lastName',isLoggedIn, goTo.loggedIn);
+
 
 
   // schedule route loads schedule.handlebar view
@@ -31,7 +35,9 @@ module.exports = function(app) {
 
 
   // about route loads about.handlebar view
-  app.get("/about", goTo.about);
+
+  app.get("/about/:type/:firstName", goTo.about);
+
 
   // about provider loads provider.handlebar view 
   app.get("/provider", goTo.provider);
@@ -48,9 +54,9 @@ module.exports = function(app) {
  
     if (req.isAuthenticated())
 
-        return next();
+        return next(true);
 
-    res.redirect('/');
+    return next(false);
 
 }
 };

@@ -1,0 +1,12 @@
+.settingsChild{ display:none; }
+.childText{ display: block; margin-left: 3px; font-size: 17px}
+.settingsParent:hover .settingsChild{ display:block; }
+.settingsParent:hover .childText{ display: none; }
+
+
+
+label {
+    font-weight: bold;
+    border-bottom: 2px solid black;
+}
+

@@ -50,11 +50,11 @@ $(document).ready(function(){
         }).data({"service": element.id});
       var checkLabel = $("<label>").addClass("form-check-label").attr({"for": "service" + element.id}).text(element.description);
       checkDiv.append(checkBox).append(checkLabel);
-       console.log(`element ${element.description} added`);
+       //console.log(`element ${element.description} added`);
        
        //append to $("#services") element
       $("#services").append(checkDiv);
-      console.log($("#services"));
+      //console.log($("#services"));
     });
   }  
 
@@ -68,11 +68,11 @@ $(document).ready(function(){
      if(this.checked){
        var serviceTime = $(this).data("time");
        duration += serviceTime;
-       console.log(`adding ${serviceTime} minutes to total service`);
+       //console.log(`adding ${serviceTime} minutes to total service`);
      }
 
     });
-    console.log("total appointment duration " + duration);
+    //console.log("total appointment duration " + duration);
     return duration;
   }
 
@@ -89,3 +89,4 @@ $(document).ready(function(){
   });
 
 });
+

@@ -1,32 +1,25 @@
 module.exports = function (sequelize, DataTypes) {
   var Schedules = sequelize.define('Schedules', {
 
-    weekday: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [4, 10],
-      }
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+      unique: true,
+      field: 'id',
     },
+    startTime: {
 
-    start_time: {
-      type: DataTypes.TIME,
-      allowNull: false,
-    },
-
-    end_time: {
-      type: DataTypes.TIME,
+      type: DataTypes.DATE,
       allowNull: false,
     },
 
-    available: {
+    endTime: {
 
-      type: DataTypes.BOOLEAN,
+      type: DataTypes.DATE,
       allowNull: false,
-      validate: {
-        isBoolean: true,
-      }
     },
+
 
     'created_at': {
       type: DataTypes.DATE(3),
@@ -44,18 +37,18 @@ module.exports = function (sequelize, DataTypes) {
 
   });
   Schedules.associate = function (models) {
-    // associations can be defined here
+    // Schedules belongs to Providers
     Schedules.belongsTo(models.Providers, {
       foreignKey: {
         allowNull: false
       }
     });
 
-    Schedules.hasMany(models.Appointments, {
-      foreignKey: {
-        allowNull: false
-      }
-    });
+    // Schedules.hasMany(models.Appointments, {
+    //   foreignKey: {
+    //     allowNull: false
+    //   }
+    // });
 
 
   };

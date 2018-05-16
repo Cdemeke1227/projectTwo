@@ -1,34 +1,138 @@
+var db = require("../models");
+
 var exports = module.exports = {};
 
-    exports.home = function(req,res){
-        res.render('home', {LoggedIn : false, messageLogIn : req.flash('logInMessage'), messageSignIn: req.flash('signUpMessage')});
+exports.Welcome = function(req,res, next){
+    if(req.user){
+        res.redirect('/home/' + req.user.userType + '/' + req.user.id + '/' + req.user.firstName + '/' + req.user.lastName)
+    }else {
+        res.redirect('/home');
+    }
+    
+}
+
+exports.home = function(req, res){
+
+    var viewBuilder = {
+        LoggedIn : false,
+        messageLogIn : req.flash('logInMessage'), 
+        messageSignIn: req.flash('signUpMessage'),
+        admin: false
+    }
+
+    if(req.user){
+        viewBuilder.LoggedIn = true;
+        viewBuilder.userId = req.user.id;
+        viewBuilder.firstName = req.user.firstName;
+        viewBuilder.lastName = req.user.lastName;
+        viewBuilder.email = req.user.email;
+        viewBuilder.phoneNumber = req.user.phone;
+        viewBuilder.notes = req.user.notes;
+        viewBuilder.photoLink = req.user.photoLink;
+        viewBuilder.userType = req.user.userType;
+        viewBuilder.updateRoute = "/update/" + req.user.userType + "/" + req.user.id
+
+        if(req.user.userType === 'admin'){
+            viewBuilder.admin = true;
+        }
     };
 
-    exports.loggedIn = function(req,res){
-        console.log(req.user);
+    console.log(viewBuilder);
 
-        var firstName = req.user.firstName;
-        var lastName = req.user.lastName;
-        var email = req.user.email;
-        var phone = req.user.phone;
-        var notes = req.user.notes;
-        var photoLink = req.user.photoLink;
-        res.render('home', {LoggedIn : true});
-    };
+    res.render('home', viewBuilder);
+
+}
+
+
+exports.appointment = function (req, res) {
+   
+    res.render('appointments');
+};
+
+
+exports.schedule = function (req, res) {
+    db.Schedule.findAll({
+        include: [db.Providers]
+    }).then(function (dbProvider) {
+        res.json(dbProvider);
+
+    });
+    // res.render('schedule');
+};
+
+exports.bookings = function (req, res) {
+    db.Appointments.findAll({
+        // include: [db.Providers]
+    }).then(function (dbBooking) {
+        res.json(dbBooking);
+
+    });
+    // res.render('schedule');
+};
+
+exports.about = function (req, res) {
+    res.render('about');
+};
+
+exports.provider = function (req, res) {
+    db.Providers.findAll({
+        include: [db.Services]
+    }).then(function (dbProvider) {
+        res.json(dbProvider);
+
+    });
+
+    // res.render('provider')
+};
+
+
+
+
     
     exports.schedule = function(req,res){
         res.render('schedule');
     };
 
-    exports.about = function(req,res){
-        res.render('about');
-    };
+exports.service = function (req, res) {
 
-    exports.provider = function(req, res){
-        res.render('provider');
-    };
+    db.Services.findAll({
+        include: [db.Providers]
+    }).then(function (dbService) {
+        res.json(dbService);
 
-    exports.service = function(req,res){
-        res.render('service');
-    };
+    });
 
+    res.render('service')
+
+
+};
+
+exports.stylist = function (req, res) {
+    // Here we add an "include" property to our options in our findOne query
+    // We set the value to an array of the models we want to include in a left outer join
+    // In this case, just db.Post
+    db.Providers.findOne({
+        where: {
+            id: req.params.id
+        },
+        include: [db.Services]
+    }).then(function (dbstylist) {
+        res.json(dbstylist);
+        console.log(services[0]);
+    });
+};
+
+exports.customer = function (req, res) {
+
+    db.Customers.findAll({
+        
+    }).then(function (dbService) {
+        res.json(dbService);
+
+    });
+
+    // res.render('customer')
+    
+    
+
+};

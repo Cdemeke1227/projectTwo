@@ -16,11 +16,19 @@ module.exports = function(app) {
 
 
   // Customers sign-up/log-in
+
   app.get('/home/customer', goTo.customer);
 
 
   // schedule route loads schedule.handlebar view
   app.get("/providers/schedule", goTo.schedule);
+
+  app.get('/home/customer/:firstName/:lastName',isLoggedIn, goTo.loggedIn);
+
+
+  // schedule route loads schedule.handlebar view
+  app.get("/customer/schedule",isLoggedIn, goTo.schedule);
+
 
   // about route loads about.handlebar view
   app.get("/about", goTo.about);
@@ -33,6 +41,16 @@ module.exports = function(app) {
 
   app.get("/api/stylist/:id", goTo.stylist);
 
+
   app.get("/bookings", goTo.bookings);
 
+  function isLoggedIn(req, res, next) {
+ 
+    if (req.isAuthenticated())
+
+        return next();
+
+    res.redirect('/');
+
+}
 };

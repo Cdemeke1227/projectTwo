@@ -1,0 +1,44 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="loginModalLabel">Login to House of Styles</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form method="post" action='/users/login' name="login_form">
+            <div class="form-group">
+                <div id="login-error-msg">
+                    {{messageLogIn}}
+                </div>
+                
+                <label >Email address</label>
+                <input type="email" class="form-control"  placeholder="Enter email" name="email" required>
+                <small  class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+            <div class="form-group">
+                <label >Password</label>
+                <input type="password" class="form-control" placeholder="Password" name="password" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Sign in</button>
+            <a href="#">Forgot Password?</a>
+            </p>
+            <p>
+                Or Use Google or Facebook
+            </p>
+            <button>
+            <i id="loginGoogle" class="fab fa-google fa-5x"></i>
+            </button>
+            <button>
+            <i id="loginFacebook" class="fab fa-facebook fa-5x"></i>
+            </button>
+        </form>
+    </div>
+    <div class="modal-footer">
+        New To House of Styles
+        <hr>
+        <div>
+            <button type="button" class="btn btn-outline-secondary my-2 my-sm-0" data-toggle="modal" data-target="#signupModal">Sign Up</button>
+        </div>
+    </div>
+</div>

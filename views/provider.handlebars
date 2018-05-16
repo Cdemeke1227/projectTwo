@@ -1,1 +1,77 @@
-Provider view
+{{>navbar/nav}}
+
+{{!-- Admin Add/Edit Provider Modal --}}
+<div class="modal fade" id="providerModal" tabindex="-1" role="dialog" aria-labelledby="providerModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+
+        {{>navbar/modal/provider-modal}}
+
+    </div>
+</div>
+{{!-- Admin Add/Edit schedule Modal --}}
+<div class="modal fade" id="scheduleModal" tabindex="-1" role="dialog" aria-labelledby="scheduleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+
+        {{>navbar/modal/schedule-modal}}
+
+    </div>
+</div>
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 >Provider View</h1>
+        <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+    </div>
+</div>
+
+<div class="background-color1">
+    <div class="container sectionRow" id="calendar">
+       Calendar
+    </div>
+    <div class="break"></div>
+    <div class="container sectionRow" id="messages">
+        Messages
+    </div>
+</div>
+
+<div class="background-color1">
+    {{!-- Blank for picture --}}
+    <div id="placeholder1" class="container">
+        <div class="clearing">
+        </div>
+    </div>
+</div>
+
+<div class="background-color1">
+    <div class="container sectionRow" id="customers">
+       Customers
+    </div>
+    <div class="break"></div>
+</div>
+
+<div class="background-color1">
+    {{!-- Blank for picture --}}
+    <div id="placeholder2" class="container">
+        <div class="clearing2">
+        </div>
+    </div>
+</div>
+
+<div class="background-color1">
+    <div class="container sectionRow" id="transactions">
+        History
+    </div>
+</div>
+
+
+<div class="background-color1">
+    <div class="container sectionRow" id="productInventory">
+        Products
+    </div>
+</div>
+
+<footer>
+    <div class="footText">
+        <p> &copy; Copyright 2018 KiCKeM</p>
+    </div>
+</footer>

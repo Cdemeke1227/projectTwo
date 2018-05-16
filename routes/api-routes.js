@@ -1,20 +1,7 @@
-module.exports = function(app,passport){
+// var customerAction = require('../controllers/customer-api.js')
 
 
+// module.exports = function(app){
 
-    //Register
-    app.post('/users/register', passport.authenticate('local-signup',{
-        successRedirect: "/home/customer",
-        failureRedirect: '/home'
-
-    }))
-
-    //Log in
-    app.post('/users/login', passport.authenticate('local-signin', {
-        successRedirect: '/home/customer',
- 
-        failureRedirect: '/home'
-    }
- 
-));
-}
+//     app.post('/update/:userType/:userId', customerAction.update)
+// }

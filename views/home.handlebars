@@ -1,144 +1,53 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light" id="navbar-hover">
-    <div class="contianer" id="navLinks">
-        <div class="row">
-            <div class="col" id="navSiteLinks">
-                <ul class="navbar-nav mr-auto">
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
-                    </li>
-
-                </ul>
-            </div>
-
-            <div class="col" id="navTitle">
-                <a class="navbar-brand" href="#">HOUSE OF STYLE</a>
-            </div>
-            <div class="col" id="navSiteLinks">
-                <ul class="navbar-nav mr-auto">
-
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Appointments</a>
-                    </li>
-                </ul>
-            </div>
-
-        </div>
-        {{!-- Navbar Partial for home page section links --}} {{>navbar/nav-home}}
-    </div>
-    
-{{#if LoggedIn}} {{>navbar/nav-user}} {{else}} {{>navbar/nav-login}} {{/if}}
-
-</nav>
-{{!-- Log in Modal --}}
-
-<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="loginModalLabel">Login to House of Styles</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form method="post" action='' name="login_form">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Sign in</button>
-                    <a href="#">Forgot Password?</a>
-                    </p>
-                    <p>
-                        Or Use Google of Facebook
-                    </p>
-                    <i class="fab fa-google fa-5x"></i>
-                    <i class="fab fa-facebook fa-5x"></i>
-                </form>
-            </div>
-            <div class="modal-footer">
-                New To House of Styles
-                <hr>
-                <div>
-                    <button type="button" class="btn btn-outline-secondary my-2 my-sm-0" data-toggle="modal" data-target="#signupModal">Sign Up</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="signupModalLabel">Sign Up for House of Styles</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form method="post" action='' name="login_form">
-                    <div class="form-group">
-                        <label for="inputFirstName">First Name</label>
-                        <input type="firstName" class="form-control" id="inputFirstName" placeholder="First Name">
-                    </div>
-                     <div class="form-group">
-                        <label for="inputLastName">Last Name</label>
-                        <input type="Lastname" class="form-control" id="inputLastName" placeholder="Last Name">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                    </div>
-                     <div class="form-group">
-                        <label for="inputPhoneNumber">Phone Number</label>
-                        <input type="phoneNumber" class="form-control" id="inputPhoneNumber" placeholder="555 555 5555">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
-            </div>
-
-        </div>
-    </div>
-</div>
-
-
+{{>navbar/nav}} 
 
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
-        <h1 class="display-4">Fluid jumbotron</h1>
-        <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+        <h1 >Welcome</h1>
+        <p class="lead">Come visit our house and express your style. </p>
     </div>
 </div>
 
 <div class="background-color1">
-    <div class="container sectionRow" id="greeting">
-        Welcome to House of Styles
+    <div class="break"></div>
+    <div class="sectionRow" id="greeting">
+        <div class="card-group">
+            <div class="card sectionPic col-3">
+                <img class="card-img " src="/assets/images/philosophy.jpg" alt="Philosophy Image">
+            </div>
+            <div class="card sectionBody col-9">
+                <div class="card-body">
+                    <h5 class="card-title sectionTitle">Philosophy</h5>
+                    <p class="card-text">
+                        At House of Style, we custom design services to fit your personality, fashion style, and positive self-image-—you are more
+                        to us than just a head of hair or a pretty face. We strive to create a great style for you that compliments your sensibility,
+                        bone structure, and body type. No matter what condition you are in when you arrive at our House, we want you to leave with
+                        healthy, beautiful, wearable hair that you love and a style that puts some attitude in your step. Our team understands the
+                        importance of continued education. Our team actively participates in state-of-the-art educational seminars across the country
+                        as both instructors and students. Our senior staff serve as mentors within our house, teaching the latest hair and skin techniques,encouraging
+                        development and skills to provide customers with the best style and service.
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="break"></div>
-    <div class="container sectionRow" id="infoSection">
-        Google or Other Data embedded
+    <div class="sectionRow" id="infoSection">
+        <div class="card-group">
+            <div class="card sectionBody col-9">
+                <div class="card-body">
+                    <h5 class="card-title sectionTitle">Google</h5>
+                    <p class="card-text">
+                        embed data
+                    </p>
+                </div>
+            </div>
+            <div class="card sectionPic col-3">
+                <img class="card-img " src="/assets/images/whisper.jpg" alt="Embedded Data">
+            </div>
+        </div>
+        
     </div>
 </div>
-
 
 <div class="background-color1">
     {{!-- Blank for picture --}}
@@ -149,8 +58,20 @@
 </div>
 
 <div class="background-color1">
-    <div class="container sectionRow" id="team">
-        Meet the team
+    <div class="sectionRow" id="team">
+    <div class="card-group">
+        <div class="card sectionPic col-3">
+            <img class="card-img " src="/assets/images/team.jpg" alt="Team Image">
+        </div>
+        <div class="card sectionBody col-9">
+            <div class="card-body">
+                <h5 class="card-title sectionTitle">The Home Team</h5>
+                <p class="card-text">
+                    At House of Style team is made up of a diverse group of stylists who possess a passion for health and the art of beauty. 
+                </p>
+            </div>
+        </div>
+    </div>
     </div>
     <div class="break"></div>
 </div>
@@ -164,21 +85,62 @@
 </div>
 
 <div class="background-color1">
-    <div class="container sectionRow" id="history">
-        History
+    <div class="sectionRow" id="history">
+        <div class="card-group">
+            <div class="card sectionPic col-3">
+                <img class="card-img " src="/assets/images/history.jpg" alt="History Image">
+            </div>
+            <div class="card sectionBody col-9">
+                <div class="card-body">
+                    <h5 class="card-title sectionTitle">History</h5>
+                    <p class="card-text">
+                        After years of working as a stylist and makeup artist, Kelly Smith founded House of Style in 2015. Kelly's love of the Joico color line inspired her to create a house committed to using quality products for the best possible results. When she was searching for a make-up line to include in the salon's product line, she selected Bodyography, a natural, animal-cruelty-free line of cosmetics with an excellent education program. Kelly has welcomed stylists to join the House of Style.
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
 
 <div class="background-color1">
-    <div class="container sectionRow" id="products">
-        Products
+    <div class="sectionRow" id="products">
+        <div class="card-group">
+            <div class="card sectionBody col-9">
+                <div class="card-body">
+                    <h5 class="card-title sectionTitle">Products</h5>
+                    <p class="card-text">
+                         Kelly's love of the Joico color line inspired her to create a house committed to using quality products for the best possible
+                        results. When she was searching for a make-up line to include in the salon's product line, she selected Bodyography, a natural,
+                        animal-cruelty-free line of cosmetics with an excellent education program.
+                    </p>
+                </div>
+            </div>
+            <div class="card sectionPic col-3">
+                <img class="card-img " src="/assets/images/products.jpg" alt="Products Image">
+            </div>
+        </div>
     </div>
 </div>
 
 <div class="background-color1">
-    <div class="container sectionRow" id="comments">
-        Comments
+    <div class="sectionRow" id="comments">
+        <div class="card-group">
+            <div class="card sectionBody col-9">
+                <div class="card-body">
+                    <h5 class="card-title sectionTitle">What people are saying</h5>
+                    <p class="card-text">
+                        Review...
+                    </p>
+                    <p class="card-text">
+                        Review...
+                    </p>
+                </div>
+            </div>
+            <div class="card sectionPic col-3">
+                <img class="card-img " src="/assets/images/whisper.jpg" alt="Embedded Data">
+            </div>
+        </div>
     </div>
 </div>
 

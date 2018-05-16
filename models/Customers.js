@@ -27,10 +27,10 @@ module.exports = function (sequelize, DataTypes) {
 
     password: {
       type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [1, 50]
-      }
+      allowNull: false
+      // validate: {
+      //   len: [1, 50]
+      // }
     },
     email: {
       type: DataTypes.STRING,
@@ -60,7 +60,12 @@ module.exports = function (sequelize, DataTypes) {
         // Need to make sure it's a link
       }
     },
-
+    userType :{
+      type: DataTypes.STRING,
+      defaultValue: 'customer'
+    },
+  },
+  {
     'created_at': {
       type: DataTypes.DATE(3),
       defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3)'),
@@ -69,7 +74,8 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.DATE(3),
       defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3)'),
     },
-  }, {
+  }, 
+  {
     timestamps: true,
     tableName: Customers,
     paranoid: true,

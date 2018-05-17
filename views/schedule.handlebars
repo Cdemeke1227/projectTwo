@@ -1,5 +1,6 @@
-
-{{>navbar/nav}}
+ {{>navbar/nav}} {{!-- First selected the type of service --}} {{!-- Second selected the sytlist based on those that perform
+that service --}} {{!-- Third user selects day from calendar --}} {{!-- Fouth user selects time from appointment picker --}}
+{{!-- All of these are stored in appointment table --}}
 
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
@@ -10,44 +11,42 @@
 
 <div class="container">
 
-  <div id="apptSearchModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="apptSearchLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-sm">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 id="search"></h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          {{!-- add form with search options --}}
-        </div>
-        <div class="modal-footer">
-          <button id="add-fav" type="button" class="btn">Search</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-<div class="background-color1">
-    <div class="container" class="appo-picker">
-      <div class="row">
-        <div class="col-12">
-          <h2>Select the service you need</h2>
-          <div>
-            <form>
-              <div class="form-group" id="services">
-              {{!-- insert options dynamically --}}
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
 
   <div class="background-color1">
+    <!-- Select Service Dropdown -->
+    <div class="btn-group">
+      <button class="btn btn-secondary btn-lg" type="button">
+        Choose Service
+      </button>
+      <button type="button" class="btn btn-lg btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true"
+        aria-expanded="false">
+        <span class="sr-only">Toggle Dropdown</span>
+      </button>
+      <div class="dropdown-menu">
+        
+          {{#each Services}}  
+            {{services.service_name}}
+          {{/each}}
+        
+      </div>
+    </div>
+
+    <!-- Select Stylist Dropdown -->
+    <div class="btn-group">
+      <button class="btn btn-secondary btn-lg" type="button">
+        Choose Stylist
+      </button>
+      <button type="button" class="btn btn-lg btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true"
+        aria-expanded="false">
+        <span class="sr-only">Toggle Dropdown</span>
+      </button>
+      <div class="dropdown-menu1">
+        ...
+      </div>
+    </div>
+
+    <input id="date" type="date">
+
     <div class="container" class="appo-picker">
       <div class="row">
         <div class="col-12 calendar">
@@ -60,6 +59,8 @@
       </div>
     </div>
   </div>
+
+
 
   <div class="background-color1">
     {{!-- Blank for picture --}}

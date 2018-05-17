@@ -10,6 +10,16 @@ $(document).ready(function(){
     return this;
   };
 
+//   function getServices() {
+//     $.get("/api/service", function(data) {
+//       services = data;
+//       listServices();
+//     });
+//   }
+
+// function listServices() {
+
+// }
 
   var picker = $('#time').appointmentPicker({
     title: "Available Appointments",
@@ -38,13 +48,16 @@ $(document).ready(function(){
     ]
     //get list of available services from database
 
+    
+
+
     //for each available service 
     tempArray.forEach(element => {
      
       //create a checkbox div and 
-      var checkDiv = $("<div>").addClass("form-check");
-      var checkBox = $("<input>").addClass("form-check-input checkbox-service").data("time", element.duration).attr({
-            type: "checkbox",
+      // var checkDiv = $("<div>").addClass("form-check");
+      var dropdown1 = $("<dropdown-menu1>").addClass("form-check-input dropdown-service").data("time", element.duration).attr({
+            type: "dropdown",
             value: "",
             id: "service" + element.id
         }).data({"service": element.id});

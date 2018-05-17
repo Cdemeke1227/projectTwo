@@ -1,32 +1,53 @@
 <div class="modal-content">
     <div class="modal-header">
-        <h5 class="modal-title" id="scheduleModalLabel">Sign Up for House of Styles</h5>
+        <h5 class="modal-title" id="scheduleModalLabel">Add / Edit Provider</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
     <div class="modal-body">
-        <form method="post" action='' name="login_form">
+        <form method="post" action='' name="provider_form">
             <div class="form-group">
-                <label for="inputFirstName">First Name</label>
-                <input type="firstName" class="form-control" id="inputFirstName" placeholder="First Name">
+                <label >First Name</label>
+                <input type="text" class="form-control" id="inputFirstName" placeholder="First Name" name="firstName" required>
             </div>
             <div class="form-group">
                 <label for="inputLastName">Last Name</label>
-                <input type="Lastname" class="form-control" id="inputLastName" placeholder="Last Name">
+                <input type="text" class="form-control" id="inputLastName" placeholder="Last Name" name="lastName" required>
             </div>
             <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                <label >Email address</label>
+                <input type="email" class="form-control"  placeholder="Enter email" name="email" required>
+                <small  class="form-text text-muted">We'll never share your email with anyone else.</small>
             </div>
             <div class="form-group">
-                <label for="inputPhoneNumber">Phone Number</label>
-                <input type="phoneNumber" class="form-control" id="inputPhoneNumber" placeholder="555 555 5555">
+                <label >Phone Number</label>
+                <input type="tel" class="form-control" placeholder="5555555555" name="phone" required>
             </div>
             <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                <label >Password</label>
+                <input type="password" class="form-control" placeholder="Password" name="password" required>
+            </div>
+            <div class="form-group">
+                <label for="inputtitle">Title</label>
+                <input type="title" class="form-control" id="inputtitle" placeholder="Hair Color">
+            </div>
+            <div class="form-group">
+                <label for="inputExperience">Experience</label>
+                <input type="experience" class="form-control" id="inputExperience" placeholder="
+                .....Need Format">
+            </div>
+            <div class="form-group">
+                <label for="inputStart">Notes</label>
+                <input type="notes" class="form-control" id="InputNotes" aria-describedby="NotesHelp" placeholder="Notes">
+            </div>
+            <div class="form-group">
+                <label for="inputPhotoLink">Photo Link</label>
+                <input type="PhotoLink" class="form-control" id="inputPhotoLink" placeholder="PhotoLink Time">
+            </div>
+            <div class="form-group">
+                <label for="InputService">Service</label>
+                <input type="Service" class="form-control" id="inputService" placeholder="Service">
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>

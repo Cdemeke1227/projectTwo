@@ -1,13 +1,13 @@
 module.exports = function (sequelize, DataTypes) {
   var Providers = sequelize.define('Providers', {
 
-    id: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true,
-      unique: true,
-      field: 'id',
-    },
+    // id: {
+    //   type: DataTypes.INTEGER,
+    //   primaryKey: true,
+    //   autoIncrement: true,
+    //   unique: true,
+    //   field: 'id',
+    // },
 
     firstName: {
       type: DataTypes.STRING,
@@ -81,6 +81,14 @@ module.exports = function (sequelize, DataTypes) {
         // Need to make sure it's a link
       }
     },
+
+    service: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      validate: {
+        // Need to make sure it's a link
+      }
+    },
     'created_at': {
       type: DataTypes.DATE(3),
       defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3)'),
@@ -91,21 +99,25 @@ module.exports = function (sequelize, DataTypes) {
     },
   }, {
     timestamps: true,
-    tableName: Providers,
+    tableName: 'providers',
     paranoid: true,
     underscored: true,
+    
   });
-  Providers.associate = function (models) {
-    // Providers has many Services
+  
+  Providers.associate = function(models) {
+    // Associating Providers with Services
+    // When a Provider  is deleted, also delete any associated Services
     Providers.hasMany(models.Services, {
       onDelete: "cascade"
     });
-    Providers.hasMany(models.Appointments, {
-      onDelete: "cascade"
-    });
+    
     Providers.hasMany(models.Schedules, {
       onDelete: "cascade"
     });
+
+    Providers.belongsToMany(models.Customers, {through: 'Appointments'});
+
   };
   return Providers;
 };

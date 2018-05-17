@@ -60,16 +60,21 @@ module.exports = function (sequelize, DataTypes) {
         // Need to make sure it's a link
       }
     },
+    userType :{
+      type: DataTypes.STRING,
+      defaultValue: 'customer'
+    },
   },
-  //   'created_at': {
-  //     type: DataTypes.DATE(3),
-  //     defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3)'),
-  //   },
-  //   'updated_at': {
-  //     type: DataTypes.DATE(3),
-  //     defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3)'),
-  //   },
-  // }, 
+  {
+    'created_at': {
+      type: DataTypes.DATE(3),
+      defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3)'),
+    },
+    'updated_at': {
+      type: DataTypes.DATE(3),
+      defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3)'),
+    },
+  }, 
   {
     timestamps: true,
     tableName: Customers,
@@ -78,9 +83,10 @@ module.exports = function (sequelize, DataTypes) {
   });
   Customers.associate = function (models) {
     // Providers has many Services
-    Customers.hasMany(models.Appointments, {
-      onDelete: "cascade"
-    });
+    // Customers.hasMany(models.Appointments, {
+    //   onDelete: "cascade"
+    // });
+    Customers.belongsToMany(models.Providers, {as: "Client",  through: 'Appointments' });
 
   };
   return Customers;

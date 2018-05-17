@@ -1,3 +1,8 @@
-// var customerAction = require('../controllers/customer-api.js'){
+// Dependencies
+// =============================================================
+var goTo = require('../controllers/routes.js');
 
-//  }
+module.exports = function(app){
+
+    
+}

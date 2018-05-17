@@ -9,7 +9,7 @@
 
 var db = require("../models");
 // Including the modules for Customers
-var getCustomer = require('./customer.js');
+var getCustomer = require('./customers.js');
 
 //Including the modules for Services
 var getService = require('./services.js')
@@ -21,7 +21,7 @@ var getProviders = require("./provider.js");
 var getAppointments = require('./appointments.js');
 
 //Including the modules for Schedules
-var getSchedules = require('./schedules.js')
+var getSchedules = require('./schedule.js')
 
 
 var exports = module.exports = {};
@@ -110,16 +110,7 @@ exports.provider = function (req, res) {
 
 exports.service = function (req, res) {
 
-    //
-    //This is were we get all services information
-    //
-    getService.AllServices(function(err,services){
-
-        console.log(services);
-        viewBuilder.Services = services;
-        
-        res.render('service', viewBuilder)
-    })
+    
     
 
 };
@@ -130,28 +121,93 @@ exports.service = function (req, res) {
 
 
 exports.bookings = function (req, res) {
-    db.Appointments.findAll({
-        // include: [db.Providers]
-    }).then(function (dbBooking) {
-        console.log(dbBooking);
-        //Not sure what this is supposed to render
-        res.render('schedule', viewBuilder);
-    });
-  
-};
-
+  };
+    
 
 
 
 
 
 exports.schedule = function (req, res) {
-    db.Schedules.findAll({
-        include: [db.Providers]
-    }).then(function (dbProvider) {
-        console.log(dbProvider);
-        res.render('schedule', viewBuilder);
-    });
+   //
+    //This is were we get all services information
+    // We make a call to the callback function AllServices located in the services.js module that we predefined as getService at the top
+    getService.AllServices(function(err,services){
+        if(err){
+
+            //If there is an error getting All Services create a flash message
+            req.flash('AllServiceError','There was an error with getting All Services');
+            //Add the flash message to the viewBuilder
+            viewBuilder.ErrorAllService = req.flash('AllServiceError');
+
+        }else{
+
+            //If there was no error continue on with the process
+            console.log(services); //Logging so we can see the information we got before adding it to viewBuilder
+
+            viewBuilder.Services = services;
+
+            //Now we call on the function to get all the Providers joined with their Services
+            getProviders.AllWithServices(function(err,data){
+                if(err){
+
+                    //If there was an error create a flash message for this error
+                    req.flash('ProvidersAndServicesError','There was an error with getting Providers with their services');
+                    //Add that flash message into viewBuilder
+                    viewBuilder.ErrorProviderServ = req.flash('ProvidersAndServicesError');
+
+                }else{
+                    //If no error continue
+
+                    console.log(data); //Console the data
+
+
+                    viewBuilder.ProvAndServe = data;
+
+                    //Schedule joined with Appointments, then right join with Providers
+
+                    //Will do soon
+
+                    // getSchedules.getWithAppRProv(function(err,data){
+                    //     if(err){
+
+                    //         res.flash('bigJoinError', "There was an error with this crazy join");
+
+                    //         viewBuilder.ErrorCrazy = req.flash('bigJoinError');
+
+                    //     }else{
+
+                    //         console.log(data);
+
+                    //         viewBuilder.ScheWAppRProv = data;
+
+
+                    //     }
+                    // })
+                            //Now call function to get Providers with all their Schedules
+                            getProviders.AllWithSchedules(function(err,data){
+                                if(err){
+        
+                                    req.flash('ProvWithSchedError',"There was an error with getting Providers with their Schedules");
+        
+                                    viewBuilder.ErrorProvSched = req.flash('ProvWithSchedError');
+                                }else {
+        
+                                    viewBuilder.ProvAndSchedules = data;
+        
+                                    //res.json is here so you can see the full object we're passing do res.render('schedule', viewBuilder) to pass it through
+                                    // res.json(viewBuilder);
+        
+                                }
+                            })
+                }
+
+        
+
+                })
+  
+            };
+        })
   
 };
 
@@ -173,3 +229,39 @@ exports.stylist = function (req, res) {
     });
 };
 
+
+//
+//
+//  These functions below are functions that handle calls from the front end
+//
+//
+
+
+
+exports.updateAppointment = function(req,res){
+    var data = {
+        id : req.params.id,
+        startTime: req.body.id,
+        endTime: req.body.endTime,
+        duration: data.duration
+    };
+    getAppointments.update(data,function(results){
+        console.log(results);
+
+        res.redirect()
+    })
+};
+
+
+exports.createAppointment = function(req,res){
+    var data = {
+        startTime: req.body.id,
+        endTime: req.body.endTime,
+        duration: data.duration
+    };
+    getAppointments.newAppointment(data,function(results){
+        console.log(results);
+
+        res.redirect()
+    })
+};

@@ -1,13 +1,13 @@
 module.exports = function (sequelize, DataTypes)  {
   var Services = sequelize.define('Services', {
 
-    // id: {
-    //   type: DataTypes.INTEGER,
-    //   primaryKey: true,
-    //   autoIncrement: true,
-    //   unique: true,
-    //   field: 'id',
-    // },
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+      unique: true,
+      field: 'id',
+    },
     service_name: {
       type: DataTypes.STRING,
       allowNull: false,

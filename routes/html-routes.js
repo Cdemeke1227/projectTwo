@@ -4,7 +4,7 @@
 
 // Dependencies
 // =============================================================
-var goTo = require('../controllers/rendering-controller.js');
+var goTo = require('../controllers/main-controller.js');
 
 // Routes
 // =============================================================

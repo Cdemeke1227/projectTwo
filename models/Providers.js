@@ -1,13 +1,13 @@
 module.exports = function (sequelize, DataTypes) {
   var Providers = sequelize.define('Providers', {
 
-    // id: {
-    //   type: DataTypes.INTEGER,
-    //   primaryKey: true,
-    //   autoIncrement: true,
-    //   unique: true,
-    //   field: 'id',
-    // },
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+      unique: true,
+      field: 'id',
+    },
 
     firstName: {
       type: DataTypes.STRING,
@@ -18,14 +18,6 @@ module.exports = function (sequelize, DataTypes) {
     },
 
     lastName: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [1, 50]
-      }
-    },
-
-    username: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {

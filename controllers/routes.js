@@ -1,8 +1,9 @@
 var db = require("../models");
-
+var getCustomer = require('./customer-api.js');
+var getService = require('./services-api-routes.js')
 var exports = module.exports = {};
 //Sets viewBuilder as global so it can be access by all routes
-var viewBuilder;
+var viewBuilder = {};
 exports.Welcome = function(req,res, next){
     if(req.user){
         res.redirect('/home/' + req.user.userType + '/' + req.user.id)
@@ -57,30 +58,35 @@ exports.about = function (req, res) {
 
 
 
+
+exports.provider = function (req, res) {
+
+    getCustomer.AllInfo(function(err,clients){
+        console.log(clients);
+        viewBuilder.Customers = clients;
+        console.log(viewBuilder);
+        res.render('provider', viewBuilder);
+    });
+
+   
+};
+
+
 exports.service = function (req, res) {
 
-    db.Services.findAll({
-        include: [db.Providers]
-    }).then(function (dbService) {
-        console.log(dbService);
-        res.render('service', viewBuilder)
-    });
+    getService.AllServices(function(err,services){
 
+        console.log(services);
+        viewBuilder.Services = services;
+        
+        res.render('service', viewBuilder)
+    })
     
 
-
 };
 
 
-exports.schedule = function (req, res) {
-    db.Schedules.findAll({
-        include: [db.Providers]
-    }).then(function (dbProvider) {
-        console.log(dbProvider);
-        res.render('schedule', viewBuilder);
-    });
-  
-};
+
 
 
 
@@ -97,20 +103,18 @@ exports.bookings = function (req, res) {
 
 
 
-exports.provider = function (req, res) {
-    db.Providers.findAll({
-        include: [db.Services]
+
+
+
+exports.schedule = function (req, res) {
+    db.Schedules.findAll({
+        include: [db.Providers]
     }).then(function (dbProvider) {
         console.log(dbProvider);
-        //Also not sure what this is supposed to render
-        res.render('provider', viewBuilder)
+        res.render('schedule', viewBuilder);
     });
-
-   
+  
 };
-
-
-
 
 
 exports.stylist = function (req, res) {

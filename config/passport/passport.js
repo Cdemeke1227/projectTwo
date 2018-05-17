@@ -146,7 +146,7 @@ module.exports = function(passport, Customer, Provider) {
     function(req, email, password, done) {
  
         var User = Customer;
- 
+    
         var isValidPassword = function(userpass, password) {
  
             return bCrypt.compareSync(password, userpass);
@@ -173,7 +173,7 @@ module.exports = function(passport, Customer, Provider) {
  
 
 
-            var UserInfo = newUser;
+            var UserInfo = user;
             delete UserInfo.password;
             return done(null, UserInfo);
  

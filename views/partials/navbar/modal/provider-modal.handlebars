@@ -1,6 +1,6 @@
 <div class="modal-content">
     <div class="modal-header">
-        <h5 class="modal-title" id="scheduleModalLabel">Sign Up for House of Styles</h5>
+        <h5 class="modal-title" id="scheduleModalLabel">Add / Edit Provider</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
@@ -8,25 +8,46 @@
     <div class="modal-body">
         <form method="post" action='' name="provider_form">
             <div class="form-group">
-                <label for="inputService">Service</label>
-                <input type="service" class="form-control" id="inputService" placeholder="Hair Color">
+                <label >First Name</label>
+                <input type="text" class="form-control" id="inputFirstName" placeholder="First Name" name="firstName" required>
             </div>
             <div class="form-group">
-                <label for="inputDay">Last Name</label>
-                <input type="Day" class="form-control" id="inputDay" placeholder="
+                <label for="inputLastName">Last Name</label>
+                <input type="text" class="form-control" id="inputLastName" placeholder="Last Name" name="lastName" required>
+            </div>
+            <div class="form-group">
+                <label >Email address</label>
+                <input type="email" class="form-control"  placeholder="Enter email" name="email" required>
+                <small  class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+            <div class="form-group">
+                <label >Phone Number</label>
+                <input type="tel" class="form-control" placeholder="5555555555" name="phone" required>
+            </div>
+            <div class="form-group">
+                <label >Password</label>
+                <input type="password" class="form-control" placeholder="Password" name="password" required>
+            </div>
+            <div class="form-group">
+                <label for="inputtitle">Title</label>
+                <input type="title" class="form-control" id="inputtitle" placeholder="Hair Color">
+            </div>
+            <div class="form-group">
+                <label for="inputExperience">Experience</label>
+                <input type="experience" class="form-control" id="inputExperience" placeholder="
                 .....Need Format">
             </div>
             <div class="form-group">
-                <label for="inputStart">Start Time</label>
-                <input type="Start" class="form-control" id="InputStart" aria-describedby="StartHelp" placeholder="Start Time">
+                <label for="inputStart">Notes</label>
+                <input type="notes" class="form-control" id="InputNotes" aria-describedby="NotesHelp" placeholder="Notes">
             </div>
             <div class="form-group">
-                <label for="inputEnd">End Time</label>
-                <input type="End" class="form-control" id="inputEnd" placeholder="End Time">
+                <label for="inputPhotoLink">Photo Link</label>
+                <input type="PhotoLink" class="form-control" id="inputPhotoLink" placeholder="PhotoLink Time">
             </div>
             <div class="form-group">
-                <label for="InputRepeat">Repeat</label>
-                <input type="repeat" class="form-control" id="inputRepeat" placeholder="Repeat">
+                <label for="InputService">Service</label>
+                <input type="Service" class="form-control" id="inputService" placeholder="Service">
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>

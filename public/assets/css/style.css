@@ -283,19 +283,28 @@ p.lead {}
     border: 1px solid green;
 }
 
+.service-image{
+max-width: 320px;
+} 
+
 #service1 {
-    height: 300px;
-    border: 1px solid green;
+    /* height: 300px;
+    border: 1px solid green; */
 }
 
 #service2 {
-    height: 300px;
-    border: 1px solid green;
+    /* height: 300px;
+    border: 1px solid green; */
+}
+
+#service3 {
+    /* height: 300px;
+    border: 1px solid green; */
 }
 
 #serviceMenu {
-    height: 300px;
-    border: 1px solid green;
+    /* height: 300px;
+    border: 1px solid green; */
 }
 
 #summary {

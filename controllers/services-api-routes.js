@@ -5,68 +5,32 @@
 // Dependencies
 // =============================================================
 
-// Requiring our models
 var db = require("../models");
 
-// Routes
-// =============================================================
-module.exports = function(app) {
+var exports = module.exports = {};
 
-  // GET route for getting all of the services
-  app.get("/api/services", function(req, res) {
-    var query = {};
-    if (req.query.providers_id) {
-      query.ProvidersId = req.query.providers_id;
-    }
-    // 1. Add a join here to include all of the Providers to these services
-    db.Services.findAll({
-      where: query
-    }).then(function(dbServices) {
-      res.json(dbServices);
-    });
-  });
+  exports.AllServices = function(cb){
 
-  // Get route for retrieving a single Service
-  app.get("/api/services/:id", function(req, res) {
-    // 2. Add a join here to include the Provider who wrote the Services
-    db.Services.findOne({
-      where: {
-        id: req.params.id
-      }
-    }).then(function(dbServices) {
-      console.log(dbServices);
-      res.json(dbServices);
-    });
-  });
+      db.Services.findAll(
+        // include: [db.Providers]
+      ).then(function (dbService) {
+        if(dbService.length > 0){
+          var services = [];
+          for(var i = 0; i < dbService.length; i++){
+              var servicesObj = {
+                service: dbService[i].dataValues
+              };
 
-  // Services route for saving a new Services
-  app.Services("/api/services", function(req, res) {
-    db.Services.create(req.body).then(function(dbServices) {
-      res.json(dbServices);
-    });
-  });
+              services.push(servicesObj);
+          };
 
-  // DELETE route for deleting services
-  app.delete("/api/services/:id", function(req, res) {
-    db.Services.destroy({
-      where: {
-        id: req.params.id
-      }
-    }).then(function(dbServices) {
-      res.json(dbServices);
-    });
-  });
-
-  // PUT route for updating services
-  app.put("/api/services", function(req, res) {
-    db.Services.update(
-      req.body,
-      {
-        where: {
-          id: req.body.id
+          console.log(services);
+          return cb(null,services);
+        }else {
+          cb(false);
         }
-      }).then(function(dbServices) {
-      res.json(dbServices);
-    });
-  });
-};
+  
+        
+      });
+
+  }

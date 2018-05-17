@@ -38,7 +38,7 @@ module.exports = function(app) {
 
 
   // about provider loads provider.handlebar view 
-  app.get("/provider", goTo.provider);
+  app.get("/provider",goTo.provider);
 
 
 
@@ -54,6 +54,19 @@ module.exports = function(app) {
         return next();
     //Redirects home with a loginMessage flash message
     req.flash('logInMessage',"Please Log in to access that option");
+
+    res.redirect('/');
+
+}
+
+  function isAdmin(req, res, next) {
+ 
+    if (req.isAuthenticated() && req.user.admin === true)
+
+
+      return next();
+  //Redirects home with a loginMessage flash message
+    req.flash('logInMessage',"Yikes");
 
     res.redirect('/');
 

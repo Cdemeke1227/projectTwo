@@ -2,6 +2,8 @@
 // =============================================================
 var goTo = require('../controllers/main-controller.js');
 var servicesPack = require('../controllers/services.js');
+var providersPack = require('../controllers/providers.js');
+
 module.exports = function(app){
 //
 // ROUTES for SERVICES
@@ -16,7 +18,7 @@ module.exports = function(app){
                 // Get all services and providers that offer them -- leave the optional parameters empty
                 // Get 1 specific type of service and providers that offer it -- '/retrieve/services/service/:serviceID'
                 // Get all services that a specific provider offers -- '/retrieve/services/provider/:providerID'
-        
+
         switch(req.params.something){
             case 'service':
                 //Gets service by id and providers that offer that service
@@ -51,7 +53,7 @@ module.exports = function(app){
             description: req.body.description,
             duration: req.body.duration,
             price: req.body.price,
-            photoLinks = data.photoLinks
+            photoLinks: data.photoLinks
         };
 
         servicesPack.updateService(data,function(results){
@@ -70,7 +72,7 @@ module.exports = function(app){
             description: req.body.description,
             duration: req.body.duration,
             price: req.body.price,
-            photoLinks = data.photoLinks
+            photoLinks: data.photoLinks
         };
 
         servicesPack.newService(data,function(results){
@@ -90,8 +92,30 @@ module.exports = function(app){
         });
     });
 
+//
+// ROUTES for Providers **in progress**
+//
+        //This can use these queries
+            // provider_id=
+                //Providers ID
+            // services=
+                //yes or no to include with services or not
+            // schedule=
+                //yes or no to include with schedules or not
+            // 
+    //GET route to retrieve information about providers
+    app.get('/revieve/providers', function(req,res){
 
-
+    })
+//
+// Routes for APPOINTMENTS **in progress**
+//
+       
+    //GET route to get appointments within a range defined by the queries 
+    app.get('/recieve/appointments/', function(req,res){
+        //
+        // should only use the following query options **in progress**
+    })
     //Post route to update appointments
     app.post('/appointment/update/:id', goTo.updateAppointment);
 

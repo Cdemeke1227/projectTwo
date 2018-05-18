@@ -102,6 +102,7 @@ var exports = module.exports = {};
       
   }
 
+    //Function that creates a new service
     exports.newService = function(data,cb){
 
       db.Services.create(data).then(function(affectedRows){

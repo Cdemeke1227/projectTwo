@@ -87,7 +87,9 @@ module.exports = function (sequelize, DataTypes) {
     Customers.hasMany(models.Appointments, {
       onDelete: "cascade"
     });
-    Customers.belongsToMany(models.Providers, {as: "Client",  through: 'Appointments' });
+
+    //I dont see how customers should belong to anything
+    // Customers.belongsToMany(models.Providers, {as: "Client",  through: 'Appointments' });
 
   };
   return Customers;

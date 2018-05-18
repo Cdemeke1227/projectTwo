@@ -13,6 +13,11 @@ var db = require("../models");
 
 var exports = module.exports = {};
 
+  exports.AllProviders = function(cb){
+    dbProviders.findAll().then(function(dbProviders){
+      return cb(null,dbProviders);
+    });
+  }
   //This function will retrieve all Providers with their corresponding Services and pass it back through a callback
   exports.AllWithServices = function(cb){
     db.Providers.findAll({

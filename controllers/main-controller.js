@@ -15,7 +15,7 @@ var getCustomers = require('./customers.js');
 var getServices = require('./services.js')
 
 //Including the modules for Providers
-var getProviders = require("./provider.js");
+var getProviders = require("./providers.js");
 
 //Including the modules for Appointments
 var getAppointments = require('./appointments.js');

@@ -110,7 +110,7 @@ exports.provider = function (req, res) {
 
 exports.service = function (req, res) {
 
-    
+    res.render('service', viewBuilder);
     
 
 };

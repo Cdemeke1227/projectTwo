@@ -1,6 +1,7 @@
 
  {{>navbar/nav}}
-
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
 <script type="text/javascript" src="/assets/js/services_page.js"></script>
 
 <div class="jumbotron jumbotron-fluid">
@@ -15,7 +16,7 @@
         <div class="card-group">
             <div class="card sectionPic col-3">
                 {{!-- insert carousel --}}
-                <div id="carouselcuts" class="carousel slide carousel-fade" data-ride="carousel">
+                <div id="carouselcuts" class="carousel carousel-fade" data-ride="carousel">
                     <ol class="carousel-indicators">
                         <li data-target="#carouselcuts" data-slide-to="0" class="active"></li>
                         <li data-target="#carouselcuts" data-slide-to="1"></li>
@@ -59,9 +60,17 @@
 <div class="background-color1">
     <div class="sectionRow" id="service2">
         <div class="card-group">
+            <div class="card sectionBody col-9">
+                <div class="card-body">
+                    <h5 class="card-title sectionTitle">Color</h5>
+                    <p class="card-text">
+                        Whether you want to completely redefine your color or enhance it, our Color service will leave you with fully three dimensional color that is shiny and beautiful.
+                    </p>
+                </div>
+            </div>
             <div class="card sectionPic col-3">
                 {{!-- insert carousel --}}
-                <div id="carouselcolors" class="carousel slide carousel-fade" data-ride="carousel">
+                <div id="carouselcolors" class="carousel carousel-fade" data-ride="carousel">
                     <ol class="carousel-indicators">
                         <li data-target="#carouselcolors" data-slide-to="0" class="active"></li>
                         <li data-target="#carouselcolors" data-slide-to="1"></li>
@@ -84,14 +93,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card sectionBody col-9">
-                <div class="card-body">
-                    <h5 class="card-title sectionTitle">Color</h5>
-                    <p class="card-text">
-                        Whether you want to completely redefine your color or enhance it, our Color service will leave you with fully three dimensional color that is shiny and beautiful.
-                    </p>
-                </div>
-            </div>
+            
         </div>
     <div class="break"></div>
 </div>
@@ -109,7 +111,7 @@
         <div class="card-group">
             <div class="card sectionPic col-3">
                 {{!-- insert carousel --}}
-                <div id="carouselrevive" class="carousel slide carousel-fade" data-ride="carousel">
+                <div id="carouselrevive" class="carousel carousel-fade" data-ride="carousel">
                     <ol class="carousel-indicators">
                         <li data-target="#carouselrevive" data-slide-to="0" class="active"></li>
                         <li data-target="#carouselrevive" data-slide-to="1"></li>
@@ -141,7 +143,13 @@
     </div>
     
 </div>
-
+<div class="background-color1">
+    {{!-- Blank for picture --}}
+    <div id="placeholder3" class="container">
+        <div class="clearing2">
+        </div>
+    </div>
+</div>
 <div class="background-color1">
     <div class="sectionRow" id="serviceMenu">
         <h2>Menu</h2>
@@ -156,28 +164,7 @@
                         <th scope="col">Price</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <th>Cuts</th>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <th></th>
-                        <td>Women's Cut & Style</td>
-                        <td>65</td>
-                    </tr>
-                    <tr>
-                        <th></th>
-                        <td>Men's Cut & Style</td>
-                        <td>35</td>
-                    </tr>
-                    <tr>
-                        <th></th>
-                        <td>Child's Cut & Style</td>
-                        <td>20</td>
-                    </tr>
-                </tbody>
+                
             </table>
         </div>
 

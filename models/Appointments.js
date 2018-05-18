@@ -51,11 +51,11 @@ module.exports = function (sequelize, DataTypes) {
     underscored: true,
   });
   Appointments.associate = models => {
-      Appointments.belongsTo(models.Customers,{
-        foreignKey : {
-          allowNull : false
-        }
-      });
+  //     Appointments.belongsTo(models.Customers,{
+  //       foreignKey : {
+  //         allowNull : false
+  //       }
+  //     });
       Appointments.belongsTo(models.Providers,{
         foreignKey : {
           allowNull : false

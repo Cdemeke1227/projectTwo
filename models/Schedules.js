@@ -44,10 +44,15 @@ module.exports = function (sequelize, DataTypes) {
       }
     });
 
-    Schedules.hasMany(models.Appointments, {
-      foreignKey: {
-        allowNull: false
-      }
+    // Schedules.hasMany(models.Appointments, {
+    //   foreignKey: {
+    //     allowNull: false
+    //   }
+    // });
+    
+    Schedules.belongsToMany(models.Providers, {
+      as: "Stylist",
+      through: 'Appointments'
     });
 
 

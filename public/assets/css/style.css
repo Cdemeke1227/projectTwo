@@ -497,6 +497,9 @@ p.lead {
 .clearing3 {
     height: 250px;
 }
+.clearing4 {
+    height: 400px;
+}
 
 #placeholder4 {
     background-color: #747474;
@@ -571,6 +574,18 @@ footer {
 
 .appo-picker-list-item {
     color: #50bcc0;
+}
+#products1{
+    height:485px;
+}
+#joicoImg{
+    max-height: 485px;
+}
+#products2{
+    height:400px;
+}
+#bodyographyPic{
+    max-height: 400px;
 }
 
 @media screen and (max-width:990px) {

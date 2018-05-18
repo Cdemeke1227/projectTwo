@@ -40,6 +40,7 @@ var exports = module.exports = {};
     };
 
     // This function will allow users to make appointments 
+        
         //The callback should simply be either true or false. False meaning the request to make the appointment failed. True meaning making the appointment succeeded
     exports.makeAppointment = function(cb){
         

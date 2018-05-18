@@ -8,13 +8,6 @@ module.exports = function (sequelize, DataTypes)  {
       unique: true,
       field: 'id',
     },
-    // id: {
-    //   type: DataTypes.INTEGER,
-    //   primaryKey: true,
-    //   autoIncrement: true,
-    //   unique: true,
-    //   field: 'id',
-    // },
     category: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -71,6 +64,8 @@ module.exports = function (sequelize, DataTypes)  {
   Services.associate = function (models) {
     //The services belong to Providers
     //We can not have  a  Service  without having a Provider.
+
+      //Shouldnt this be belongs to many? since multiple providers can offer the same service?
     Services.belongsTo(models.Providers, {
       foreignKey: {
         allowNull: false

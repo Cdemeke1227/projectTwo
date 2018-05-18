@@ -1,69 +1,107 @@
 // Dependencies
 // =============================================================
 var goTo = require('../controllers/main-controller.js');
-
+var servicesPack = require('../controllers/services.js');
 module.exports = function(app){
+//
+// ROUTES for SERVICES
+//
+    // GET route to get services within a range defined by the params range with providers who offer that service
+    app.get('/retrieve/services/:something?/:id?',function(req,res){
+        //So here I've built a call that can be used for multiple things depending on what you want to do.
+        // The params are optional for when you want to get something specific about services
+            // The something param (i didnt know what to name it sorry...) would either be provider or service (SINGULAR PLEASE)
+            // The id param will either be the ID of the provider OR the ID of the service depending on the something param
+            //IF YOU WANT TO
+                // Get all services and providers that offer them -- leave the optional parameters empty
+                // Get 1 specific type of service and providers that offer it -- '/retrieve/services/service/:serviceID'
+                // Get all services that a specific provider offers -- '/retrieve/services/provider/:providerID'
+        
+        switch(req.params.something){
+            case 'service':
+                //Gets service by id and providers that offer that service
+                servicesPack.OneService(req.params.id, function(results){
+                    res.json(results);
+                });
+            break;
+                //Gets all services that a specific provider offers
+            case 'provider':
+                servicesPack.providerServices(req.params.id, function(results){
+                    res.json(results);
+                });
+            break;
+            default:
+                //Get all services and providers that offer them
+                servicesPack.AllServices(function(results){
+                res.json(results);
+            });
+            break;
+        }
+        
+    
+    });
+
+    //PUT route to update service by ID
+    app.put('/update/service/:id', function(req,res){
+        //Build object to pass on to update service
+        var data = {
+            //Will be used to figure out which service we're updating will be retrieved from parameter
+            serviceID: req.params.id,
+            serviceName: req.body.serviceName,
+            description: req.body.description,
+            duration: req.body.duration,
+            price: req.body.price,
+            photoLinks = data.photoLinks
+        };
+
+        servicesPack.updateService(data,function(results){
+            res.json(results);
+        })
+    })
+
+
+    //POST route to create a new service
+
+    app.post('/new/service', function(req,res){
+        //Build the service data
+
+        var data = {
+            service_name: req.body.serviceName,
+            description: req.body.description,
+            duration: req.body.duration,
+            price: req.body.price,
+            photoLinks = data.photoLinks
+        };
+
+        servicesPack.newService(data,function(results){
+            res.json(results);
+        });
+    });
+
+
+    //DELETE route to delete service by ID
+    app.delete('/delete/service/:id', function(req,res){
+        //Get service id from params to delete service
+        var data = {
+            id : req.params.id
+        };
+        servicesPack.removeService(data,function(results){
+            res.json(results);
+        });
+    });
+
+
 
     //Post route to update appointments
     app.post('/appointment/update/:id', goTo.updateAppointment);
 
 
-    //Post route to create a new appointment
-    app.post('/appointment/new', goTo.createAppointment);
+    //Post route to create a new appointment 
+    app.post('/appointment/new/:id', goTo.createAppointment);
 
-
-    //Post Route to create a new provider
 }
 
 
-var db = require("../models");
-
-// Routes
-// =============================================================
-module.exports = function (app) {
-
-    // GET route for getting all of the services
-    app.get("/api/services", function (req, res) {
-        var query = {};
-        if (req.query.providers_id) {
-            query.ProvidersId = req.query.providers_id;
-        }
-        // 1. Add a join here to include all of the Providers to these services
-        db.Services.findAll({
-            where: query,
-            order: ['category','price']
-        }).then(function (dbServices) {
-            res.json(dbServices);
-        });
-    });
-
-
-    // Get route for retrieving a single Service
-    app.get("/api/services/:id", function (req, res) {
-        // 2. Add a join here to include the Provider who wrote the Services
-        db.Services.findOne({
-            where: {
-                id: req.params.id
-            }
-        }).then(function (dbServices) {
-            console.log(dbServices);
-            res.json(dbServices);
-        });
-    });
-
-    app.get("/api/providers", function (req, res) {
-        // Here we add an "include" property to our options in our findAll query
-        // We set the value to an array of the models we want to include in a left outer join
-        // In this case, just db.Services
-        db.Providers.findAll({
-            include: [db.Services, db.Schedules]
-        }).then(function (dbProvider) {
-            res.json(dbProvider);
-        });
-    });
-
-    //     app.post('/update/:userType/:userId', customerAction.update)
-}
 
 //////////////////////////////////////
 //Seed data for Services Model
@@ -85,3 +123,6 @@ module.exports = function (app) {
     // { category: 'Revive', service_name: "Deep Condition", description: "Intense condition and heat for healing", duration: "01:00:00", price: "55" },
     // { category: 'Revive', service_name: "4 Step Healing Rejuvenation", description: "4 step cleanse, nourish, hydrate, condition", duration: "01:00:00", price: "75" }
 
+
+
+// }

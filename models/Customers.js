@@ -81,11 +81,12 @@ module.exports = function (sequelize, DataTypes) {
     paranoid: true,
     underscored: true,
   });
+  
   Customers.associate = function (models) {
     // Providers has many Services
-    // Customers.hasMany(models.Appointments, {
-    //   onDelete: "cascade"
-    // });
+    Customers.hasMany(models.Appointments, {
+      onDelete: "cascade"
+    });
     Customers.belongsToMany(models.Providers, {as: "Client",  through: 'Appointments' });
 
   };

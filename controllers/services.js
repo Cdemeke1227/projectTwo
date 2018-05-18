@@ -10,10 +10,12 @@ var db = require("../models");
 
 var exports = module.exports = {};
 
-  // This functions gets all the services from the database and passes back through a callback
+  // This functions gets all the services, this also includes the Providers who offer that service, from the database and passes back through a callback
   exports.AllServices = function(cb){
 
-      db.Services.findAll().then(function (dbService) {
+      db.Services.findAll({
+        include: [db.Providers]
+      }).then(function (dbService) {
         if(dbService.length > 0){
           var services = [];
           for(var i = 0; i < dbService.length; i++){
@@ -35,9 +37,33 @@ var exports = module.exports = {};
 
   }
 
+  exports.OneService = function(serviceID,cb){
+      db.Services.findOne({
+        where: {
+          id: serviceID
+        },
+        include: [db.Providers]
+      }).then(function(dbService){
+          return cb(null,dbService);
+      });
+  };
+
+
+  exports.providerServices = function(providerID, cb){
+    var query = {
+      id: providerID
+    };
+
+      db.Services.findAll({
+        where: query,
+        include: [db.Providers]
+      }).then(function(dbServices){
+        return cb(null,dbServices)
+      })
+  }
 
   // This function will retrieve the needed information through the data arguement to update a Service from the database
-  exports.update = function(data,cb){
+  exports.updateService = function(data,cb){
     var serviceID = data.id;
     var serviceName = data.serviceName;
     var description = data.description;
@@ -60,7 +86,7 @@ var exports = module.exports = {};
       })
   }
 
-              //IF WE HAVE TIME
+
   // This function will get the needed information about a Service and remove it from the database 
 
   exports.removeService = function(data,cb){
@@ -75,3 +101,10 @@ var exports = module.exports = {};
       });
       
   }
+
+    exports.newService = function(data,cb){
+
+      db.Services.create(data).then(function(affectedRows){
+        return cb(null,affectedRows);
+      });
+    };

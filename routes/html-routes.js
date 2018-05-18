@@ -20,7 +20,9 @@ module.exports = function(app) {
 
   app.get('/home/:userType?/:id?', goTo.home)
 
+
   //When users go to the about page
+
 
   app.get('/about/:userType?/:id?', goTo.about)
 
@@ -28,12 +30,9 @@ module.exports = function(app) {
   // schedule route loads schedule.handlebar view and makes sure the user is logged in before they can access the page
   app.get("/schedule/:userType?/:id?",isLoggedIn, goTo.schedule);
 
-// service route loads service.handlebar view
+
+  // service route loads service.handlebar view
   app.get("/service", goTo.service);
-
-
-  // EVERYTHING UNDER HERE WILL BE UPDATED
-
 
 
 
@@ -42,10 +41,6 @@ module.exports = function(app) {
 
 
 
-  app.get("/api/stylist/:id", goTo.stylist);
-
-
-  app.get("/bookings", goTo.bookings);
 
   function isLoggedIn(req, res, next) {
  

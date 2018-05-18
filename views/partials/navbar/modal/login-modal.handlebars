@@ -12,19 +12,40 @@
                     {{messageLogIn}}
                 </div>
                 
-                <label >Email address</label>
+                <small class="form-text text-muted">We'll never share your email with anyone else.</small>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Email</span>
+                    </div>
+                    <input type="email" class="form-control" placeholder="Enter email" name="email" required>
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
+                    </div>
+                    <input type="password" class="form-control" placeholder="Password" name="password" required>
+                </div>
+
+
+                {{!-- <label >Email address</label>
                 <input type="email" class="form-control"  placeholder="Enter email" name="email" required>
-                <small  class="form-text text-muted">We'll never share your email with anyone else.</small>
+                <small  class="form-text text-muted">We'll never share your email with anyone else.</small> --}}
             </div>
-            <div class="form-group">
+            {{!-- <div class="form-group">
                 <label >Password</label>
                 <input type="password" class="form-control" placeholder="Password" name="password" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Sign in</button>
-            <a href="#">Forgot Password?</a>
+            </div> --}}
+            <p>
+                
+                <button type="submit" class="btn btn-dark">Sign in</button>
+                <a href="#"><small>Forgot Password?</small></a>
+            </p>
+            <p> 
+               &nbsp&nbsp Or 
             </p>
             <p>
-                Or Use Google or Facebook
+                 Login with your Google or Facebook account:
             </p>
             <button>
             <i id="loginGoogle" class="fab fa-google fa-5x"></i>

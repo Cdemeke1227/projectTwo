@@ -154,6 +154,30 @@ h1.display-4 {}
     font-family: 'Julius Sans One', sans-serif;
 }
 
+.modal-body {
+    font-family: 'Julius Sans One', sans-serif;
+}
+
+.input-group-prepend,
+label {
+    font-family: 'Julius Sans One', sans-serif;
+    font-weight: 600;
+    color: white;
+    /* background-color: #222222; */
+}
+
+#go-button,
+#fa-button {
+    border: 0px solid;
+    border-radius: 1px;
+    max-width: 50px;
+    float: left;
+    background-color: none;
+    padding:0;
+    border:0;
+    align-self: auto;
+}
+
 .fa-google {
     color: #db3236;
 }
@@ -275,28 +299,33 @@ p.lead {
 }
 
 #overview {
-    height: 300px;
-    border: 1px solid green;
+    /* height: 300px;
+    border: 1px solid green; */
 }
 
 #featuredStylist1 {
-    height: 300px;
-    border: 1px solid green;
+    /* height: 300px;
+    border: 1px solid green; */
 }
 
 #featuredStylist2 {
-    height: 300px;
-    border: 1px solid green;
+    /* height: 300px;
+    border: 1px solid green; */
 }
 
 #partners {
-    height: 300px;
-    border: 1px solid green;
+    /* height: 300px;
+    border: 1px solid green; */
 }
 
 #contact {
-    height: 300px;
-    border: 1px solid green;
+    /* height: 300px;
+    border: 1px solid green; */
+}
+
+.hours {
+    font-family: 'Julius Sans One', sans-serif;
+    line-height: 1.5rem;
 }
 
 .service-image {
@@ -467,6 +496,50 @@ p.lead {
 
 .clearing3 {
     height: 250px;
+}
+
+#placeholder4 {
+    background-color: #747474;
+    background-image: url("../images/backgrounds/background_joico_2.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-origin: right;
+    background-attachment: fixed;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+
+#placeholder4 .container {
+    position: relative;
+    text-align: center;
+    z-index: 4;
+    color: #FFFFFF;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding: 0px;
+}
+
+#placeholder5 {
+    background-color: #747474;
+    background-image: url("../images/backgrounds/background_joico_5.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-origin: right;
+    background-attachment: fixed;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+
+#placeholder5 .container {
+    position: relative;
+    text-align: center;
+    z-index: 4;
+    color: #FFFFFF;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding: 0px;
 }
 
 /* ========================== */

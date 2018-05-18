@@ -39,5 +39,12 @@ module.exports = function(app,passport){
         });
 
 
-//*****************************************ADMIN AUTHORIZATIONS******************************************* */
+
+//*****************************************ADMIN/PROVIDER AUTHORIZATIONS******************************************* */
+
+
+    //Creating a new provider
+
+    app.post('/provider/register', passport.authenticate(''))
+
 }

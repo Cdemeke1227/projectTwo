@@ -31,7 +31,10 @@ module.exports = function (sequelize, DataTypes) {
       }
 
     },
-
+    completed: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    },
 
     'created_at': {
       type: DataTypes.DATE(3),
@@ -47,30 +50,23 @@ module.exports = function (sequelize, DataTypes) {
     paranoid: true,
     underscored: true,
   });
-  // Appointments.associate = models => {
-  //   Appointments.belongsTo(models.Customers, {
-
-
-
-
-  //   });
-
-
-return Appointments;
+  Appointments.associate = models => {
+      Appointments.belongsTo(models.Customers,{
+        foreignKey : {
+          allowNull : false
+        }
+      });
+      Appointments.belongsTo(models.Providers,{
+        foreignKey : {
+          allowNull : false
+        }
+      });      
+      Appointments.belongsTo(models.Schedules,{
+        foreignKey : {
+          allowNull : false
+        }
+      });
+      };
+  return Appointments;
+ 
 };
-
-
-
-// Appointments.associate = function (models) {
-//   // associations can be defined here
-//   Appointments.belongsTo(models.Providers, {
-//     foreignKey: {
-//       allowNull: false
-//     }
-//   });
-
-// Appointments.associate = models => {
-//   Appointments.belongsTo(models.Customers, {
-
-//   })
-// }

@@ -9,13 +9,13 @@
 
 var db = require("../models");
 // Including the modules for Customers
-var getCustomer = require('./customers.js');
+var getCustomers = require('./customers.js');
 
 //Including the modules for Services
-var getService = require('./services.js')
+var getServices = require('./services.js')
 
 //Including the modules for Providers
-var getProviders = require("./provider.js");
+var getProviders = require("./providers.js");
 
 //Including the modules for Appointments
 var getAppointments = require('./appointments.js');
@@ -69,7 +69,9 @@ exports.home = function(req, res){
         viewBuilder.homeRoute = '/home/'+req.user.userType+'/'+req.user.id;
         viewBuilder.aboutRoute = '/about/'+req.user.userType+'/'+req.user.id;
         viewBuilder.scheduleRoute = '/schedule/'+req.user.userType+'/'+req.user.id;
-        viewBuilder.updateRoute = "/update/" + req.user.userType + "/" + req.user.id
+        viewBuilder.updateRoute = "/update/" + req.user.userType + "/" + req.user.id;
+        viewBuilder.serviceRoute = "/service/" + req.user.userType + "/" + req.user.id;
+
 
         //If a user is a Admin set the admin equal to true
         if(req.user.userType === 'admin'){
@@ -95,7 +97,7 @@ exports.about = function (req, res) {
 exports.provider = function (req, res) {
 
 
-    getCustomer.AllInfo(function(err,clients){
+    getCustomers.AllInfo(function(err,clients){
         console.log(clients);
         viewBuilder.Customers = clients;
         console.log(viewBuilder);
@@ -106,7 +108,7 @@ exports.provider = function (req, res) {
 };
 
 
-// Handles when users go to services page!!!***THIS FUNCTION STILL NEEDS MORE INFORMATION TO BE GATHERED BEFORE IT CAN RENDER ALL STATIC INFORMATION ON THIS PAGE
+// Handles when users go to services page!!!
 
 exports.service = function (req, res) {
 
@@ -116,118 +118,15 @@ exports.service = function (req, res) {
 };
 
 
-
-
-
-
-exports.bookings = function (req, res) {
-  };
-    
-
-
-
-
-
 exports.schedule = function (req, res) {
-   //
-    //This is were we get all services information
-    // We make a call to the callback function AllServices located in the services.js module that we predefined as getService at the top
-    getService.AllServices(function(err,services){
-        if(err){
-
-            //If there is an error getting All Services create a flash message
-            req.flash('AllServiceError','There was an error with getting All Services');
-            //Add the flash message to the viewBuilder
-            viewBuilder.ErrorAllService = req.flash('AllServiceError');
-
-        }else{
-
-            //If there was no error continue on with the process
-            console.log(services); //Logging so we can see the information we got before adding it to viewBuilder
-
-            viewBuilder.Services = services;
-
-            //Now we call on the function to get all the Providers joined with their Services
-            getProviders.AllWithServices(function(err,data){
-                if(err){
-
-                    //If there was an error create a flash message for this error
-                    req.flash('ProvidersAndServicesError','There was an error with getting Providers with their services');
-                    //Add that flash message into viewBuilder
-                    viewBuilder.ErrorProviderServ = req.flash('ProvidersAndServicesError');
-
-                }else{
-                    //If no error continue
-
-                    console.log(data); //Console the data
-
-
-                    viewBuilder.ProvAndServe = data;
-
-                    //Schedule joined with Appointments, then right join with Providers
-
-                    //Will do soon
-
-                    // getSchedules.getWithAppRProv(function(err,data){
-                    //     if(err){
-
-                    //         res.flash('bigJoinError', "There was an error with this crazy join");
-
-                    //         viewBuilder.ErrorCrazy = req.flash('bigJoinError');
-
-                    //     }else{
-
-                    //         console.log(data);
-
-                    //         viewBuilder.ScheWAppRProv = data;
-
-
-                    //     }
-                    // })
-                            //Now call function to get Providers with all their Schedules
-                            getProviders.AllWithSchedules(function(err,data){
-                                if(err){
-        
-                                    req.flash('ProvWithSchedError',"There was an error with getting Providers with their Schedules");
-        
-                                    viewBuilder.ErrorProvSched = req.flash('ProvWithSchedError');
-                                }else {
-        
-                                    viewBuilder.ProvAndSchedules = data;
-        
-                                    //res.json is here so you can see the full object we're passing do res.render('schedule', viewBuilder) to pass it through
-                                    // res.json(viewBuilder);
-        
-                                }
-                            })
-                }
+   
 
         
-
-                })
-  
-            };
-        })
   
 };
 
 
-exports.stylist = function (req, res) {
-    // Here we add an "include" property to our options in our findOne query
-    // We set the value to an array of the models we want to include in a left outer join
-    // In this case, just db.Post
-    db.Providers.findOne({
-        where: {
-            id: req.params.id
-        },
-        include: [db.Services]
-    }).then(function (dbstylist) {
-        console.log(dbstylist);
-        console.log(services[0]);
-        //Not sure what this is supposed to render
-        res.redirect(req.currentUrl)
-    });
-};
+
 
 
 //
@@ -236,6 +135,12 @@ exports.stylist = function (req, res) {
 //
 //
 
+
+exports.getServices = function (req,res){
+    getServices.AllServices(function(results){
+        res.json(results);
+    });
+}
 
 
 exports.updateAppointment = function(req,res){

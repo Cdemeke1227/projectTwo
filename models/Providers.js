@@ -104,12 +104,15 @@ module.exports = function (sequelize, DataTypes) {
       onDelete: "cascade"
     });
     
-    Providers.hasMany(models.Schedules, {
-      onDelete: "cascade"
-    });
+    // Providers.hasMany(models.Schedules, {
+    //   onDelete: "cascade"
+    // });
 
     //I dont see where providers belonging to customers would be useful information to gather.
-    // Providers.belongsToMany(models.Customers, {through: 'Appointments'});
+    Providers.belongsToMany(models.Schedules, {
+      as: "Reserved Time",
+      through: 'Appointments'
+    });
 
   };
   return Providers;

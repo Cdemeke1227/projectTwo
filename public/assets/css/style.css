@@ -16,7 +16,8 @@ body {
 
 h1 {
     font-family: 'Lobster', Cambria, Cochin, Georgia, Times, 'Times New Roman', cursive;
-    font-size: 4rem;
+    font-size: 5rem;
+    padding-top: 20px;
 }
 
 h2,
@@ -153,6 +154,30 @@ h1.display-4 {}
     font-family: 'Julius Sans One', sans-serif;
 }
 
+.modal-body {
+    font-family: 'Julius Sans One', sans-serif;
+}
+
+.input-group-prepend,
+label {
+    font-family: 'Julius Sans One', sans-serif;
+    font-weight: 600;
+    color: white;
+    /* background-color: #222222; */
+}
+
+#go-button,
+#fa-button {
+    border: 0px solid;
+    border-radius: 1px;
+    max-width: 50px;
+    float: left;
+    background-color: none;
+    padding:0;
+    border:0;
+    align-self: auto;
+}
+
 .fa-google {
     color: #db3236;
 }
@@ -171,12 +196,27 @@ h1.display-4 {}
     background-position: center;
     background-repeat: no-repeat;
     color: #000000;
-    text-align: right;
-    padding-right: 210px;
-    padding-top: 100px;
+    text-align: left;
+    padding-left: 50px;
+    padding-top: 20px;
+    height: 300px;
 }
 
-p.lead {}
+p.lead {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.5rem;
+    font-weight: 500;
+    line-height: 2.5rem;
+}
+
+.intro {
+    font-family: 'Great Vibes', cursive;
+    align-content: center;
+    text-align: left;
+    font-size: 2.5rem;
+    font-weight: 500;
+    line-height: 2.5rem;
+}
 
 #signupModal {
     background-color: #FFFFFF;
@@ -259,33 +299,38 @@ p.lead {}
 }
 
 #overview {
-    height: 300px;
-    border: 1px solid green;
+    /* height: 300px;
+    border: 1px solid green; */
 }
 
 #featuredStylist1 {
-    height: 300px;
-    border: 1px solid green;
+    /* height: 300px;
+    border: 1px solid green; */
 }
 
 #featuredStylist2 {
-    height: 300px;
-    border: 1px solid green;
+    /* height: 300px;
+    border: 1px solid green; */
 }
 
 #partners {
-    height: 300px;
-    border: 1px solid green;
+    /* height: 300px;
+    border: 1px solid green; */
 }
 
 #contact {
-    height: 300px;
-    border: 1px solid green;
+    /* height: 300px;
+    border: 1px solid green; */
 }
 
-.service-image{
-max-width: 320px;
-} 
+.hours {
+    font-family: 'Julius Sans One', sans-serif;
+    line-height: 1.5rem;
+}
+
+.service-image {
+    max-width: 320px;
+}
 
 #service1 {
     /* height: 300px;
@@ -370,7 +415,7 @@ max-width: 320px;
 /* Placeholder1 */
 
 #placeholder1 {
-    background-color: red;
+    background-color: #747474;
     background-image: url("../images/backgrounds/background_joico_1.jpg");
     background-position: center;
     background-size: cover;
@@ -392,7 +437,7 @@ max-width: 320px;
 }
 
 .clearing {
-    height: 200px;
+    height: 300px;
 }
 
 /* ========================== */
@@ -400,7 +445,7 @@ max-width: 320px;
 /* Placeholder2 */
 
 #placeholder2 {
-    background-color: red;
+    background-color: #747474;
     background-image: url("../images/backgrounds/background_joico_3.jpg");
     background-position: center;
     background-size: cover;
@@ -422,7 +467,79 @@ max-width: 320px;
 }
 
 .clearing2 {
-    height: 300px;
+    height: 350px;
+}
+
+/* Placeholder 3 */
+
+#placeholder3 {
+    background-color: #747474;
+    background-image: url("../images/backgrounds/background_joico_4.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-origin: right;
+    background-attachment: fixed;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+
+#placeholder3 .container {
+    position: relative;
+    text-align: center;
+    z-index: 4;
+    color: #FFFFFF;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding: 0px;
+}
+
+.clearing3 {
+    height: 250px;
+}
+
+#placeholder4 {
+    background-color: #747474;
+    background-image: url("../images/backgrounds/background_joico_2.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-origin: right;
+    background-attachment: fixed;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+
+#placeholder4 .container {
+    position: relative;
+    text-align: center;
+    z-index: 4;
+    color: #FFFFFF;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding: 0px;
+}
+
+#placeholder5 {
+    background-color: #747474;
+    background-image: url("../images/backgrounds/background_joico_5.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-origin: right;
+    background-attachment: fixed;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+
+#placeholder5 .container {
+    position: relative;
+    text-align: center;
+    z-index: 4;
+    color: #FFFFFF;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding: 0px;
 }
 
 /* ========================== */

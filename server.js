@@ -63,7 +63,7 @@ app.use(session({
 
 // Routes
 // =============================================================
-// require("./routes/api-routes.js")(app);
+require("./routes/api-routes.js")(app);
 require("./routes/html-routes.js")(app);
 require('./routes/userAuth.js')(app,passport)
 
@@ -74,7 +74,7 @@ require('./config/passport/passport.js')(passport, db.Customers, db.Providers);
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
 //                 Force = true => For Development
-db.sequelize.sync({ force: true }).then(function () {
+db.sequelize.sync({ force: false }).then(function () {
     app.listen(PORT, function () {
         console.log("App listening on PORT " + PORT);
     });

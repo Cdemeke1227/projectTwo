@@ -8,6 +8,14 @@ module.exports = function (sequelize, DataTypes)  {
     //   unique: true,
     //   field: 'id',
     // },
+    category: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1, 50]
+      }
+    }, 
+
     service_name: {
       type: DataTypes.STRING,
       allowNull: false,

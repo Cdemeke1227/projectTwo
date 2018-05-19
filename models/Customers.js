@@ -28,9 +28,7 @@ module.exports = function (sequelize, DataTypes) {
     password: {
       type: DataTypes.STRING,
       allowNull: false
-      // validate: {
-      //   len: [1, 50]
-      // }
+    
     },
     email: {
       type: DataTypes.STRING,
@@ -42,11 +40,7 @@ module.exports = function (sequelize, DataTypes) {
 
     phone: {
       type: DataTypes.STRING,
-      allowNull: true,
-      // validate: {
-      //   isNumeric: true,
-      //   // len: [2,11] // How can I make it appear in Phone Number Format (713) 624-2353
-      // }
+      allowNull: true
     },
     notes: {
       type: DataTypes.TEXT,
@@ -64,20 +58,19 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING,
       defaultValue: 'customer'
     }, 
-    'createdAt': {
-      type: DataTypes.DATE(3),
-      defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3)'),
-    },
-    'updatedAt': {
-      type: DataTypes.DATE(3),
-      defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3)'),
-    },
+    // 'createdAt': {
+    //   type: DataTypes.DATE(3),
+    //   defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3)'),
+    // },
+    // 'updatedAt': {
+    //   type: DataTypes.DATE(3),
+    //   defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3)'),
+    // },
   }, 
   {
     timestamps: true,
     tableName: Customers,
-    paranoid: true,
-    // underscored: true,
+    paranoid: true
   });
   
   Customers.associate = function (models) {

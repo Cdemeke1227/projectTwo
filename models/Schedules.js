@@ -52,7 +52,6 @@ module.exports = function (sequelize, DataTypes) {
         // });
         
         Schedules.belongsToMany(models.Providers, {
-          as: "Stylist",
           through: 'Appointments'
         });
     

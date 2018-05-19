@@ -47,8 +47,7 @@ module.exports = function (sequelize, DataTypes) {
   }, {
     timestamps: true,
     tableName: Appointments,
-    paranoid: true,
-    // underscored: true,
+    paranoid: true
   });
   Appointments.associate = models => {
 
@@ -75,18 +74,3 @@ module.exports = function (sequelize, DataTypes) {
 };
 
 
-// Appointments.belongsTo(models.Customers,{
-//   foreignKey : {
-//     allowNull : false
-//   }
-// });
-// Appointments.belongsTo(models.Providers,{
-//   foreignKey : {
-//     allowNull : false
-//   }
-// });      
-// Appointments.belongsTo(models.Schedules,{
-//   foreignKey : {
-//     allowNull : false
-//   }
-// });

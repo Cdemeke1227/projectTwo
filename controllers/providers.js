@@ -13,48 +13,44 @@ var db = require("../models");
 
 var exports = module.exports = {};
 
-  exports.AllProviders = function(data,cb){
-    dbProviders.findAll().then(function(dbProviders){
-      return cb(null,dbProviders);
-    });
-  }
-  //This function will retrieve all Providers with their corresponding Services and pass it back through a callback
-  exports.AllWithServices = function(cb){
-    db.Providers.findAll({
-      include: [db.Services]
-    }).then(function(dbProviders){
-      if(dbProviders.length > 1){
-          var ProvAndServes = [];
-          for(var i = 0; i < dbProviders.length; i++){
-            console.log("1: !!!!!" + dbProviders[i]);
-            ProvAndServes.push(dbProviders[i].dataValues);
+  exports.AllProviders = function(data, cb){
+    var query = {};
+    if(data.services){
+      query.include = [db.Services];
+      };
+    if(data.schedule){
+      if(query.include){
+        query.include.push(db.Schedules);
+      }else{
+        query.include = [db.Schedules];
+      }
+    }
+    if(data.provider_id){
+      query.where = {
+        id : data.provider_id
+      };
+    };
+    console.log(query);
+    db.Providers.findAll(query).then(function(dbProviders){
+      if(dbProviders.length > 0 ){
+        var providers = []
+        for(var i = 0; i < dbProviders.length; i++){
+          var providersObj = {
+            provider: dbProviders[i].dataValues
           };
 
-          console.log(ProvAndServes);
-
-          return cb(null,ProvAndServes);
+          providers.push(providersObj);
       };
+         cb(null, providers);
+      }else {
+        cb({message: "There was an error finding what you're looking for. Please check your queries if they exists in the database."})
+      }
+
     });
-  };
 
-  //This function will retrieve all Providers with their corresponding Schedules and pass it back through a callback
-  exports.AllWithSchedules = function(cb){
-    db.Providers.findAll({
-      include: [db.Schedules]
-    }).then(function(dbProviders){
-      if(dbProviders.length > 1){
-          var ProvAndSchedule = [];
-          for(var i = 0; i < dbProviders.length; i++){
-
-            ProvAndSchedule.push(dbProviders[i].dataValues);
-          };
-
-          console.log(ProvAndSchedule);
-
-          return cb(null,ProvAndSchedule);
-      };
-    });
   }
+
+
 
   // This function will take a data object as an arugment to update Provider information and pass back through a callback if it failed or succeeded
   exports.update = function(data,cb){

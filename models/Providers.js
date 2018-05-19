@@ -82,8 +82,7 @@ module.exports = function (sequelize, DataTypes) {
   }, {
     timestamps: true,
     tableName: 'providers',
-    paranoid: true,
-    // underscored: true,
+    paranoid: true
     
   });
   
@@ -96,10 +95,9 @@ module.exports = function (sequelize, DataTypes) {
       onDelete: "cascade"
     });
     
-    // Providers.belongsToMany(models.Schedules, {
-    //   as: "Reserved Time",
-    //   through: 'Appointments'
-    // });
+    Providers.belongsToMany(models.Schedules, {
+      through: 'Appointments'
+    });
     
 
   };

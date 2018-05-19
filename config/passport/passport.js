@@ -96,7 +96,9 @@ module.exports = function(passport, Customer, Provider) {
 
                             lastName: req.body.lastName,
 
-                            phone: req.body.phone
+                            phone: req.body.phone,
+
+                            
              
              
                         };

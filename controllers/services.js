@@ -14,7 +14,15 @@ var exports = module.exports = {};
   exports.AllServices = function(data, cb){
     console.log(data);
     var query = {}
-
+    
+    if(data.order){
+      if(data.direction === 'DESC'){
+        query.order =[[data.order, 'DESC']]
+      }else {
+        query.order = [[data.order]];
+      }
+      
+    }
       if(data.specific === 'service'){
         if(data.service_name){
           query.where = {
@@ -37,17 +45,8 @@ var exports = module.exports = {};
       console.log(query);
       db.Services.findAll(query).then(function (dbService) {
         if(dbService.length > 0){
-          var services = [];
-          for(var i = 0; i < dbService.length; i++){
-              var servicesObj = {
-                service: dbService[i].dataValues
-              };
 
-              services.push(servicesObj);
-          };
-
-          console.log(services);
-          return cb(null,services);
+          return cb(null,dbService);
         }else {
           cb({message: "There was an error finding what you're looking for. Please check your queries if they exists in the database."});
         }

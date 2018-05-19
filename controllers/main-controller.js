@@ -135,7 +135,7 @@ exports.provider = function (req, res) {
 
     };
 
-    getCustomers.AllInfo(function (err, clients) {
+    getCustomers.AllInfo(data,function (err, clients) {
         console.log(clients);
         viewBuilder.Customers = clients;
         console.log(viewBuilder);

@@ -69,15 +69,16 @@ module.exports = function(app){
                     res.json('Please include specific specific can only be service or provider')
                 }
             }
-        }{
+        }else{
             res.json("Missing all=");
         }
         
     
     });
 
-    //PUT route to update service by ID
+    //PUT route to update service by ID THIS SHOULD ONLY BE ABLE TO BE ACCESSED BY ADMIN
     app.put('/api/update/service/:id', function(req,res){
+
         //Build object to pass on to update service
         var data = {
             //Will be used to figure out which service we're updating will be retrieved from parameter
@@ -162,6 +163,22 @@ module.exports = function(app){
 }
 
 
+
+
+// FUNCTIONS THAT BE USED FOR AUTHORIZATION FOR EACH ROUTE
+
+function isAdmin(req, res, next) {
+ 
+    if (req.isAuthenticated() && req.user.admin === true)
+
+
+      return next();
+  //Redirects home with a loginMessage flash message
+    req.flash('logInMessage',"Yikes");
+
+    res.redirect('/');
+
+}
 
 //////////////////////////////////////
 //Seed data for Services Model

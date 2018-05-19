@@ -55,11 +55,7 @@ module.exports = function (sequelize, DataTypes) {
     },
     phone: {
       type: DataTypes.STRING,
-      allowNull: true,
-      // validate: {
-      //   isNumeric: true,
-      //   // len: [2,11] // How can I make it appear in Phone Number Format (713) 624-2353
-      // }
+      allowNull: true
     },
     notes: {
       type: DataTypes.TEXT,

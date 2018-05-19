@@ -1,13 +1,5 @@
 module.exports = function (sequelize, DataTypes)  {
   var Services = sequelize.define('Services', {
-
-    id: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true,
-      unique: true,
-      field: 'id',
-    },
     category: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -46,11 +38,11 @@ module.exports = function (sequelize, DataTypes)  {
       allowNull: true,
 
     },
-    'created_at': {
+    'createdAt': {
       type: DataTypes.DATE(3),
       defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3)'),
     },
-    'updated_at': {
+    'updatedAt': {
       type: DataTypes.DATE(3),
       defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3)'),
     },
@@ -58,7 +50,7 @@ module.exports = function (sequelize, DataTypes)  {
     timestamps: true,
     tableName: 'services',
     paranoid: true,
-    underscored: true,
+    // underscored: true,
   });
 
   Services.associate = function (models) {
@@ -66,6 +58,7 @@ module.exports = function (sequelize, DataTypes)  {
     //We can not have  a  Service  without having a Provider.
 
     Services.belongsTo(models.Providers, {
+      // as: 'provider_id',
       foreignKey: {
         allowNull: false
       }

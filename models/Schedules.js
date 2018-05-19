@@ -21,11 +21,11 @@ module.exports = function (sequelize, DataTypes) {
     },
 
 
-    'created_at': {
+    'createdAt': {
       type: DataTypes.DATE(3),
       defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3)'),
     },
-    'updated_at': {
+    'updatedAt': {
       type: DataTypes.DATE(3),
       defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3)'),
     },
@@ -33,7 +33,7 @@ module.exports = function (sequelize, DataTypes) {
     timestamps: true,
     tableName: Schedules,
     paranoid: true,
-    underscored: true,
+    // underscored: true,
 
   });
   Schedules.associate = function (models) {
@@ -52,7 +52,6 @@ module.exports = function (sequelize, DataTypes) {
         // });
         
         Schedules.belongsToMany(models.Providers, {
-          as: "Stylist",
           through: 'Appointments'
         });
     

@@ -1,14 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
   var Providers = sequelize.define('Providers', {
-
-    id: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true,
-      unique: true,
-      field: 'id',
-    },
-
     firstName: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -57,6 +48,17 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: true
     },
+    userType: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      defaultValue: 'Employee'
+    },
+    admin: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false
+    },
+
     notes: {
       type: DataTypes.TEXT,
       allowNull: true,
@@ -69,27 +71,18 @@ module.exports = function (sequelize, DataTypes) {
         // Need to make sure it's a link
       }
     },
-
-    service: {
-      type: DataTypes.STRING,
-      allowNull: true,
-      validate: {
-        // Need to make sure it's a link
-      }
-    },
-    'created_at': {
+    'createdAt': {
       type: DataTypes.DATE(3),
       defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3)'),
     },
-    'updated_at': {
+    'updatedAt': {
       type: DataTypes.DATE(3),
       defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3)'),
     },
   }, {
     timestamps: true,
     tableName: 'providers',
-    paranoid: true,
-    underscored: true,
+    paranoid: true
     
   });
   
@@ -98,16 +91,11 @@ module.exports = function (sequelize, DataTypes) {
         // Associating Providers with Services
     // When a Provider  is deleted, also delete any associated Services
     Providers.hasMany(models.Services, {
+      // as: 'provider_id',
       onDelete: "cascade"
     });
     
-    // Providers.hasMany(models.Schedules, {
-    //   onDelete: "cascade"
-    // });
-
-    //I dont see where providers belonging to customers would be useful information to gather.
     Providers.belongsToMany(models.Schedules, {
-      as: "Reserved Time",
       through: 'Appointments'
     });
     
@@ -116,24 +104,3 @@ module.exports = function (sequelize, DataTypes) {
   return Providers;
 };
 
-// // Associating Providers with Services
-//     // When a Provider  is deleted, also delete any associated Services
-//     Providers.hasMany(models.Services, {
-//       onDelete: "cascade"
-//     });
-    
-//     Providers.hasMany(models.Schedules, {
-//       onDelete: "cascade"
-//     });
-
-//     Providers.hasMany(models.Appointments,{
-
-//     })
-//     Providers.belongsTo(models.Schedules, {
-//       through: 'Appointments',
-//       as: "Reserved Time",
-  
-//     });
-
-//     //I dont see where providers belonging to customers would be useful information to gather.
-//     // Providers.belongsToMany(models.Customers, {through: 'Appointments'});

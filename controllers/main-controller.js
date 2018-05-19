@@ -108,7 +108,9 @@ exports.about = function (req, res) {
 
                 title: results[i].provider.title,
 
-                notes: results[i].provider.notes
+                notes: results[i].provider.notes,
+
+                photoLink: results[i].provider.photoLink
             };
             viewBuilder.TopProviders.push(stylist);
 

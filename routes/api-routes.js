@@ -184,7 +184,7 @@ module.exports = function(app){
                 }
             break;
             default:
-                res.json('Please use a number for provider_id');
+                //res.json('Please use a number for provider_id');
             break;
         }
         providersPack.AllProviders(data, function(err, results){

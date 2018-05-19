@@ -14,21 +14,22 @@ module.exports = function(app){
     app.get('/api/retrieve/services',function(req,res){
         //Check read me for query list
         var data = {};
-        if(req.query.orderBy){
-            switch(req.query.orderBy){
-                case 'category': 
-                    data.order = 'category';
-                break;
 
+        if (req.query.orderBy) {
+            switch (req.query.orderBy) {
+                case 'category':
+                    data.order = 'category';
+                    break;
                 case 'price':
                     data.order = 'price';
-    
-                break;
-                default: 
-                    res.json('Invalid input for orderBy=');
+
+                    break;
+                default:
+                    res.json('Invalid input for oderBy=');
                     break;
             };
-            switch(req.query.direction){
+            switch (req.query.direction) {
+
                 case 'DESC':
                     data.direction = 'DESC';
                     break;
@@ -98,6 +99,7 @@ module.exports = function(app){
             description: req.body.description,
             duration: req.body.duration,
             price: req.body.price,
+
             photoLinks: data.photoLinks
         };
 

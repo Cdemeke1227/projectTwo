@@ -58,6 +58,7 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.DATE(3),
       defaultValue: sequelize.NOW,
     },
+    
   }, 
   {
     timestamps: true,

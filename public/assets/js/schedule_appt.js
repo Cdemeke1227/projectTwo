@@ -8,11 +8,26 @@
 $(document).ready(function () {
 
   // user selects service  
-$("#serviceChoice").on("change", function(){
-  var serviceChosen = $(this).val();
-  console.log(serviceChosen);
-  
-})
+  $("#serviceChoice").on("change", function () {
+    var serviceChosen = $(this).val();
+    console.log(serviceChosen);
+
+    var providerQuery = `api/retrieve/providers/?all=no&specific=services&service_name=${serviceChosen}`;
+    console.log(providerQuery);
+
+    $.ajax(providerQuery, {
+      // $.ajax(`api/retrieve/providers/`, {
+      type: "GET",
+      success: function (data) {
+        console.log('Provider Data: ' + data);
+      },
+      error: function (request, error) {
+        alert("Request: " + JSON.stringify(request));
+      }
+    });
+
+
+  })
   //for each available service 
 
 

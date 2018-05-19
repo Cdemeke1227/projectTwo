@@ -37,6 +37,6 @@ INSERT INTO schedules (startTime, endTime,ProviderId) VALUES (20180501080055, 20
 INSERT INTO schedules (startTime, endTime,ProviderId) VALUES (20180501080055, 20180501170000,1);
 INSERT INTO schedules (startTime, endTime,ProviderId) VALUES (20180501080055, 20180501200000,2);
 
-INSERT INTO appointments (appointStart, appointEnd, duration, ProviderId, ScheduleId) VALUES (20180501080055, 20180501100000, 0200, 1, 2);
-INSERT INTO appointments (appointStart, appointEnd, duration, ProviderId, ScheduleId) VALUES (20180502140055, 20180502160000, 0200, 2, 4);
-INSERT INTO appointments (appointStart, appointEnd, duration, ProviderId, ScheduleId) VALUES (20180501080055, 20180501160000, 0200, 4, 3);
+INSERT INTO appointments (appointStart, appointEnd, duration, ProviderId, ScheduleId, CustomerId) VALUES (20180501080055, 20180501100000, 0200, 1, 2,1);
+INSERT INTO appointments (appointStart, appointEnd, duration, ProviderId, ScheduleId, CustomerId) VALUES (20180502140055, 20180502160000, 0200, 2, 4,2);
+INSERT INTO appointments (appointStart, appointEnd, duration, ProviderId, ScheduleId, CustomerId) VALUES (20180501080055, 20180501160000, 0200, 4, 3,3);

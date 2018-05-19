@@ -1,13 +1,6 @@
 module.exports = function (sequelize, DataTypes) {
   var Schedules = sequelize.define('Schedules', {
 
-    id: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true,
-      unique: true,
-      field: 'id',
-    },
     startTime: {
 
       type: DataTypes.DATE,
@@ -51,8 +44,8 @@ module.exports = function (sequelize, DataTypes) {
         //   }
         // });
         
-        Schedules.belongsToMany(models.Providers, {
-          through: 'Appointments'
+        Schedules.hasMany(models.Appointments, {
+
         });
     
     

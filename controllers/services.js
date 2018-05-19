@@ -24,7 +24,7 @@ var exports = module.exports = {};
       }else if(data.specific === 'provider'){
         if(data.provider_id){
           query.where = {
-            provider_id : data.provider_id
+            ProviderId : data.provider_id
           };
         };
       }
@@ -57,30 +57,6 @@ var exports = module.exports = {};
 
   }
 
-  exports.OneService = function(serviceName,cb){
-      db.Services.findAll({
-        where: {
-          service_name: serviceName
-        },
-        include: [db.Providers]
-      }).then(function(dbService){
-          return cb(null,dbService);
-      });
-  };
-
-
-  exports.providerServices = function(providerID, cb){
-    var query = {
-      provider_id: providerID
-    };
-
-      db.Services.findAll({
-        where: query,
-        include: [db.Providers]
-      }).then(function(dbServices){
-        return cb(null,dbServices)
-      })
-  }
 
   // This function will retrieve the needed information through the data arguement to update a Service from the database
   exports.updateService = function(data,cb){

@@ -13,16 +13,16 @@ var db = require("../models");
 var exports = module.exports = {};
 
     //This function will gather all the appointments and return it through a callbac
-    exports.viewAllAppointments = function(cb){
-        //NOTES this should have
-        // Schedule
-        // Providers
-        // Appointments
-        db.Schedules.findAll({
-            include: [{all:true}]
-              }).then(function(dbSchedules) {
-                return cb(null,dbSchedules);
-              });
+    exports.viewAllAppointments = function(data,cb){
+
+        db.Appointments.viewAll().then(function(dbAppointments){
+            if(dbAppointments.length > 0){
+                cb(null,dbAppointments);
+            }else {
+                cb({message: "There was an error finding what you're looking for. Please check your queries if they exists in the database."});
+            };
+        })
+
 
     };
     //This function will get the required information from the data object argument then update the Appointment, and then will pass back wether it failed or succeeded through the callback

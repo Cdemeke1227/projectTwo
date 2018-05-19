@@ -3,13 +3,14 @@
 var goTo = require('../controllers/main-controller.js');
 var servicesPack = require('../controllers/services.js');
 var providersPack = require('../controllers/providers.js');
-
+var schedulesPack = require('../controllers/schedules.js');
+var appointmentsPack = require('../controllers/appointments.js');
 module.exports = function(app){
 //
 // ROUTES for SERVICES
 //
     // GET route to get services within a range defined by the queries range with providers who offer that service
-    app.get('/api/retrieve/services/',function(req,res){
+    app.get('/api/retrieve/services',function(req,res){
         //Check read me for query list
         var data = {};
         if(req.query.all === 'yes'){
@@ -77,7 +78,7 @@ module.exports = function(app){
     });
 
     //PUT route to update service by ID THIS SHOULD ONLY BE ABLE TO BE ACCESSED BY ADMIN
-    app.put('/api/update/service/:id', function(req,res){
+    app.put('/api/service/:id', function(req,res){
 
         //Build object to pass on to update service
         var data = {
@@ -99,7 +100,7 @@ module.exports = function(app){
 
     //POST route to create a new service
 
-    app.post('/api/new/service', function(req,res){
+    app.post('/api/service', function(req,res){
         //Build the service data
 
         var data = {
@@ -131,18 +132,11 @@ module.exports = function(app){
 //
 // ROUTES for Providers **in progress**
 //
-        //This can use these queries
-            // provider_id=
-                //Providers ID
-            // services=
-                //yes or no to include with services or not
-            // schedule=
-                //yes or no to include with schedules or not
-            // 
+
     //GET route to retrieve information about providers
     app.get('/api/recieve/providers', function(req,res){
         var data = {};
-        // services=yes
+        //Check word doc on how to use it
         switch(req.query.services){
             case 'yes':
                 data.services = 'yes';
@@ -178,31 +172,103 @@ module.exports = function(app){
         })
     })
 
-    
+
 //
 // Routes for APPOINTMENTS **in progress**
 //
        
     //GET route to get appointments within a range defined by the queries 
-    app.get('/recieve/appointments/', function(req,res){
-        
-        //Build object to pass on to update service
-        var data = {
-            //Will be used to figure out which service we're updating will be retrieved from parameter
-            appointmentID: req.params.id,
-            startTime: req.body.appointStart,
-            endTime: req.body.appointEnd,
-            duration: req.body.duration,
-            
-        };
+    app.get('/api/recieve/schedule', function(req,res){
+        var data = {};
+        if(req.query.orderBy){
+            switch(req.query.orderBy){
+                case "start":
+                    data.orderBy = 'startTime';
+                break; 
 
-        servicesPack.updateService(data,function(results){
+                case 'end':
+                    data.orderBy = 'endTime';
+                break;
+
+                default:
+                    res.json('Invalid query orderBy=');
+                break;
+            }
+            switch(req.query.direction){
+                case 'DESC':
+                    data.direction = 'DESC';
+                break;
+                default:
+                    data.direction = 'AESC';
+                break;
+                
+            }
+        }
+
+        if(req.query.provider_id){
+            switch(req.query.provider_id > 0){
+                case true:
+                    data.provider_id = req.query.provider_id;
+                break;
+                default:
+                    res.json('Invalid entry for provider_id=. Please use a number greater than 0');
+                break;
+            }
+        }
+
+
+        schedulesPack.getWithAppRProv(data, function(err,results){
+            if(err) res.json(err);
+
             res.json(results);
         })
-        //
-        // should only use the following query options **in progress**
     })
-    //Post route to update appointments
+
+    //To make a new schedule
+    app.post('/api/schedules', function(req,res){
+        var data = req.body;
+        var newSchedule = {
+            startTime: data.startTime,
+            endTime: data.endTime,
+            ProviderId: data.ProviderId
+        };
+
+        schedulesPack.newSchedule(newSchedule,function(err,results){
+            if(err) res.json(err);
+
+            res.json(results);
+        })
+
+    })
+
+    app.put('/api/schedules', function(req,res){
+        var data = req.body;
+        var updateSchedule = {
+            startTime: data.startTime,
+            endTime: data.endTime,
+            ProviderId: data.ProviderId
+        };
+        
+        var datas = {
+            scheduleBuild: updateSchedule,
+            where: {
+                id : data.schedule_id
+            } 
+        };
+        schedulesPack.newSchedule(datas,function(err,results){
+            if(err) res.json(err);
+
+            res.json(results);
+        })
+
+    })
+
+    
+//
+// Routes for Appointments
+//
+
+        //Post route to update appointments
     app.post('/appointment/update/:id', goTo.updateAppointment);
 
 

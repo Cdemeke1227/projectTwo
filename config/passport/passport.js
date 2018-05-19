@@ -297,7 +297,13 @@ module.exports = function(passport, Customer, Provider) {
 
                         phone: req.body.phone,
 
-                        experience: req.body.experience
+                        experience: req.body.experience,
+
+                        title: req.body.title,
+
+                        admin: req.body.admin,
+
+                        notes: req.body.notes
          
          
                     };
@@ -307,7 +313,7 @@ module.exports = function(passport, Customer, Provider) {
                     console.log(created);
                     if (!newAdmin) {
          
-                        return done(null, false, req.flash('signUpMessage', "There was an error in creating your account!"));
+                        return done(null, false, req.flash('signUpMessage', "There was an error in creating admin!"));
          
                     }
          
@@ -315,7 +321,7 @@ module.exports = function(passport, Customer, Provider) {
                         
                         var AdminInfo = newAdmin;
                         delete AdminInfo.password;
-                        return done(null, AdminInfo);
+                        return done(null, true, req.flash('newProviderSuccess',"Employee Account Created!"));
          
                     }
          
@@ -425,14 +431,30 @@ passport.use('admin-local-update', new LocalStrategy(
                 return done(null, false, req.flash('settingsMessage','Incorrect password.'));
 
             }else {
-
-                Admin.update({
-                    email : email,
+                var data =
+         
+                {
+                    email: email,
+     
+                    password: userPassword,
+     
                     firstName: req.body.firstName,
+
                     lastName: req.body.lastName,
+
                     phone: req.body.phone,
-                    experience: req.body.experience
-                },{
+
+                    experience: req.body.experience,
+
+                    title: req.body.title,
+
+                    admin: req.body.admin,
+
+                    notes: req.body.notes
+     
+     
+                };
+                Admin.update(data,{
                     where: {id : req.params.userId}
                 }).then(function(results){
                     Admin.findOne({

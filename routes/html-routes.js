@@ -28,8 +28,8 @@ module.exports = function(app) {
 
 
   // schedule route loads schedule.handlebar view and makes sure the user is logged in before they can access the page
-  app.get("/schedule/:userType?/:id?",isLoggedIn, goTo.schedule);
-
+  app.get("/schedule/:userType?/:id?", goTo.schedule);
+  // app.get("/schedule/:userType?/:id?",isLoggedIn, goTo.schedule);
 
   // service route loads service.handlebar view
   app.get("/service", goTo.service);
@@ -40,7 +40,9 @@ module.exports = function(app) {
   app.get("/provider",goTo.provider);
 
 
+  //Logs user out
 
+  app.get('/logout', goTo.logout);
 
   function isLoggedIn(req, res, next) {
  

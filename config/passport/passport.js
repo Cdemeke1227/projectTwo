@@ -101,7 +101,6 @@ module.exports = function(passport, Customer, Provider) {
                             
                         };
              
-             
                     User.create(data).then(function(newUser, created) {
                         console.log(created);
                         if (!newUser) {

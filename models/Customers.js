@@ -58,12 +58,11 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.DATE(3),
       defaultValue: sequelize.NOW,
     },
-    
-  }, 
-  {
+  }, {
     timestamps: true,
     tableName: 'Customers',
     paranoid: true
+    
   });
   
   Customers.associate = function (models) {

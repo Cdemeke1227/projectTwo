@@ -98,11 +98,10 @@ module.exports = function(passport, Customer, Provider) {
 
                             phone: req.body.phone,
 
-                            
+                            password : userPassword
              
              
                         };
-             
              
                     User.create(data).then(function(newUser, created) {
                         console.log(created);

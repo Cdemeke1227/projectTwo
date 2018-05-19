@@ -5,15 +5,19 @@ var servicesPack = require('../controllers/services.js');
 var providersPack = require('../controllers/providers.js');
 var schedulesPack = require('../controllers/schedules.js');
 var appointmentsPack = require('../controllers/appointments.js');
+
 var customersPack = require('../controllers/customers.js');
 module.exports = function(app){
 //
 // ROUTES for SERVICES
 //
+
     // GET route to get services within a range defined by the queries range with providers who offer that service
-    app.get('/api/retrieve/services',function(req,res){
+    app.get('/api/retrieve/services', function (req, res) {
         //Check read me for query list
         var data = {};
+
+
 
         if (req.query.orderBy) {
             switch (req.query.orderBy) {
@@ -30,6 +34,8 @@ module.exports = function(app){
             };
             switch (req.query.direction) {
 
+
+
                 case 'DESC':
                     data.direction = 'DESC';
                     break;
@@ -38,6 +44,7 @@ module.exports = function(app){
                     break
             }
         }
+
         
         if(req.query.all === 'yes'){
             data.specific = 'no';
@@ -51,32 +58,38 @@ module.exports = function(app){
                     data.groupBy = 'service_name';
 
 
+
             }
-        } else if(req.query.all === 'no'){
+        } else if (req.query.all === 'no') {
             data.specific = req.query.specific;
-            switch(data.specific){
+            switch (data.specific) {
                 case 'service':
-                    if(req.query.service_name){
+                    if (req.query.service_name) {
                         data.service_name = req.query.service_name;
 
+
                     }else{
+
                         res.json('Missing service_name');
                     }
 
-                break;
+                    break;
                 case 'provider':
-                    
-                    if(isNaN(req.query.provider_id) === false){
+
+                    if (isNaN(req.query.provider_id) === false) {
                         data.provider_id = req.query.provider_id;
+
                        
                     }else {
+
                         res.json('provider_id must be a number');
                     }
-                break;
+                    break;
                 default: {
                     res.json('Please include specific specific can only be service or provider')
                 }
             }
+
         }else{
             
         }
@@ -86,10 +99,11 @@ module.exports = function(app){
             res.json(results);
         })
 
+
     });
 
     //PUT route to update service by ID THIS SHOULD ONLY BE ABLE TO BE ACCESSED BY ADMIN
-    app.put('/api/service/:id', function(req,res){
+    app.put('/api/service/:id', function (req, res) {
 
         //Build object to pass on to update service
         var data = {
@@ -103,7 +117,7 @@ module.exports = function(app){
             photoLinks: data.photoLinks
         };
 
-        servicesPack.updateService(data,function(results){
+        servicesPack.updateService(data, function (results) {
             res.json(results);
         })
     })
@@ -111,7 +125,7 @@ module.exports = function(app){
 
     //POST route to create a new service
 
-    app.post('/api/service', function(req,res){
+    app.post('/api/service', function (req, res) {
         //Build the service data
 
         var data = {
@@ -122,7 +136,7 @@ module.exports = function(app){
             photoLinks: data.photoLinks
         };
 
-        servicesPack.newService(data,function(results){
+        servicesPack.newService(data, function (results) {
             console.log(results);
             res.json(results);
         });
@@ -130,40 +144,43 @@ module.exports = function(app){
 
 
     //DELETE route to delete service by ID
-    app.delete('/api/delete/service/:id', function(req,res){
+    app.delete('/api/delete/service/:id', function (req, res) {
         //Get service id from params to delete service
         var data = {
-            id : req.params.id
+            id: req.params.id
         };
-        servicesPack.removeService(data,function(err, results){
+        servicesPack.removeService(data, function (err, results) {
             res.json(results);
         });
     });
 
-//
-// ROUTES for Providers **in progress**
-//
+    //
+    // ROUTES for Providers **in progress**
+    //
 
     //GET route to retrieve information about providers
+
     app.get('/api/retrieve/providers', function(req,res){
+
         var data = {};
         //Check word doc on how to use it
-        switch(req.query.services){
+        switch (req.query.services) {
             case 'yes':
                 data.services = 'yes';
 
-            break;
+                break;
             default:
 
-            break;
+                break;
         }
-        switch(req.query.schedule){
+        switch (req.query.schedule) {
             case 'yes':
                 data.schedule = 'yes';
                 break;
             default:
-            break;
+                break;
         }
+
         if(req.query.provider_id){
             switch(isNaN(req.query.provider_id)){
                 case false:
@@ -182,65 +199,68 @@ module.exports = function(app){
 
         providersPack.AllProviders(data, function(err, results){
             if(err) res.json(err);
+
             console.log(results);
             res.json(results);
         })
     })
 
 
-//
-// Routes for APPOINTMENTS **in progress**
-//
-       
+    //
+    // Routes for APPOINTMENTS **in progress**
+    //
+
     //GET route to get appointments within a range defined by the queries 
+
     app.get('/api/retrieve/schedule', function(req,res){
+
         var data = {};
-        if(req.query.orderBy){
-            switch(req.query.orderBy){
+        if (req.query.orderBy) {
+            switch (req.query.orderBy) {
                 case "start":
                     data.orderBy = 'startTime';
-                break; 
+                    break;
 
                 case 'end':
                     data.orderBy = 'endTime';
-                break;
+                    break;
 
                 default:
                     res.json('Invalid query orderBy=');
-                break;
+                    break;
             }
-            switch(req.query.direction){
+            switch (req.query.direction) {
                 case 'DESC':
                     data.direction = 'DESC';
-                break;
+                    break;
                 default:
                     data.direction = 'AESC';
-                break;
-                
+                    break;
+
             }
         }
 
-        if(req.query.provider_id){
-            switch(req.query.provider_id > 0){
+        if (req.query.provider_id) {
+            switch (req.query.provider_id > 0) {
                 case true:
                     data.provider_id = req.query.provider_id;
-                break;
+                    break;
                 default:
                     res.json('Invalid entry for provider_id=. Please use a number greater than 0');
-                break;
+                    break;
             }
         }
 
 
-        schedulesPack.getWithAppRProv(data, function(err,results){
-            if(err) res.json(err);
+        schedulesPack.getWithAppRProv(data, function (err, results) {
+            if (err) res.json(err);
 
             res.json(results);
         })
     })
 
     //To make a new schedule
-    app.post('/api/schedules', function(req,res){
+    app.post('/api/schedules', function (req, res) {
         var data = req.body;
         var newSchedule = {
             startTime: data.startTime,
@@ -248,42 +268,42 @@ module.exports = function(app){
             ProviderId: data.ProviderId
         };
 
-        schedulesPack.newSchedule(newSchedule,function(err,results){
-            if(err) res.json(err);
+        schedulesPack.newSchedule(newSchedule, function (err, results) {
+            if (err) res.json(err);
 
             res.json(results);
         })
 
     })
 
-    app.put('/api/schedules', function(req,res){
+    app.put('/api/schedules', function (req, res) {
         var data = req.body;
         var updateSchedule = {
             startTime: data.startTime,
             endTime: data.endTime,
             ProviderId: data.ProviderId
         };
-        
+
         var datas = {
             scheduleBuild: updateSchedule,
             where: {
-                id : data.schedule_id
-            } 
+                id: data.schedule_id
+            }
         };
-        schedulesPack.newSchedule(datas,function(err,results){
-            if(err) res.json(err);
+        schedulesPack.newSchedule(datas, function (err, results) {
+            if (err) res.json(err);
 
             res.json(results);
         })
 
     })
 
-    
-//
-// Routes for Appointments
-//
 
-        //Post route to update appointments
+    //
+    // Routes for Appointments
+    //
+
+    //Post route to update appointments
     app.post('/appointment/update/:id', goTo.updateAppointment);
 
 
@@ -317,13 +337,13 @@ module.exports = function(app){
 // FUNCTIONS THAT BE USED FOR AUTHORIZATION FOR EACH ROUTE
 
 function isAdmin(req, res, next) {
- 
+
     if (req.isAuthenticated() && req.user.admin === true)
 
 
-      return next();
-  //Redirects home with a loginMessage flash message
-    req.flash('logInMessage',"Yikes");
+        return next();
+    //Redirects home with a loginMessage flash message
+    req.flash('logInMessage', "Yikes");
 
     res.redirect('/');
 

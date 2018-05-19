@@ -87,6 +87,7 @@ module.exports = function(app){
             description: req.body.description,
             duration: req.body.duration,
             price: req.body.price,
+
             photoLinks: data.photoLinks
         };
 
@@ -150,6 +151,20 @@ module.exports = function(app){
        
     //GET route to get appointments within a range defined by the queries 
     app.get('/recieve/appointments/', function(req,res){
+        
+        //Build object to pass on to update service
+        var data = {
+            //Will be used to figure out which service we're updating will be retrieved from parameter
+            appointmentID: req.params.id,
+            startTime: req.body.appointStart,
+            endTime: req.body.appointEnd,
+            duration: req.body.duration,
+            
+        };
+
+        servicesPack.updateService(data,function(results){
+            res.json(results);
+        })
         //
         // should only use the following query options **in progress**
     })

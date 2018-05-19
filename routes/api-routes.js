@@ -48,15 +48,26 @@ module.exports = function(app){
         
         if(req.query.all === 'yes'){
             data.specific = 'no';
+            servicesPack.AllServices(data,function(err,results){
+                console.log(results);
+                res.json(results);
+            })
+
         }else if(req.query.all === 'group'){
             switch(req.query.groupBy){
                 case 'category':
                     data.groupBy = req.query.groupBy;
-
+                    servicesPack.AllServices(data, function(err,results){
+                        if(err) res.json(err);
+                        res.json(results);
+                    })
                 break;
                 default:
                     data.groupBy = 'service_name';
-
+                    servicesPack.AllServices(data, function(err,results){
+                        if(err) res.json(err);
+                        res.json(results);
+                    })
 
 
             }
@@ -66,7 +77,12 @@ module.exports = function(app){
                 case 'service':
                     if (req.query.service_name) {
                         data.service_name = req.query.service_name;
+                        servicesPack.AllServices(data,function(err,results){
+                            if(err) res.json(err);
 
+
+                            res.json(results);
+                        });
 
                     }else{
 
@@ -79,7 +95,12 @@ module.exports = function(app){
                     if (isNaN(req.query.provider_id) === false) {
                         data.provider_id = req.query.provider_id;
 
-                       
+                        servicesPack.AllServices(data,function(err,results){
+                            if(err) res.json(err);
+
+                            res.json(results);
+                        })
+
                     }else {
 
                         res.json('provider_id must be a number');
@@ -91,13 +112,21 @@ module.exports = function(app){
             }
 
         }else{
-            
+            servicesPack.AllServices(data,function(err,results){
+                if(err) res.json(err);
+
+                res.json(results);
+            });
         }
         
+
+    
+
         servicesPack.AllServices(data,function(err,results){
             console.log(results);
             res.json(results);
         })
+
 
 
     });
@@ -320,7 +349,6 @@ module.exports = function(app){
         if(req.query.orderBy){
             data.order = req.query.orderBy;
         };
-        i
         customersPack.AllInfo(data,function(err,results){
             if(err) res.json(err);
 

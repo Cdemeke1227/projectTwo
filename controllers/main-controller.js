@@ -108,8 +108,12 @@ exports.about = function (req, res) {
 
                 title: results[i].provider.title,
 
-                notes: results[i].provider.notes
+                notes: results[i].provider.notes,
+
+                photoLink: results[i].provider.photoLink
             };
+
+
             viewBuilder.TopProviders.push(stylist);
 
         }
@@ -150,8 +154,30 @@ exports.service = function (req, res) {
 
 exports.schedule = function (req, res) {
 
+   var data = {
+       groupBy : 'service_name',
+       order : 'price',
+   };
 
+   console.log("HELLOOO");
+
+    getServices.AllServices(data,function(err,results){
+        if(err) console.log(err);
+
+        viewBuilder.service_names = []
+        console.log(results[0].dataValues);
+        for(var i = 0; i < results.length; i++){
+            var serviceNames = {
+                name : results[i].dataValues.service_name
+            }
+            viewBuilder.service_names.push(serviceNames);
+        };
+
+
+        console.log(viewBuilder.service_names);
         res.render('schedule', viewBuilder);
+    })
+
   
 
 };
@@ -201,3 +227,15 @@ exports.createAppointment = function (req, res) {
         res.redirect()
     })
 };
+
+
+// Allows users to log out
+exports.logout = function(req, res) {
+ 
+    req.session.destroy(function(err) {
+ 
+        res.redirect('/');
+ 
+    });
+ 
+}

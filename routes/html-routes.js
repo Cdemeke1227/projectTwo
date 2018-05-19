@@ -40,7 +40,9 @@ module.exports = function(app) {
   app.get("/provider",goTo.provider);
 
 
+  //Logs user out
 
+  app.get('/logout', goTo.logout);
 
   function isLoggedIn(req, res, next) {
  

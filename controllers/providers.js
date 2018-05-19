@@ -13,7 +13,7 @@ var db = require("../models");
 
 var exports = module.exports = {};
 
-  exports.AllProviders = function(cb){
+  exports.AllProviders = function(data,cb){
     dbProviders.findAll().then(function(dbProviders){
       return cb(null,dbProviders);
     });

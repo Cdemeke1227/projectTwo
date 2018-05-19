@@ -37,25 +37,47 @@ module.exports = function (sequelize, DataTypes) {
 
   });
   Schedules.associate = function (models) {
-    // Schedules belongs to Providers
-    Schedules.belongsTo(models.Providers, {
-      foreignKey: {
-        allowNull: false
-      }
-    });
 
-    // Schedules.hasMany(models.Appointments, {
-    //   foreignKey: {
-    //     allowNull: false
-    //   }
-    // });
+        // Schedules belongs to Providers
+        Schedules.belongsTo(models.Providers, {
+          foreignKey: {
+            allowNull: false
+          }
+        });
     
-    Schedules.belongsToMany(models.Providers, {
-      as: "Stylist",
-      through: 'Appointments'
-    });
-
+        // Schedules.hasMany(models.Appointments, {
+        //   foreignKey: {
+        //     allowNull: false
+        //   }
+        // });
+        
+        Schedules.belongsToMany(models.Providers, {
+          as: "Stylist",
+          through: 'Appointments'
+        });
+    
+    
+   
 
   };
   return Schedules;
 };
+
+ // Schedules belongs to Providers
+//  Schedules.belongsTo(models.Providers, {
+//   foreignKey: {
+//     allowNull: false
+//   }
+// });
+
+// Schedules.hasMany(models.Appointments, {
+//   foreignKey: {
+//     allowNull: false
+//   }
+// });
+
+// Schedules.belongsToMany(models.Providers, {
+//   through: 'Appointments',
+//   as: "Stylist"
+
+// });

@@ -11,11 +11,31 @@ var db = require("../models");
 var exports = module.exports = {};
 
   // This functions gets all the services, this also includes the Providers who offer that service, from the database and passes back through a callback
-  exports.AllServices = function(cb){
+  exports.AllServices = function(data, cb){
+    console.log(data);
+    var query = {}
 
-      db.Services.findAll({
-        include: [db.Providers]
-      }).then(function (dbService) {
+      if(data.specific === 'service'){
+        if(data.service_name){
+          query.where = {
+            service_name: data.service_name
+          };
+        }
+      }else if(data.specific === 'provider'){
+        if(data.provider_id){
+          query.where = {
+            provider_id : data.provider_id
+          };
+        };
+      }
+
+    if(data.groupBy){
+      query.group = data.groupBy
+    };
+
+      query.include = [db.Providers];
+      console.log(query);
+      db.Services.findAll(query).then(function (dbService) {
         if(dbService.length > 0){
           var services = [];
           for(var i = 0; i < dbService.length; i++){
@@ -29,7 +49,7 @@ var exports = module.exports = {};
           console.log(services);
           return cb(null,services);
         }else {
-          cb(false);
+          cb({message: "There was an error finding what you're looking for. Please check your queries if they exists in the database."});
         }
   
         
@@ -37,10 +57,10 @@ var exports = module.exports = {};
 
   }
 
-  exports.OneService = function(serviceID,cb){
-      db.Services.findOne({
+  exports.OneService = function(serviceName,cb){
+      db.Services.findAll({
         where: {
-          id: serviceID
+          service_name: serviceName
         },
         include: [db.Providers]
       }).then(function(dbService){
@@ -51,7 +71,7 @@ var exports = module.exports = {};
 
   exports.providerServices = function(providerID, cb){
     var query = {
-      id: providerID
+      provider_id: providerID
     };
 
       db.Services.findAll({

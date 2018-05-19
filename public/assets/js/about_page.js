@@ -1,28 +1,33 @@
 $(document).ready(function (){
 
-    $.ajax("/api/providers", {
+    $.ajax("/api/retrieve/providers", {
         type: "GET",
         success: function (data) {
-            console.log('Data: ' + data[0].category);
+            console.log('Data: ' + data);
 
             // Reload the page to get the updated list
             
             for (var i = 0; i < 2; i++)
             {
-                var name = `${data[i].firstName} ${data[i].lastName}`;
-                var title = data[i].title;
-                var bio = data[i].notes;
-                var email = data[i].email;
-                var phone = data[i].phone;
-                var pic = data[i].photoLink;
+            
+                var provider=data[i].provider;
+                console.log(provider);
+                var name = `${provider.firstName} ${provider.lastName}`;
+                var title = provider.title;
+                var bio = provider.notes;
+                var email = provider.email;
+                var phone = provider.phone;
+                var pic = provider.photoLink;
 
-                $("#service" + i + "_name").text(name);
-                $("#service" + i + "_title").text(title);
-                $("#service" + i + "_bio").text(bio);
-                $("#service" + i + "_email").text(email);
-                $("#service" + i + "_phone").text(phone);
+                console.log(`Provider ${i}: ${name} ${title}  ${email} ${phone} ${pic} ${bio}`);
+                var proNumb = i+1;
+                $("#stylist" + proNumb + "_name").text(name);
+                $("#stylist" + proNumb + "_title").text(title);
+                $("#stylist" + proNumb + "_bio").text(bio);
+                $("#stylist" + proNumb + "_email").text(email);
+                $("#stylist" + proNumb + "_phone").text(phone);
 
-                $("#service" + i + "_pic").attr({'src': pic });
+                $("#stylist" + proNumb + "_pic").attr({'src': pic });
             }
             
         },

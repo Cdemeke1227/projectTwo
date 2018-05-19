@@ -90,17 +90,16 @@ module.exports = function(passport, Customer, Provider) {
                         {
                             email: email,
              
-                            password: userPassword,
-             
                             firstName: req.body.firstName,
 
                             lastName: req.body.lastName,
 
-                            phone: req.body.phone
+                            phone: req.body.phone,
+
+                            password : userPassword
              
              
                         };
-             
              
                     User.create(data).then(function(newUser, created) {
                         console.log(created);

@@ -88,6 +88,7 @@ module.exports = function(app){
             description: req.body.description,
             duration: req.body.duration,
             price: req.body.price,
+
             photoLinks: data.photoLinks
         };
 

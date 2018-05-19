@@ -3,7 +3,7 @@ $(document).ready(function () {
     jQuery.fn.carousel.Constructor.TRANSITION_DURATION = 2000;  // 2 seconds
 
 
-    $.ajax("/api/services", {
+    $.ajax("api/retrieve/services/", {
         type: "GET",
         success: function (data) {
             console.log('Data: ' + data[0].category);

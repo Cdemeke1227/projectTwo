@@ -8,43 +8,77 @@ module.exports = function(app){
 //
 // ROUTES for SERVICES
 //
-    // GET route to get services within a range defined by the params range with providers who offer that service
-    app.get('/retrieve/services/:something?/:id?',function(req,res){
-        //So here I've built a call that can be used for multiple things depending on what you want to do.
-        // The params are optional for when you want to get something specific about services
-            // The something param (i didnt know what to name it sorry...) would either be provider or service (SINGULAR PLEASE)
-            // The id param will either be the ID of the provider OR the ID of the service depending on the something param
-            //IF YOU WANT TO
-                // Get all services and providers that offer them -- leave the optional parameters empty
-                // Get 1 specific type of service and providers that offer it -- '/retrieve/services/service/:serviceID'
-                // Get all services that a specific provider offers -- '/retrieve/services/provider/:providerID'
-
-        switch(req.params.something){
-            case 'service':
-                //Gets service by id and providers that offer that service
-                servicesPack.OneService(req.params.id, function(results){
-                    res.json(results);
-                });
-            break;
-                //Gets all services that a specific provider offers
-            case 'provider':
-                servicesPack.providerServices(req.params.id, function(results){
-                    res.json(results);
-                });
-            break;
-            default:
-                //Get all services and providers that offer them
-                servicesPack.AllServices(function(results){
+    // GET route to get services within a range defined by the queries range with providers who offer that service
+    app.get('/api/retrieve/services/',function(req,res){
+        //Check read me for query list
+        var data = {};
+        if(req.query.all === 'yes'){
+            data.specific = 'no';
+            servicesPack.AllServices(data,function(err,results){
+                console.log(results);
                 res.json(results);
-            });
-            break;
+            })
+
+        }else if(req.query.all === 'group'){
+            switch(req.query.groupBy){
+                case 'category':
+                    data.groupBy = req.query.groupBy;
+                    servicesPack.AllServices(data, function(err,results){
+                        if(err) res.json(err);
+                        res.json(results);
+                    })
+                break;
+                default:
+                    data.groupBy = 'service_name';
+                    servicesPack.AllServices(data, function(err,results){
+                        if(err) res.json(err);
+                        res.json(results);
+                    })
+
+            }
+        } else if(req.query.all === 'no'){
+            data.specific = req.query.specific;
+            switch(data.specific){
+                case 'service':
+                    if(req.query.service_name){
+                        data.service_name = req.query.service_name;
+                        servicesPack.AllServices(data,function(err,results){
+                            if(err) res.json(err);
+
+                            res.json(results);
+                        });
+                    }else{
+                        res.json('Missing service_name');
+                    }
+
+                break;
+                case 'provider':
+                    
+                    if(isNaN(req.query.provider_id) === false){
+                        data.provider_id = req.query.provider_id;
+                        servicesPack.AllServices(data,function(err,results){
+                            if(err) res.json(err);
+
+                            res.json(results);
+                        })
+                    }else {
+                        res.json('provider_id must be a number');
+                    }
+                break;
+                default: {
+                    res.json('Please include specific specific can only be service or provider')
+                }
+            }
+        }else{
+            res.json("Missing all=");
         }
         
     
     });
 
-    //PUT route to update service by ID
-    app.put('/update/service/:id', function(req,res){
+    //PUT route to update service by ID THIS SHOULD ONLY BE ABLE TO BE ACCESSED BY ADMIN
+    app.put('/api/update/service/:id', function(req,res){
+
         //Build object to pass on to update service
         var data = {
             //Will be used to figure out which service we're updating will be retrieved from parameter
@@ -64,7 +98,7 @@ module.exports = function(app){
 
     //POST route to create a new service
 
-    app.post('/new/service', function(req,res){
+    app.post('/api/new/service', function(req,res){
         //Build the service data
 
         var data = {
@@ -82,7 +116,7 @@ module.exports = function(app){
 
 
     //DELETE route to delete service by ID
-    app.delete('/delete/service/:id', function(req,res){
+    app.delete('/api/delete/service/:id', function(req,res){
         //Get service id from params to delete service
         var data = {
             id : req.params.id
@@ -104,9 +138,12 @@ module.exports = function(app){
                 //yes or no to include with schedules or not
             // 
     //GET route to retrieve information about providers
-    app.get('/revieve/providers', function(req,res){
-
+    app.get('/api/recieve/providers', function(req,res){
+        if(req.query.provider_id){
+            providersPack
+        }
     })
+
 //
 // Routes for APPOINTMENTS **in progress**
 //
@@ -126,6 +163,22 @@ module.exports = function(app){
 }
 
 
+
+
+// FUNCTIONS THAT BE USED FOR AUTHORIZATION FOR EACH ROUTE
+
+function isAdmin(req, res, next) {
+ 
+    if (req.isAuthenticated() && req.user.admin === true)
+
+
+      return next();
+  //Redirects home with a loginMessage flash message
+    req.flash('logInMessage',"Yikes");
+
+    res.redirect('/');
+
+}
 
 //////////////////////////////////////
 //Seed data for Services Model

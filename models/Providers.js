@@ -55,11 +55,7 @@ module.exports = function (sequelize, DataTypes) {
     },
     phone: {
       type: DataTypes.STRING,
-      allowNull: true,
-      // validate: {
-      //   isNumeric: true,
-      //   // len: [2,11] // How can I make it appear in Phone Number Format (713) 624-2353
-      // }
+      allowNull: true
     },
     notes: {
       type: DataTypes.TEXT,
@@ -98,7 +94,8 @@ module.exports = function (sequelize, DataTypes) {
   });
   
   Providers.associate = function(models) {
-    // Associating Providers with Services
+
+        // Associating Providers with Services
     // When a Provider  is deleted, also delete any associated Services
     Providers.hasMany(models.Services, {
       onDelete: "cascade"
@@ -113,7 +110,30 @@ module.exports = function (sequelize, DataTypes) {
       as: "Reserved Time",
       through: 'Appointments'
     });
+    
 
   };
   return Providers;
 };
+
+// // Associating Providers with Services
+//     // When a Provider  is deleted, also delete any associated Services
+//     Providers.hasMany(models.Services, {
+//       onDelete: "cascade"
+//     });
+    
+//     Providers.hasMany(models.Schedules, {
+//       onDelete: "cascade"
+//     });
+
+//     Providers.hasMany(models.Appointments,{
+
+//     })
+//     Providers.belongsTo(models.Schedules, {
+//       through: 'Appointments',
+//       as: "Reserved Time",
+  
+//     });
+
+//     //I dont see where providers belonging to customers would be useful information to gather.
+//     // Providers.belongsToMany(models.Customers, {through: 'Appointments'});

@@ -79,7 +79,9 @@ exports.home = function (req, res) {
         }
     };
 
+
     // console.log(viewBuilder);
+
 
     res.render('home', viewBuilder);
 
@@ -129,7 +131,9 @@ exports.about = function (req, res) {
 
 // Handles when users go to providers page!!!***THIS FUNCTION STILL NEEDS MORE INFORMATION TO BE GATHERED BEFORE IT CAN RENDER ALL STATIC INFORMATION ON THIS PAGE
 exports.provider = function (req, res) {
+    var data = {
 
+    };
 
     getCustomers.AllInfo(function (err, clients) {
         console.log(clients);
@@ -164,19 +168,20 @@ exports.schedule = function (req, res) {
     getServices.AllServices(data,function(err,results){
         if(err) console.log(err);
 
-        viewBuilder.service_names = []
+        viewBuilder.service_names = [];
         console.log(results[0].dataValues);
         for(var i = 0; i < results.length; i++){
             var serviceNames = {
                 name : results[i].dataValues.service_name
-            }
+            };
             viewBuilder.service_names.push(serviceNames);
         };
 
 
         console.log(viewBuilder.service_names);
         res.render('schedule', viewBuilder);
-    })
+
+    });
 
   
 

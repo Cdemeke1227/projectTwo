@@ -67,5 +67,12 @@ $(document).ready(function () {
   // $(document).on("click", ".dropdown-item", listServices);
 
 
+  $(".serviceSelection").on('click',function(e){
+    
+    console.log($(this).val());
+
+    
+
+  });
 });
 

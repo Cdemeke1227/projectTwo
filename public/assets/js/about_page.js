@@ -1,5 +1,5 @@
 $(document).ready(function (){
-
+/*
     $.ajax("/api/retrieve/providers", {
         type: "GET",
         success: function (data) {
@@ -35,4 +35,5 @@ $(document).ready(function (){
             alert("Request: " + JSON.stringify(request));
         }
     });
+    */
 });

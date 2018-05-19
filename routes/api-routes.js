@@ -158,6 +158,18 @@ module.exports = function(app){
             default:
             break;
         }
+        switch(isNaN(req.query.provider_id)){
+            case false:
+                if(req.query.provider_id > 0){
+                    data.provider_id = req.query.provider_id;
+                }else{
+                    res.json('Please use a number greater than 0 for provider_id');
+                }
+            break;
+            default:
+                res.json('Please use a number for provider_id');
+            break;
+        }
         providersPack.AllProviders(data, function(err, results){
             if(err) res.json(err);
             console.log(results);
@@ -165,6 +177,7 @@ module.exports = function(app){
         })
     })
 
+    
 //
 // Routes for APPOINTMENTS **in progress**
 //

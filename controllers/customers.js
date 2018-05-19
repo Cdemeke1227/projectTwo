@@ -16,8 +16,12 @@ var exports = module.exports = {};
 
 
     // This function will gather all information about each and every Customer and pass it back through a callback
-    exports.AllInfo = function(cb){
-        db.Customers.findAll().then(function(dbCustomers){
+    exports.AllInfo = function(data,cb){
+        var query = {};
+        if(data.id){
+            query.id = data.id
+        };
+        db.Customers.findAll(query).then(function(dbCustomers){
             console.log(dbCustomers);
             if(dbCustomers.length > 0){
                 var customers = [];

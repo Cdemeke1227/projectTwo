@@ -14,38 +14,26 @@ that service --}} {{!-- Third user selects day from calendar --}} {{!-- Fouth us
 
   <div class="background-color1">
     <!-- Select Service Dropdown -->
-    <div class="btn-group">
-      <button class="btn btn-secondary btn-lg" type="button">
-        Choose Service
-      </button>
-      <button type="button" class="btn btn-lg btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true"
-        aria-expanded="false">
-        <span class="sr-only">Toggle Dropdown</span>
-      </button>
-      <div class="dropdown-menu">
-        
+    <form action="">
 
-          {{#each service_names}}  
-            {{name}}
+      <select class="form-control" id="serviceChoice">
+        {{#each service_names}}
+        <option class="dropdown-item1" value="{{name}}">{{name}}</option>
+        {{/each}}
+      </select>
+  <!-- Select Stylist Dropdown -->
+  <select class="form-control" id="providerChoice" Placeholder>
+       
+        {{!-- {{#each provider_name}}
+        <option class="dropdown-item" value="{{name}}">{{name}}</option>
+        {{/each}} --}}
 
-          {{/each}}
-        
-      </div>
-    </div>
+      </select>  
 
-    <!-- Select Stylist Dropdown -->
-    <div class="btn-group">
-      <button class="btn btn-secondary btn-lg" type="button">
-        Choose Stylist
-      </button>
-      <button type="button" class="btn btn-lg btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true"
-        aria-expanded="false">
-        <span class="sr-only">Toggle Dropdown</span>
-      </button>
-      <div class="dropdown-menu1">
-        ...
-      </div>
-    </div>
+    </form>
+
+  
+  
 
     <input id="date" type="date">
 

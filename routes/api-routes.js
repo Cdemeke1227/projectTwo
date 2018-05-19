@@ -5,6 +5,7 @@ var servicesPack = require('../controllers/services.js');
 var providersPack = require('../controllers/providers.js');
 var schedulesPack = require('../controllers/schedules.js');
 var appointmentsPack = require('../controllers/appointments.js');
+var customersPack = require('../controllers/customers.js');
 module.exports = function(app){
 //
 // ROUTES for SERVICES
@@ -13,6 +14,7 @@ module.exports = function(app){
     app.get('/api/retrieve/services',function(req,res){
         //Check read me for query list
         var data = {};
+
         if (req.query.orderBy) {
             switch (req.query.orderBy) {
                 case 'category':
@@ -27,6 +29,7 @@ module.exports = function(app){
                     break;
             };
             switch (req.query.direction) {
+
                 case 'DESC':
                     data.direction = 'DESC';
                     break;
@@ -35,28 +38,18 @@ module.exports = function(app){
                     break
             }
         }
+        
         if(req.query.all === 'yes'){
             data.specific = 'no';
-            servicesPack.AllServices(data,function(err,results){
-                console.log(results);
-                res.json(results);
-            })
-
         }else if(req.query.all === 'group'){
             switch(req.query.groupBy){
                 case 'category':
                     data.groupBy = req.query.groupBy;
-                    servicesPack.AllServices(data, function(err,results){
-                        if(err) res.json(err);
-                        res.json(results);
-                    })
+
                 break;
                 default:
                     data.groupBy = 'service_name';
-                    servicesPack.AllServices(data, function(err,results){
-                        if(err) res.json(err);
-                        res.json(results);
-                    })
+
 
             }
         } else if(req.query.all === 'no'){
@@ -65,11 +58,7 @@ module.exports = function(app){
                 case 'service':
                     if(req.query.service_name){
                         data.service_name = req.query.service_name;
-                        servicesPack.AllServices(data,function(err,results){
-                            if(err) res.json(err);
 
-                            res.json(results);
-                        });
                     }else{
                         res.json('Missing service_name');
                     }
@@ -79,11 +68,7 @@ module.exports = function(app){
                     
                     if(isNaN(req.query.provider_id) === false){
                         data.provider_id = req.query.provider_id;
-                        servicesPack.AllServices(data,function(err,results){
-                            if(err) res.json(err);
-
-                            res.json(results);
-                        })
+                       
                     }else {
                         res.json('provider_id must be a number');
                     }
@@ -93,10 +78,14 @@ module.exports = function(app){
                 }
             }
         }else{
-            res.json("Missing all=");
+            
         }
         
-    
+        servicesPack.AllServices(data,function(err,results){
+            console.log(results);
+            res.json(results);
+        })
+
     });
 
     //PUT route to update service by ID THIS SHOULD ONLY BE ABLE TO BE ACCESSED BY ADMIN
@@ -175,18 +164,22 @@ module.exports = function(app){
             default:
             break;
         }
-        switch(isNaN(req.query.provider_id)){
-            case false:
-                if(req.query.provider_id > 0){
-                    data.provider_id = req.query.provider_id;
-                }else{
-                    res.json('Please use a number greater than 0 for provider_id');
-                }
-            break;
-            default:
-                //res.json('Please use a number for provider_id');
-            break;
+        if(req.query.provider_id){
+            switch(isNaN(req.query.provider_id)){
+                case false:
+                    if(req.query.provider_id > 0){
+                        data.provider_id = req.query.provider_id;
+                    }else{
+                        res.json('Please use a number greater than 0 for provider_id');
+                    }
+                break;
+                default:
+                    res.json('Please use a number for provider_id');
+                break;
         }
+
+        }
+
         providersPack.AllProviders(data, function(err, results){
             if(err) res.json(err);
             console.log(results);
@@ -296,6 +289,25 @@ module.exports = function(app){
 
     //Post route to create a new appointment 
     app.post('/appointment/new/:id', goTo.createAppointment);
+
+
+    app.get('/api/retrieve/customer', function(req,res){
+
+        var data = {};
+        if(req.query.customer_id){
+            data.id = req.query.customer_id;
+        }
+        if(req.query.orderBy){
+            data.order = req.query.orderBy;
+        };
+        i
+        customersPack.AllInfo(data,function(err,results){
+            if(err) res.json(err);
+
+            res.json(results);
+        })
+
+    })
 
 }
 

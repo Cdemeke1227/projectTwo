@@ -16,7 +16,7 @@ var exports = module.exports = {};
 
 
     // This function will gather all information about each and every Customer and pass it back through a callback
-    exports.AllInfo = function(data,cb){
+    exports.AllInfo = function(data, cb){
         var query = {};
         if(data.id){
             query.id = data.id
@@ -36,7 +36,7 @@ var exports = module.exports = {};
                 console.log(dbCustomers[0].dataValues);
                 console.log(dbCustomers[1].dataValues);
                 console.log(customers);
-                return cb(null,customers);
+                cb(null, customers);
             }
      
         });

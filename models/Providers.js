@@ -77,11 +77,11 @@ module.exports = function (sequelize, DataTypes) {
     },
     'updatedAt': {
       type: DataTypes.DATE(3),
-      defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3)'),
+      defaultValue: sequelize.NOW,
     },
   }, {
     timestamps: true,
-    tableName: 'providers',
+    tableName: 'Providers',
     paranoid: true
     
   });

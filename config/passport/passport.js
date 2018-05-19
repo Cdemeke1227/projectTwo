@@ -98,7 +98,7 @@ module.exports = function(passport, Customer, Provider) {
 
                             password : userPassword
              
-             
+                            
                         };
              
                     User.create(data).then(function(newUser, created) {

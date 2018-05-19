@@ -87,7 +87,37 @@ exports.home = function(req, res){
 
 // Handles for when user goes to the path '/about'
 exports.about = function (req, res) {
-    res.render('about', viewBuilder);
+    var data = {};
+    getProviders.AllProviders(data,function(err,results){
+        if(err) console.log(err);
+
+
+        viewBuilder.TopProviders = [];
+
+        for(var i= 0; i < 2; i++){
+            var stylist = {
+                email: results[i].provider.email,
+ 
+                firstName: results[i].provider.firstName,
+
+                lastName: results[i].provider.lastName,
+
+                phone: results[i].provider.phone,
+
+                experience: results[i].provider.experience,
+
+                title: results[i].provider.title,
+
+                notes: results[i].provider.notes
+            };
+            viewBuilder.TopProviders.push(stylist);
+
+        }
+        
+        console.log("THIS IS IT" + viewBuilder);
+        res.render('about', viewBuilder);
+    })
+   
 };
 
 
@@ -121,7 +151,7 @@ exports.service = function (req, res) {
 exports.schedule = function (req, res) {
    
 
-        
+        res.render('schedule', viewBuilder);
   
 };
 

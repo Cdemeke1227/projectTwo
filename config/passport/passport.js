@@ -90,15 +90,13 @@ module.exports = function(passport, Customer, Provider) {
                         {
                             email: email,
              
-                            password: userPassword,
-             
                             firstName: req.body.firstName,
 
                             lastName: req.body.lastName,
 
                             phone: req.body.phone,
 
-                            
+                            password : userPassword
              
              
                         };

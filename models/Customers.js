@@ -62,7 +62,7 @@ module.exports = function (sequelize, DataTypes) {
   }, 
   {
     timestamps: true,
-    tableName: Customers,
+    tableName: 'Customers',
     paranoid: true
   });
   

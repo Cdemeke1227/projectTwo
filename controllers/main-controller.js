@@ -159,7 +159,7 @@ exports.service = function (req, res) {
 exports.schedule = function (req, res) {
 
    var data = {
-       groupBy : 'service_name',
+    //    groupBy : 'service_name',
        order : 'price',
    };
 

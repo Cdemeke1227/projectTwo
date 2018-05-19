@@ -7,33 +7,27 @@
 
 $(document).ready(function () {
 
-  var queryServicesURL = "http://localhost:8080/api/retrieve/services/?all=yes";
+  // user selects service  
+  $("#serviceChoice").on("change", function () {
+    var serviceChosen = $(this).val();
+    console.log(serviceChosen);
 
-  $.ajax("api/retrieve/services/", {
-    url: queryServicesURL,
-    type: "GET",
-    success: function (data) {
-      service = data;
-      console.log(service);
+    var providerQuery = `api/retrieve/providers/?all=no&specific=services&service_name=${serviceChosen}`;
+    console.log(providerQuery);
 
-      listServices(data);
-    },
-    error: function (request, error) {
-      alert("Request: " + JSON.stringify(request));
-    }
-  });
+    $.ajax(providerQuery, {
+      // $.ajax(`api/retrieve/providers/`, {
+      type: "GET",
+      success: function (data) {
+        console.log('Provider Data: ' + data);
+      },
+      error: function (request, error) {
+        alert("Request: " + JSON.stringify(request));
+      }
+    });
 
-  //get list of available services from database
-  // function listServices(data) {
-  //   for (var i = 0; i < data.length; i++) {
-  //     var aService = $("<a>");
-  //     aService.addClass("dropdown-item");
-  //     aService.attr("value", data[i].service_name);
-  //     aService.text(data[i].service_name);
-  //     $("dropdown-menu").append(aService);
-  //   }
-  // }
 
+  })
   //for each available service 
 
 

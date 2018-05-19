@@ -13,6 +13,26 @@ module.exports = function(app){
     app.get('/api/retrieve/services',function(req,res){
         //Check read me for query list
         var data = {};
+        switch(req.query.orderBy){
+            case 'category': 
+                data.order = 'category';
+            break;
+            case 'price':
+                data.order = 'price';
+
+            break;
+            default:
+                res.json('Invalid input for oderBy=');
+                break;
+        };
+        switch(req.query.direction){
+            case 'DESC':
+                data.direction = 'DESC';
+                break;
+            default:
+                data.direction = "AESC";
+                break
+        }
         if(req.query.all === 'yes'){
             data.specific = 'no';
             servicesPack.AllServices(data,function(err,results){

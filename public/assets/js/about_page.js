@@ -1,9 +1,9 @@
 $(document).ready(function (){
 
-    $.ajax("/api/providers", {
+    $.ajax("/api/retrieve/providers", {
         type: "GET",
         success: function (data) {
-            console.log('Data: ' + data[0].category);
+            console.log('Data: ' + data);
 
             // Reload the page to get the updated list
             

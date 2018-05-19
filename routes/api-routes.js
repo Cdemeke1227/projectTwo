@@ -13,25 +13,27 @@ module.exports = function(app){
     app.get('/api/retrieve/services',function(req,res){
         //Check read me for query list
         var data = {};
-        switch(req.query.orderBy){
-            case 'category': 
-                data.order = 'category';
-            break;
-            case 'price':
-                data.order = 'price';
+        if (req.query.orderBy) {
+            switch (req.query.orderBy) {
+                case 'category':
+                    data.order = 'category';
+                    break;
+                case 'price':
+                    data.order = 'price';
 
-            break;
-            default:
-                res.json('Invalid input for oderBy=');
-                break;
-        };
-        switch(req.query.direction){
-            case 'DESC':
-                data.direction = 'DESC';
-                break;
-            default:
-                data.direction = "AESC";
-                break
+                    break;
+                default:
+                    res.json('Invalid input for oderBy=');
+                    break;
+            };
+            switch (req.query.direction) {
+                case 'DESC':
+                    data.direction = 'DESC';
+                    break;
+                default:
+                    data.direction = "AESC";
+                    break
+            }
         }
         if(req.query.all === 'yes'){
             data.specific = 'no';
@@ -154,7 +156,7 @@ module.exports = function(app){
 //
 
     //GET route to retrieve information about providers
-    app.get('/api/recieve/providers', function(req,res){
+    app.get('/api/retrieve/providers', function(req,res){
         var data = {};
         //Check word doc on how to use it
         switch(req.query.services){
@@ -198,7 +200,7 @@ module.exports = function(app){
 //
        
     //GET route to get appointments within a range defined by the queries 
-    app.get('/api/recieve/schedule', function(req,res){
+    app.get('/api/retrieve/schedule', function(req,res){
         var data = {};
         if(req.query.orderBy){
             switch(req.query.orderBy){

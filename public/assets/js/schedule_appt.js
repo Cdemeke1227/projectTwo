@@ -1,25 +1,48 @@
-//const AppointmentPicker = require("appointment-picker");
+// const AppointmentPicker = require("appointment-picker");
 
-$(document).ready(function(){
+// First user will select a service from dropdown menu
+// Second user will select a stylist from dropdown menu
+// Third user will select a day
+// Fourth user will pick an appointment time
 
-  populateServiceOptions();
+$(document).ready(function () {
+
+  var queryServicesURL = "http://localhost:8080/api/retrieve/services/?all=yes";
+
+  $.ajax("api/retrieve/services/", {
+    url: queryServicesURL,
+    type: "GET",
+    success: function (data) {
+      service = data;
+      console.log(service);
+
+      listServices(data);
+    },
+    error: function (request, error) {
+      alert("Request: " + JSON.stringify(request));
+    }
+  });
+
+  //get list of available services from database
+  // function listServices(data) {
+  //   for (var i = 0; i < data.length; i++) {
+  //     var aService = $("<a>");
+  //     aService.addClass("dropdown-item");
+  //     aService.attr("value", data[i].service_name);
+  //     aService.text(data[i].service_name);
+  //     $("dropdown-menu").append(aService);
+  //   }
+  // }
+
+  //for each available service 
+
+
 
   $.fn.appointmentPicker = function (options) {
     this.appointmentPicker = new AppointmentPicker(this[0], options);
     console.log(this);
     return this;
   };
-
-//   function getServices() {
-//     $.get("/api/service", function(data) {
-//       services = data;
-//       listServices();
-//     });
-//   }
-
-// function listServices() {
-
-// }
 
   var picker = $('#time').appointmentPicker({
     title: "Available Appointments",
@@ -36,70 +59,13 @@ $(document).ready(function(){
 
   document.body.addEventListener('change.appo.picker', function (e) { var time = e.time; }, false);
 
-  //populate service options
-  function populateServiceOptions (){
-    //temp array of services until database is hooked in
-    var tempArray = [
-      { id: 1, duration: 30, description: "Men's Cut" }, 
-      { id: 2, duration: 30, description: "Women's Cut" },
-      { id: 3, duration: 60, description: "Women's Cut & Style" },
-      { id: 4, duration: 120, description: "Full Color" },
-      { id: 5, duration: 90, description: "Partial Highlights" }
-    ]
-    //get list of available services from database
-
-    
 
 
-    //for each available service 
-    tempArray.forEach(element => {
-     
-      //create a checkbox div and 
-      // var checkDiv = $("<div>").addClass("form-check");
-      var dropdown1 = $("<dropdown-menu1>").addClass("form-check-input dropdown-service").data("time", element.duration).attr({
-            type: "dropdown",
-            value: "",
-            id: "service" + element.id
-        }).data({"service": element.id});
-      var checkLabel = $("<label>").addClass("form-check-label").attr({"for": "service" + element.id}).text(element.description);
-      checkDiv.append(checkBox).append(checkLabel);
-       //console.log(`element ${element.description} added`);
-       
-       //append to $("#services") element
-      $("#services").append(checkDiv);
-      //console.log($("#services"));
-    });
-  }  
 
-  function calculateApptDuration (){
-    //loop through checkboxes in $("#services") element and calculate the total appointment time needed for checked boxes
-    
-    var duration = 0;
 
-    var serviceList = "";
-    $('input[type=checkbox]').each(function () {
-     if(this.checked){
-       var serviceTime = $(this).data("time");
-       duration += serviceTime;
-       //console.log(`adding ${serviceTime} minutes to total service`);
-     }
 
-    });
-    //console.log("total appointment duration " + duration);
-    return duration;
-  }
+  // $(document).on("click", ".dropdown-item", listServices);
 
-  $(".checkbox-service").change( function (e){
-    var timeNeeded = calculateApptDuration();
-    //adjust the appointment interval on the appointment picker
-    picker = $('#time').appointmentPicker({
-      interval: timeNeeded
-    });
-  });
-
-  $('#time').on("change", function() {
-
-  });
 
 });
 

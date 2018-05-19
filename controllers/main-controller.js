@@ -21,7 +21,7 @@ var getProviders = require("./providers.js");
 var getAppointments = require('./appointments.js');
 
 //Including the modules for Schedules
-var getSchedules = require('./schedule.js')
+var getSchedules = require('./schedules.js')
 
 
 var exports = module.exports = {};

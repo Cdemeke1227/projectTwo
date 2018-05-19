@@ -45,6 +45,14 @@ module.exports = function(app,passport){
 
     //Creating a new provider
 
-    app.post('/provider/register', passport.authenticate(''))
+    app.post('/provider/register', passport.authenticate('admin-local-signup',{
+        failureRedirect: '/',
+        failureFlash: true,
+        successFlash: true
+    }),
+    function(req,res){
+    
+        res.redirect('')
+    });
 
 }

@@ -13,11 +13,37 @@ var db = require("../models");
 
 var exports = module.exports = {};
 
-  exports.AllProviders = function(data,cb){
-    dbProviders.findAll().then(function(dbProviders){
-      return cb(null,dbProviders);
+  exports.AllProviders = function(data, cb){
+    var query = {};
+    if(data.services){
+      query.include = [db.Services];
+      };
+    if(data.schedule){
+      if(query.include){
+        query.include.push(db.Schedules);
+      }else{
+        query.include = [db.Schedules];
+      }
+    }
+    console.log(query);
+    db.Providers.findAll(query).then(function(dbProviders){
+      if(dbProviders.length > 0 ){
+        var providers = []
+        for(var i = 0; i < dbProviders.length; i++){
+          var providersObj = {
+            provider: dbProviders[i].dataValues
+          };
+
+          providers.push(providersObj);
+      };
+         cb(null, providers);
+      }
+
     });
+
   }
+
+
   //This function will retrieve all Providers with their corresponding Services and pass it back through a callback
   exports.AllWithServices = function(cb){
     db.Providers.findAll({

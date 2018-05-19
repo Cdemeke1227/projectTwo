@@ -54,6 +54,7 @@ module.exports = function(app) {
 
 }
 
+// A function that can be use to check if the user is admin or not?
   function isAdmin(req, res, next) {
  
     if (req.isAuthenticated() && req.user.admin === true)

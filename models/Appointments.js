@@ -36,19 +36,18 @@ module.exports = function (sequelize, DataTypes) {
       defaultValue: false
     },
 
-    'created_at': {
+    'createdAt': {
       type: DataTypes.DATE(3),
       defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3)'),
     },
-    'updated_at': {
+    'updatedAt': {
       type: DataTypes.DATE(3),
       defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3)'),
     },
   }, {
     timestamps: true,
     tableName: Appointments,
-    paranoid: true,
-    underscored: true,
+    paranoid: true
   });
   Appointments.associate = models => {
 
@@ -75,18 +74,3 @@ module.exports = function (sequelize, DataTypes) {
 };
 
 
-// Appointments.belongsTo(models.Customers,{
-//   foreignKey : {
-//     allowNull : false
-//   }
-// });
-// Appointments.belongsTo(models.Providers,{
-//   foreignKey : {
-//     allowNull : false
-//   }
-// });      
-// Appointments.belongsTo(models.Schedules,{
-//   foreignKey : {
-//     allowNull : false
-//   }
-// });

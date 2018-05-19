@@ -1,4 +1,3 @@
-
 INSERT INTO providers (firstName, lastName, password, email, title, experience, phone, notes, photoLink) VALUES ("Kelly", "Smith", "password", "kelly@houseofstyle.com", "Master Stylist", 48, "7136242353", "Kelly began as a stylist in 2005. She specializes in color but loves to tame curly hair and scare away frizz from damaged hair. In her spare time, Kelly volunteers at animal clinics and promotes healthy living.", "/assets/images/about/kelly-bw.jpg");
 INSERT INTO providers (firstName, lastName, password, email, title, experience, phone, notes, photoLink) VALUES ("Becca", "Disney","password", "bdisney@houseofstyle.com", "Stylist", 6, "8322153435", "Becca has been an apprentice under Kelly since 2016. She loves cutting children's hair and is a master at head massages when shampooing.", "/assets/images/about/becca-bw.jpg");
 
@@ -33,6 +32,6 @@ INSERT INTO schedules (startTime, endTime, ProviderId) VALUES (20180501080055, 2
 INSERT INTO schedules (startTime, endTime, ProviderId) VALUES (20180501080055, 20180501170000,1);
 INSERT INTO schedules (startTime, endTime, ProviderId) VALUES (20180501080055, 20180501200000,2);
 
-INSERT INTO appointments (appointStart, appointEnd, duration, ProviderId, ScheduleId, CustomerId) VALUES (20180501080055, 20180501100000, 0200, 1, 2,1);
-INSERT INTO appointments (appointStart, appointEnd, duration, ProviderId, ScheduleId, CustomerId) VALUES (20180502140055, 20180502160000, 0200, 2, 4,2);
-INSERT INTO appointments (appointStart, appointEnd, duration, ProviderId, ScheduleId, CustomerId) VALUES (20180501080055, 20180501160000, 0200, 4, 3,3);
+INSERT INTO appointments (appointStart, appointEnd, duration, ProviderId, ScheduleId, CustomerId) VALUES (20180501080055, 20180501100000, 0200, 2, 3, 1);
+INSERT INTO appointments (appointStart, appointEnd, duration, ProviderId, ScheduleId, CustomerId) VALUES (20180502140055, 20180502160000, 0200, 1, 4, 2);
+INSERT INTO appointments (appointStart, appointEnd, duration, ProviderId, ScheduleId, CustomerId) VALUES (20180501080055, 20180501160000, 0200, 4, 5, 3);

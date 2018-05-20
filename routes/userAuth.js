@@ -51,8 +51,8 @@ module.exports = function(app,passport){
         successFlash: true
     }),
     function(req,res){
-    
-        res.redirect('')
+        
+        res.json(req.user);
     });
 
 }

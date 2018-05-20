@@ -1,12 +1,17 @@
-<div class="modal-content">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+<script type="text/javascript" src="/assets/js/provider.js"></script>
+
+<div class="modal-content" id="newProviderModal">
     <div class="modal-header">
-        <h5 class="modal-title" id="scheduleModalLabel">Add / Edit Provider</h5>
+        <h5 class="modal-title" id="addProviderModalLabel">Add / Edit Provider</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
     <div class="modal-body">
-        <form method="post" action='' name="provider_form">
+        <div id="addProviderMsg" class="message"></div>
+        <form name="provider_form" action="/register/provider" method="post">
             <div class="form-group">
                 <label>First Name</label>
                 <input type="text" class="form-control" id="inputFirstNameProvider" placeholder="First Name" name="firstName" required>
@@ -17,44 +22,44 @@
             </div>
             <div class="form-group">
                 <label>Email address</label>
-                <input type="email" class="form-control" placeholder="Enter email" name="email" required>
-                <small class="form-text text-muted">We'll never share your email with anyone else.</small>
+                <input type="email" class="form-control" placeholder="Enter email" name="email" id="inputEmailProvider" required>
             </div>
             <div class="form-group">
                 <label>Phone Number</label>
-                <input type="tel" class="form-control" placeholder="5555555555" name="phone" required>
+                <input type="tel" class="form-control" placeholder="5555555555" name="phone" id="inputPhoneProvider" required>
             </div>
             <div class="form-group">
                 <label>Password</label>
-                <input type="password" class="form-control" placeholder="Password" name="password" required>
+                <input type="password" class="form-control" placeholder="Password" name="password" id="inputPasswordProvider" required>
             </div>
             <div class="form-group">
                 <label for="inputtitle">Title</label>
-                <input type="title" class="form-control" id="inputtitle" placeholder="Hair Color">
+                <input type="title" class="form-control" name="title" placeholder="Title" id="inputTitleProvider">
             </div>
             <div class="form-group">
                 <label for="inputExperience">Experience</label>
-                <input type="experience" class="form-control" id="inputExperience" placeholder="
+                <input type="experience" name="experience" class="form-control" id="inputExperienceProvider" placeholder="
                 .....Need Format">
             </div>
             <div class="form-group">
                 <label for="inputStart">Notes</label>
-                <input type="notes" class="form-control" id="InputNotes" aria-describedby="NotesHelp" placeholder="Notes">
+                <input type="notes" name="notes" class="form-control" id="inputNotesProvider" aria-describedby="NotesHelp" placeholder="Notes">
             </div>
             <div class="form-group">
                 <label for="inputPhotoLink">Photo Link</label>
-                <input type="PhotoLink" class="form-control" id="inputPhotoLink" placeholder="PhotoLink Time">
+                <input type="PhotoLink" name="photoLink" class="form-control" id="inputPhotoLinkProvider" placeholder="PhotoLink URL">
             </div>
-            <div class="form-group">
+            {{!-- <div class="form-group">
                 <label for="InputService">Service</label>
                 <input type="Service" class="form-control" id="inputService" placeholder="Service">
-            </div>
+            </div> --}}
             <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">Administrator</label>
+                
+                <input type="checkbox" name = "admin" class="form-check-input" id="isAdminProvider">
+                <label class="form-check-label" for="isAdminProvider">Admin</label>
             </div>
             <br>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button id="addProvider" type="button" class="btn btn-primary">Add Provider</button>
         </form>
     </div>
 </div>

@@ -158,11 +158,13 @@ module.exports = function(app){
         //Build the service data
 
         var data = {
-            service_name: req.body.serviceName,
+            service_name: req.body.service_name,
+            category:req.body.category,
             description: req.body.description,
             duration: req.body.duration,
             price: req.body.price,
-            photoLinks: data.photoLinks
+            photoLinks: req.photolinks,
+            ProviderId: req.ProviderId
         };
 
         servicesPack.newService(data, function (results) {

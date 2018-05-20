@@ -120,12 +120,7 @@ module.exports = function(app){
         }
         
 
-    
 
-        servicesPack.AllServices(data,function(err,results){
-            console.log(results);
-            res.json(results);
-        })
 
 
 

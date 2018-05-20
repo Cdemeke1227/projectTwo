@@ -161,5 +161,4 @@ $("#addNewService").on("click", function(e){
                 location.reload();
             }
         );
-    });
-
+    });});

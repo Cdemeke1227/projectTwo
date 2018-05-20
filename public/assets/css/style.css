@@ -603,7 +603,8 @@ footer {
 }
 
 .footerCard {
-    background-color: #d1ecf8;
+    background-color: #747474;
+    color: #FFFFFF;
 }
 
 .footText p {
@@ -624,7 +625,7 @@ footer {
 }
 
 #products1 {
-    height: 485px;
+    height: 500px;
 }
 
 #joicoImg {
@@ -632,7 +633,7 @@ footer {
 }
 
 #products2 {
-    height: 400px;
+    height: 520px;
 }
 
 #bodyographyPic {

@@ -187,5 +187,7 @@ $.ajax(providerQuery, {
                 location.reload();
             }
         );
+
     });
 });
+

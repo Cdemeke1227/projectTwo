@@ -332,7 +332,16 @@ p.lead {
     max-width: 320px;
 }
 
+.bookpage{
+    margin-top: 100px;
+}
+
+.providerpage{
+    margin-top: 100px;
+}
+
 #service1 {
+    margin-top: 100px;
     /* height: 300px;
     border: 1px solid green; */
 }

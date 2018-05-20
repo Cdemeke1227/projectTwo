@@ -12,29 +12,77 @@
 //  
 //
 $(document).ready(function () {
-
-  // Service selector 
+  var datesWorkedWithTimes;
+  $('.scheduleLabels').tooltip();
   $("#serviceChoice").on("change", function () {
-    // AT ANY TIME THE USER CHANGES THE SERVICE CHOICE MAKE SURE THE APPOINTMENT PICKER IS DISABLED AND DATE SELECTOR IS RESET ALONG WITH THE PROVIDER SELECTOR
-    //Prior to this the provider selector shouldb be disable as well, simply saying please select a service. At any point if this event occurs again disable both selectors
-    //When they user selectes their service disable the select to prevent the user from unknowingly create multiple ajax calls
-    $(this).prop('disable', 'true');  //Add the property disable to the select
 
-    var serviceChosen = $(this).val(); // Get the current value of the select
-    console.log(serviceChosen);
-    // Then we need to make sure all white spaces are relpaced with %20
-    var providerQuery = `api/retrieve/providers/?all=no&specific=services&service_name=${serviceChosen}`; //Build the query and console.log it to make sure the query runs smoothly
-    console.log(providerQuery);
+    $("#serviceChoice").prop('disabled', 'disabled');  
+    $("#serviceSchedLabel").attr({
+      id : 'serviceSchedLabel',
+      class: 'scheduleLabels',
+      for : "serviceChoice",
+      'data-toggle' : "tooltip",
+      'data-placement' :"left",
+      title : "Information is currently loading"
+    });
 
-    //Make the ajax call
+  
+    $("#providerChoice").prop('disabled','disabled').empty().append("<option selected> Any </option>");
+
+    $("#providerSchedLabel").attr({
+      id : 'providerSchedLabel',
+      class: 'scheduleLabels',
+      for : "providerChoice",
+      'data-toggle' : "tooltip",
+      'data-placement' :"left",
+      title : "Information is currently loading"
+    });
+
+    $("#date").prop('disabled', 'disabled');
+    $("#dateSchedLabel").attr({
+      id : 'dateSchedLabel',
+      class: 'scheduleLabels',
+      for : "date",
+      'data-toggle' : "tooltip",
+      'data-placement' :"left",
+      title : "Information is currently loading"
+    });
+
+    $("#time-2").prop('disabled', 'disabled');
+    $("#timeSchedLabel").attr({
+      id : 'timeSchedLabel',
+      class: 'scheduleLabels',
+      for : "time-2",
+      'data-toggle' : "tooltip",
+      'data-placement' :"left",
+      title : "Information is currently loading"
+    });
+
+    $('.appo-picker').detach();
+
+
+    var serviceChosen = $(this).val().trim();
+    serviceChosen = encodeURIComponent(serviceChosen.trim())
+
+
+    var providerQuery = `api/retrieve/services/?all=no&specific=service&service_name=${serviceChosen}`; 
+
+
+
     $.ajax(providerQuery, {
-      // $.ajax(`api/retrieve/providers/`, {
       type: "GET",
       success: function (data) {
-        // once we get the data create the elements and append them into the the selector for selecting the provider
-        //Before that we can re-enable the service choice button as well as enable the provider selector button
-          //Because we enabled the selector the event listener for the providerChoice would be able to work now
-        console.log('Provider Data: ' + data);
+    
+        for(var i = 0; i < data.length; i++){
+          var option = $("<option>").attr({
+            value : data[i].ProviderId
+          }).html(data[i].Provider.firstName + " " + data[i].Provider.lastName);
+
+          $("#providerChoice").append(option);
+        };
+
+        $("#providerChoice").prop('disabled', false);
+        $("#serviceChoice").prop('disabled', false);
       },
       error: function (request, error) {
         alert("Request: " + JSON.stringify(request));
@@ -43,68 +91,204 @@ $(document).ready(function () {
 
 
   })
-  //for each available service 
-  //Provider selector
-  $("#providerChoice").change(function(){
-    // AT ANY TIME IF THE USE CHANGES THE DESIRED PROVIDER MAKE SURE YOU DISABLE THE APPOINTMENT PICKER AND DATE SELECTOR
-    //Get the value of the selector
-    //Disable all selectors to prevent user from making multiple ajax calls at one time
-    // begin building your AJAX queryURL
 
-    var queryURL;
+  $("#providerChoice").change(function(){
+    $("#serviceChoice").prop('disabled', 'disabled');  
+    $("#serviceSchedLabel").attr({
+      id : 'serviceSchedLabel',
+      class: 'scheduleLabels',
+      or : "serviceChoice",
+      'data-toggle' : "tooltip",
+      'data-placement' :"left",
+      title : "Information is currently loading"
+    });
+
+
+    $("#providerChoice").prop('disabled','disabled');
+
+    $("#providerSchedLabel").attr({
+      id : 'providerSchedLabel',
+      class: 'scheduleLabels',
+      for : "providerChoice",
+      'data-toggle' : "tooltip",
+      'data-placement' :"left",
+      title : "Information is currently loading"
+    });
+
+    $("#date").prop('disabled', 'disabled');
+    $("#dateSchedLabel").attr({
+      id : 'dateSchedLabel',
+      class: 'scheduleLabels',
+      for : "date",
+      'data-toggle' : "tooltip",
+      'data-placement' :"left",
+      title : "Information is currently loading"
+    });
+
+    $("#time-2").prop('disabled', 'disabled');
+    $("#timeSchedLabel").attr({
+      id : 'timeSchedLabel',
+      class: 'scheduleLabels',
+      for : "time-2",
+      'data-toggle' : "tooltip",
+      'data-placement' :"left",
+      title : "Information is currently loading"
+    });
+
+    $('.appo-picker').detach();   
+    
+
+
+
+    var provider_id = $('#providerChoice').val().trim();
+
+    var queryURL = '/api/retrieve/schedule/?orderBy=start&provider_id=' + provider_id;
 
     $.ajax(queryURL,{
       type: 'GET',
       success: function(data){
-        //From here you can re-enable the selectors because the AJAX call is over
-        //You can now enable the buttons that allow users to select a time depending on the data recieve 
-        //Get the data from the provider's schedule and allow users to select which date and time they wish to select
-        // All of those buttons will have an event listener below 
-        console.log(data);
+        $("#datepicker").prop('disabled',false);
+        var datesWorked = [];
+        datesWorkedWithTimes = [];
+
+        for(var i = 0; i < data.length; i++){
+         
+          var dateStart = data[i].startTime;
+          var dateE = data[i].endTime;
+          var date = dateStart.split('T');
+          var dateEnd = dateE.split('T');
+          var schedule = {};
+          datesWorked.push(date[0]);
+          var key = date[0];
+
+          schedule = {
+            id : data[i].id,
+            date : date[0],
+            startTime : date[1],
+            endTime : dateEnd[1]
+          }
+          datesWorkedWithTimes.push(schedule);
+
+          
+
+          
+        }
+
+
+        $('#datepicker').datepicker({
+          dateFormat: 'yy-mm-dd',
+          beforeShowDay: function(dt){
+            var string = jQuery.datepicker.formatDate('yy-mm-dd', dt);
+  
+            return [ datesWorked.includes(string) ]
+ 
+         }
+          });
+
+
+
       }
     })
 
     
   })
-  //Date selections
-  $('#dateSelector').on(function(e){
-    //Upon selection of the date disable everything
-    // Create begin creating you AJAX call given the schedule ID that matches the date
 
-    var queryURL;
-    //This call should be looking for 1 specific schedule that matches the provider ID you got from the previous call and the schedule ID you just got from the logic above
-    // joined with the appointments for the schedule
+  $('#datepicker').change(function(){
+
+
+    var key = $(this).val().trim()
+
+
+    var scheduleID;
+    var indexDate;
+    for(var i = 0; i < datesWorkedWithTimes.length; i++){
+      if(datesWorkedWithTimes[i].date === $(this).val().trim()){
+        scheduleID = datesWorkedWithTimes[i].id;
+        indexDate = i;
+      }
+    }
+
+    indexDate = datesWorkedWithTimes[indexDate];
+
+ 
+
+    var queryURL = '/api/retrieve/schedule/?orderBy=start&schedule_id=' + scheduleID;
+
+
     $.ajax(queryURL, {
       type: "GET",
       success: function(data){
-        //Upong getting the all appointments for that specific schedule do the logic that begins to enable the appointment picker buttons
-        // After that is done you may reable everything
-        //Now the timeSelection event listener will now work
+
+        var timesTaken = [];
+        for(var i = 0; i < data[0].Appointments.length; i++){
+          var startDateT = data[0].Appointments[i].appointStart;
+          var startSplit = startDateT.split('T');
+          var timeStart = startSplit[1];
+
+          var convertedTime = timeStart.split(':');
+          var convertedDuration = data[0].Appointments[i].duration.split(':');
+          convertedDuration= convertedDuration[1] + ":" + convertedDuration[2];
+          convertedTime = convertedTime[0] + ":" + convertedTime[1];
+          var time = {
+            start : convertedTime,
+            duration : convertedDuration
+          };
+
+          timesTaken.push(time);
+
+
+        }
+
+
+
+        var disabledArr = [];
+
+
+        var entry = indexDate.startTime.split(":");
+        var leave = indexDate.endTime.split(':');
+
+        for(var i = 0; i < timesTaken.length; i++){
+
+          var thisAppArr = converter(timesTaken[i].start,timesTaken[i].duration);
+          for (var j = 0; j < thisAppArr.length; j++){
+            disabledArr.push(thisAppArr[j]);
+          }
+        };
+
+        $("#time-2").prop('disabled', false);
+
+        appPicker(disabledArr, Number(entry[0]), Number(leave[0]));
+
       }
     })
     })
 
-  $(".timeSelection").on('click', function(e){
-    //Once a user selects a time enable the submit button for the form to create the appointment
+  $(".").on('change', function(){
+    console.log($(this).val());
+    $('#submitAppointment').prop('disabled', false);
+
 
   })
 
 
-  $("#appointmentCreator").on('submit', function(e){
-    e.preventDefault();
-    //DISABLE USER INPUTS
-    // TOGGLE A MODAL CONTAINING ALL THE INFORMATION THE USER JUST SELECTED FOR THEIR APPOINTMENT
-    // THAT MODAL SHOULD CONTAIN ANOTHER FORM BUT ALL INPUTS SHOULD BE DISABLED THAT IS SIMPLY SO USER CAN CONFIRM IT
-    //The modal on the form should direct straight to the post route and redirect accordingly... Done :D
+  $("#appointmentForm").on('submit', function(event){
+    event.preventDefault();
+    $("#Review").modal('toggle');
+    $("#Review").modal('show');
+    
   });
 
+
+
+  function appPicker(array, entry, leave){
+
+    console.log(entry,leave);
 
   $.fn.appointmentPicker = function (options) {
     this.appointmentPicker = new AppointmentPicker(this[0], options);
     console.log(this);
     return this;
   };
-
   var $picker2 = $('#time-2').appointmentPicker({
     title: "Available Appointments",
     interval: 30,
@@ -112,18 +296,72 @@ $(document).ready(function () {
     static: true,
     minTime: 09,
     maxTime: 20,
-    startTime: 08,
-    endTime: 22,
-    disabled: ['16:30', '17:00'],
+    startTime: entry,
+    endTime: leave,
+    disabled: array,
     large: true
   });
 
-  document.body.addEventListener('change.appo.picker', function (e) { var time = e.time; }, false);
+  document.body.addEventListener('change.appo.picker', function (e) { 
+    var time = e.time;
+
+    $('#inputServiceChosen').val($('#serviceChoice').val());
+    $('#inputServiceChosen').text($('#serviceChoice').text());
+
+    $('#inputProviderChosen').val($('#providerChoice').val());
+    $('#inputProviderChosen').text($('#providerChoice').text());
+
+    $('#inputDayChosen').val($('#datepicker').val());
+    $('#inputDayChosen').text($('#datepicker').text());
+    
+    $('#inputTimeChosen').val($('#time-2').val());
+    $('#inputTimeChosen').text($('#time-2').text());
+
+    $("#submitAppointment").prop('disabled', false);
+
+  }, false);
+
+
+  }
 
 
 
+function converter(start, duration){
+  // start format  hh:mm 
+  // duration format hh:mm
+  var arr = [start];
+
+  var splitDur = duration.split(':');
+
+  var count = 0;
+
+  count += (parseInt(splitDur[0]) * 2);
+
+  count += (parseInt(splitDur[0]) / 30);
 
 
+  var newTime = start;
+  for(var i = 1; i < Math.floor(count); i++){
+ 
+    var startSplit = newTime.split(':');
+
+    var newHr = startSplit[0];
+    var newMin = (parseInt(startSplit[1]) + 30);
+    if(newMin === 60){
+      var newMin = '00';
+
+      var newHr = (parseInt(startSplit[0]) + 1);
+
+    }
+
+    newTime = newHr + ":" + newMin;
+
+    arr.push(newTime);
+  }
+
+  return arr;
+
+}
 
   // $(document).on("click", ".dropdown-item", listServices);
 

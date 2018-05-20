@@ -11,43 +11,50 @@ that service --}} {{!-- Third user selects day from calendar --}} {{!-- Fouth us
 
 <div class="container">
   <div class="background-color1">
-    <form>
+    <form id="appointmentForm">
       Book your next appointment
       <div class="form-row">
 
         <div class="form-group col-md-4">
           <!-- Select Service Dropdown -->
-          <label for="serviceChoice">Select Service</label>
+          <label id="serviceSchedLabel" class="scheduleLabels"for="serviceChoice">Select Service</label>
           <select id="serviceChoice" class="form-control">
-            {{#each service_names}}
-            <option selected> Select Service</option>
-            <option value="{{name}}">{{name}}</option>
+            <option disabled selected hidden> Services</option>
+            {{#each service_names}}            
+            <option data-service-name = "{{name}}">{{name}}</option>
             {{/each}}
           </select>
         </div>
 
         <div class="form-group col-md-4">
           <!-- Select Stylist Dropdown -->
-          <label for="providerChoice">Select Provider</label>
-          <select id="proiderChoice" class="form-control">
-            {{!-- {{#each provider_names}} --}}
-            <option selected> Select Provider</option>
-            {{!--
-            <option class="dropdown-item2" value="{{name}}">{{name}}</option> --}} {{!-- {{/each}} --}}
+
+          <label id="providerSchedLabel" class="scheduleLabels" for="providerChoice" data-toggle="tooltip" data-placement="left" title="Please select a service to enable this selection">Select Stylist</label>
+          
+          <select id="providerChoice" class="form-control" disabled>
+
+            <option selected> Any </option>
+      
           </select>
         </div>
       </div>
 
       <div class="form-row col-md-4">
-        <div class="form-group">
-          <input id="date" type="date">
+
+        <div class="form-group" id="dateGroup">
+          <label id="dateSchedLabel" class="scheduleLabels" for="date" data-toggle="tooltip" data-placement="left" title="Please select a sylist to enable this selection">Choose a date to see avaiable times</label>
+        
+          <input id="datepicker" disabled>
         </div>
 
         <div class="form-group">
-          <input id="time-2" type="text">
+          <label id="timeSchedLabel" class="scheduleLabels" for="time-2" data-toggle="tooltip" data-placement="left" title="Please select a date to enable this selection">Select a Time</label>
+
+          <input id="time-2" type="text" disabled>
         </div>
       </div>
 
+      <button id="submitAppointment" class="btn btn-primary" disabled>Book!</button>
 
     </form>
 
@@ -55,6 +62,41 @@ that service --}} {{!-- Third user selects day from calendar --}} {{!-- Fouth us
 </div>
 
 
+{{!-- Appointment Review Modal --}}
 
+<div class="modal fade" id="Review" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="appointmentReview">Review Your Appointment Choices</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="post" action='' name="appointment_form">
+          <div class="form-group">
+            <label for="inputServiceChosen">Service Chosen</label>
+            <input type="text" class="form-control" id="inputServiceChosen">
+          </div>
+          <div class="form-group">
+            <label for="inputProviderChosen">Provider Chosen</label>
+            <input type="text" class="form-control" id="inputProviderChosen">
+          </div>
+          <div class="form-group">
+            <label for="inputStart">Day Chosen</label>
+            <input type="text" class="form-control" id="InputDayChoen">
+          </div>
+          <div class="form-group">
+            <label for="inputTime">Time Chosen</label>
+            <input type="text" class="form-control" id="inputTimeChosen">
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
 <link rel="stylesheet" href="/assets/css/appointment-picker.css">
-<script src="/assets/js/appointment-picker.min.js"></script>
+<script src="/assets/js/appointment-picker.js"></script>

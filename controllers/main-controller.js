@@ -82,6 +82,8 @@ exports.home = function (req, res) {
 
     // console.log(viewBuilder);
 
+    // Here im going to try and get the users appointments if they have any and render it through viewBuilder
+
 
     res.render('home', viewBuilder);
 
@@ -159,8 +161,8 @@ exports.service = function (req, res) {
 exports.schedule = function (req, res) {
 
    var data = {
-    //    groupBy : 'service_name',
-       order : 'price',
+       order: 'price',
+       groupBy : 'service_name'
    };
 
    console.log("HELLOOO");

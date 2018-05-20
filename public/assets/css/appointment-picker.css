@@ -97,3 +97,22 @@
       opacity: 0.3;
       color: #666;
       cursor: auto; }
+
+
+      /* I'm using this space for the scheduleing thanks :D  */
+/* 
+      .tooltip-r{
+        visibility: hidden;
+      }
+
+      #providerChoice {
+        visibility: visible;
+      } */
+
+      .scheduleLabels {
+        color:black;
+      }
+
+      .canChoose {
+        background-color: #ff8000;
+      }

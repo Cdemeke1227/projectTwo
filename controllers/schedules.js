@@ -33,6 +33,18 @@ var exports = module.exports = {};
                 ProviderId : data.provider_id
             };
         };
+
+        if( data.schedule_id){
+            if(query.where){
+                query.where.id =  data.schedule_id;
+            }else {
+                query.where = {
+                    id :  data.schedule_id
+                };
+            };
+        };
+
+        
         query.include = [{all:true}]
 
         console.log(query);

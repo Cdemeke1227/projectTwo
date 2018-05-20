@@ -38,11 +38,7 @@ module.exports = function (sequelize, DataTypes) {
           }
         });
     
-        // Schedules.hasMany(models.Appointments, {
-        //   foreignKey: {
-        //     allowNull: false
-        //   }
-        // });
+
         
         Schedules.hasMany(models.Appointments, {
 
@@ -55,21 +51,4 @@ module.exports = function (sequelize, DataTypes) {
   return Schedules;
 };
 
- // Schedules belongs to Providers
-//  Schedules.belongsTo(models.Providers, {
-//   foreignKey: {
-//     allowNull: false
-//   }
-// });
-
-// Schedules.hasMany(models.Appointments, {
-//   foreignKey: {
-//     allowNull: false
-//   }
-// });
-
-// Schedules.belongsToMany(models.Providers, {
-//   through: 'Appointments',
-//   as: "Stylist"
-
-// });
+ 

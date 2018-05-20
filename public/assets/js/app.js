@@ -1,5 +1,6 @@
 $(function () {
 
+
     var offset = 120;
 
     $('#navPageLinks ul li a').click(function (event) {
@@ -8,6 +9,22 @@ $(function () {
         scrollBy(0, -offset);
     });
 
+
+    $('#navPageLinks ul li a').click(function (event) {
+        event.preventDefault();
+        $($(this).attr('href'))[0].scrollIntoView();
+        scrollBy(0, -offset);
+    });
+
+
+
+    // SignUp modeal open
+    function signupModal() {
+        event.preventDefault();
+        $('#signupModal').modal('toggle');
+        $('#signupModal').modal('show');
+        console.log("hello");
+    }
 
 
     // SignUp modeal open
@@ -40,8 +57,18 @@ $(function () {
     }
 
 
+    if (settingsErr > 1) {
+        $("#userSettingsModal").modal('toggle');
+        $("#userSettingsModal").modal('show');
+    }
+
+
+
     // Changes what's being displayed in settingsModal as the user changes the value of the input
     $('.settingsChild').keyup(function () {
+
+  
+
 
         $(this).closest('.settingsParent').children('.childText').text($(this).val().trim());
     });
@@ -99,7 +126,5 @@ $(function () {
             }
         );
     });
-
-
 
 });

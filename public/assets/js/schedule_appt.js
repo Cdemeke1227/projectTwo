@@ -22,7 +22,7 @@ $(document).ready(function () {
   
 
   
-    $("#providerChoice").prop('disabled','disabled').empty().append("<option selected> Any </option>");
+    $("#providerChoices").prop('disabled','disabled').empty().append("<option selected> Any </option>");
 
    
 
@@ -57,10 +57,10 @@ $(document).ready(function () {
 
           }).html(data[i].Provider.firstName + " " + data[i].Provider.lastName);
 
-          $("#providerChoice").append(option);
+          $("#providerChoices").append(option);
         };
 
-        $("#providerChoice").prop('disabled', false);
+        $("#providerChoices").prop('disabled', false);
         $("#serviceChoice").prop('disabled', false);
        
       },
@@ -72,12 +72,12 @@ $(document).ready(function () {
 
   })
 
-  $("#providerChoice").change(function(){
+  $("#providerChoices").change(function(){
     $("#serviceChoice").prop('disabled', 'disabled');  
     
 
 
-    $("#providerChoice").prop('disabled','disabled');
+    $("#providerChoices").prop('disabled','disabled');
 
    
 
@@ -91,7 +91,7 @@ $(document).ready(function () {
 
 
   
-    var provider_id = $('#providerChoice').val();
+    var provider_id = $('#providerChoices').val();
 
    console.log(provider_id[0]);
 
@@ -129,7 +129,7 @@ $(document).ready(function () {
         $("#serviceChoice").prop('disabled', false);  
         
     
-        $("#providerChoice").prop('disabled',false);
+        $("#providerChoices").prop('disabled',false);
     
         
     
@@ -158,7 +158,7 @@ $(document).ready(function () {
     $("#serviceChoice").prop('disabled', 'disabled'); 
     
 
-    $("#providerChoice").prop('disabled','disabled');
+    $("#providerChoices").prop('disabled','disabled');
 
     
 
@@ -194,7 +194,7 @@ $(document).ready(function () {
         $("#serviceChoice").prop('disabled', false); 
        
     
-        $("#providerChoice").prop('disabled',false);
+        $("#providerChoices").prop('disabled',false);
     
         
         $("#datepicker").prop('disabled', false);
@@ -252,7 +252,7 @@ $(document).ready(function () {
 
   $("#submitAppointment").click(function(event){
     event.preventDefault();
-    var provider = $('#providerChoice').val();
+    var provider = $('#providerChoices').val();
     provider = provider.split(',');
     console.log(provider[1]);
     $('#inputServiceChosen').val($('#serviceChoice').val());

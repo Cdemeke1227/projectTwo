@@ -58,7 +58,7 @@ module.exports = function (sequelize, DataTypes)  {
     //We can not have  a  Service  without having a Provider.
 
     Services.belongsTo(models.Providers, {
-      // as: 'provider_id',
+
       foreignKey: {
         allowNull: false
       }

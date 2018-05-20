@@ -123,7 +123,7 @@ $("#addNewService").on("click", function(e){
                 // console.log('Provider Data: ' + providerFirstName);
                 console.log('Provider Data: ' + providerID);
 
-                var providerList = $("#providerChoice");
+                var providerList = $("#providerChoice1");
                 var optionProvider = $("<option>");
                 optionProvider.text(providerFirstName);
                 optionProvider.val(providerID);

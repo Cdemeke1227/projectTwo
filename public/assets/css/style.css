@@ -202,7 +202,6 @@ label {
     background: #d1ecf8;
 }
 
-
 /* ========================== */
 
 .jumbotron {
@@ -349,11 +348,11 @@ p.lead {
     max-width: 320px;
 }
 
-.bookpage{
+.bookpage {
     margin-top: 100px;
 }
 
-.providerpage{
+.providerpage {
     margin-top: 100px;
 }
 
@@ -592,14 +591,17 @@ footer {
     color: #FFFFFF;
     font-size: .8rem;
 }
+
 .card-group footer {
     height: 200px;
     /* width: 60px; */
 }
+
 .card-text-footer {
     color: #000000;
     font-size: .75rem;
 }
+
 .footerCard {
     background-color: #d1ecf8;
 }
@@ -637,8 +639,13 @@ footer {
     max-height: 400px;
 }
 
+#newServiceModal,
 #newProviderModal {
     background-color: black;
+}
+
+#navbarDropdown {
+    z-index: 102;
 }
 
 @media screen and (max-width:990px) {
@@ -656,12 +663,15 @@ footer {
         display: none;
     }
 }
+
 /* ========================== */
 
 /* ========================== */
+
 /* ========================== */
 
 /* ========================== */
+
 /* ========================== */
 
 /* ========================== */

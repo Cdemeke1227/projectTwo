@@ -55,27 +55,62 @@ var offset = 120;
 
 
 var providerQuery = `/api/retrieve/providers/?all=yes`; 
-    console.log(providerQuery);
-    //Make the ajax call
-    $.ajax(providerQuery, {
-      type: "GET",
-      success: function (data) {
+console.log(providerQuery);
+//Make the ajax call
+$.ajax(providerQuery, {
+    type: "GET",
+    success: function (data) {
 
-        for (var i = 0; i < data.length; i++) {
-          var providerFirstName = data[i].provider.firstName;
-          var providerID = data[i].provider.id;
-          // console.log('Provider Data: ' + providerFirstName);
+    for (var i = 0; i < data.length; i++) {
+        var providerFirstName = data[i].provider.firstName;
+        var providerID = data[i].provider.id;
+        // console.log('Provider Data: ' + providerFirstName);
 
-          var providerList = $("#providerChoice");
-          var optionProvider = $("<option>");
-          optionProvider.text(providerFirstName);
-          optionProvider.val(providerID);
-          providerList.append(optionProvider);
-        }
-      },
-      error: function (request, error) {
-        alert("Request: " + JSON.stringify(request));
-      }
-    });
+        var providerList = $("#providerChoice");
+        var optionProvider = $("<option>");
+        optionProvider.text(providerFirstName);
+        optionProvider.val(providerID);
+        providerList.append(optionProvider);
+    }
+    },
+    error: function (request, error) {
+    alert("Request: " + JSON.stringify(request));
+    }
 
 });
+
+
+$("#addNewService").on("click", function(e){
+    e.preventDefault();
+    console.log(this);
+
+    console.log("I AM IN THE ADD SERVICE MODAL HANDLER");
+
+    var newService = {
+        ProviderId: $("#providerPick").val(),
+        category: $("#inputServiceCategory").val().trim(),
+        service_name: $("#InputServiceName").val().trim(),
+        description: $("#inputServiceDescription").val().trim(),
+        duration: "00:30:00",
+        price: $("#inputServicePrice").val().trim(),
+        photolinks: $("#inputServicePhoto").val().trim()
+        };
+    console.log(newService);
+    $.ajax("/api/service", {
+        type: "POST",
+        data: newService
+    }).then(
+        function (error) {
+            if(error) console.log(error);
+
+            console.log("Added service " + newService.service_name);
+            //$("addServiceMsg").text("Added service " + newService.service_name);
+            // Reload the page to get the updated list
+            $("#service_form").trigger("reset");
+            location.reload();
+            
+        }
+    );
+
+});
+

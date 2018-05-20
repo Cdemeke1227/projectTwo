@@ -92,7 +92,7 @@ module.exports = function (sequelize, DataTypes) {
       onDelete: "cascade"
     });
     
-    Providers.belongsToMany(models.Schedules, {
+    Providers.hasMany(models.Schedules, {
 
     });
     

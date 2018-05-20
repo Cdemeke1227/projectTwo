@@ -22,7 +22,7 @@ $(document).ready(function () {
 
     var serviceChosen = $(this).val(); // Get the current value of the select
     console.log(serviceChosen);
-    // Then we need to make sure all white spaces are relaced with %20
+    // Then we need to make sure all white spaces are relpaced with %20
     var providerQuery = `api/retrieve/providers/?all=no&specific=services&service_name=${serviceChosen}`; //Build the query and console.log it to make sure the query runs smoothly
     console.log(providerQuery);
 
@@ -105,7 +105,7 @@ $(document).ready(function () {
     return this;
   };
 
-  var picker = $('#time').appointmentPicker({
+  var $picker2 = $('#time-2').appointmentPicker({
     title: "Available Appointments",
     interval: 30,
     mode: '12h',

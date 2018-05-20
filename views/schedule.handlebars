@@ -10,64 +10,51 @@ that service --}} {{!-- Third user selects day from calendar --}} {{!-- Fouth us
 </div>
 
 <div class="container">
+  <div class="background-color1">
+    <form>
+      Book your next appointment
+      <div class="form-row">
 
+        <div class="form-group col-md-4">
+          <!-- Select Service Dropdown -->
+          <label for="serviceChoice">Select Service</label>
+          <select id="serviceChoice" class="form-control">
+            {{#each service_names}}
+            <option selected> Select Service</option>
+            <option value="{{name}}">{{name}}</option>
+            {{/each}}
+          </select>
+        </div>
 
- <div class="background-color1">
-    <!-- Select Service Dropdown -->
-    <form action="">
+        <div class="form-group col-md-4">
+          <!-- Select Stylist Dropdown -->
+          <label for="providerChoice">Select Provider</label>
+          <select id="proiderChoice" class="form-control">
+            {{!-- {{#each provider_names}} --}}
+            <option selected> Select Provider</option>
+            {{!--
+            <option class="dropdown-item2" value="{{name}}">{{name}}</option> --}} {{!-- {{/each}} --}}
+          </select>
+        </div>
+      </div>
 
-      <select class="form-control" id="serviceChoice">
-        {{#each service_names}}
-        <option class="dropdown-item1" value="{{name}}">{{name}}</option>
-        {{/each}}
-      </select>
-  <!-- Select Stylist Dropdown -->
-  <select class="form-control" id="providerChoice" Placeholder>
-       
-        {{!-- {{#each provider_name}}
-        <option class="dropdown-item" value="{{name}}">{{name}}</option>
-        {{/each}} --}}
+      <div class="form-row col-md-4">
+        <div class="form-group">
+          <input id="date" type="date">
+        </div>
 
-      </select>  
+        <div class="form-group">
+          <input id="time-2" type="text">
+        </div>
+      </div>
+
 
     </form>
-    <input id="date" type="date">
 
-    <div class="container" class="appo-picker">
-      <div class="row">
-        <div class="col-12 calendar">
-          <h2>Available Appointments</h2>
-          {{!-- show appointment picker here --}}
-          <div id="calender">
-            <input id="time" type="text">
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
+</div>
 
 
 
-  <div class="background-color1">
-    {{!-- Blank for picture --}}
-    <div id="placeholder" class="container">
-      <div class="clearing">
-
-      </div>
-    </div>
-  </div>
-
-  <div class="background-color1">
-    <div class="container sectionRow" id="team">
-      <div class="row">
-        <div class="col-12 calendar">
-          <h2>Search by...</h2>
-          {{!-- add button here to bring search modal--}}
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-  <link rel="stylesheet" href="/assets/css/appointment-picker.css">
-  <script src="/assets/js/appointment-picker.min.js"></script>
+<link rel="stylesheet" href="/assets/css/appointment-picker.css">
+<script src="/assets/js/appointment-picker.min.js"></script>

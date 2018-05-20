@@ -173,8 +173,8 @@ label {
     max-width: 50px;
     float: left;
     background-color: none;
-    padding:0;
-    border:0;
+    padding: 0;
+    border: 0;
     align-self: auto;
 }
 
@@ -523,6 +523,7 @@ p.lead {
 .clearing3 {
     height: 250px;
 }
+
 .clearing4 {
     height: 400px;
 }
@@ -619,17 +620,25 @@ footer {
 .appo-picker-list-item {
     color: #50bcc0;
 }
-#products1{
-    height:485px;
+
+#products1 {
+    height: 485px;
 }
-#joicoImg{
+
+#joicoImg {
     max-height: 485px;
 }
-#products2{
-    height:400px;
+
+#products2 {
+    height: 400px;
 }
-#bodyographyPic{
+
+#bodyographyPic {
     max-height: 400px;
+}
+
+#newProviderModal {
+    background-color: black;
 }
 
 @media screen and (max-width:990px) {

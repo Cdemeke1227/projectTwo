@@ -3,17 +3,16 @@
         aria-expanded="false">
         {{firstName}} {{lastName}}
     </a>
-    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        {{#if admin}} {{>navbar/user-options/admin}} {{else}} {{>navbar/user-options/customer}} {{/if}}
-        
-        {{!-- {{>navbar/user-options/admin}} 
-        {{>navbar/user-options/customer}} --}}
+
+    {{!-- <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        {{#if admin}} {{>navbar/user-options/admin}} {{else}} {{>navbar/user-options/customer}} {{/if}} --}}
 
 
-{{!-- {{>navbar/user-options/admin}}
+
+ {{>navbar/user-options/admin}}
 
 
-{{>navbar/user-options/customer}} --}}
+{{>navbar/user-options/customer}} 
 
         {{!-- Both customers and admins should have these options --}}
             {{!-- In settings users/admins should be able to update their personal information (email; passsword; phone number; name; etc)

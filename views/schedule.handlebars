@@ -15,7 +15,7 @@ that service --}} {{!-- Third user selects day from calendar --}} {{!-- Fouth us
       Book your next appointment
       <div class="form-row">
 
-        <div class="form-group col-md-4">
+        <div class="form-group col-md-4" id="servicePick">
           <!-- Select Service Dropdown -->
           <label for="serviceChoice">Select Service</label>
           <select id="serviceChoice" class="form-control">
@@ -26,35 +26,77 @@ that service --}} {{!-- Third user selects day from calendar --}} {{!-- Fouth us
           </select>
         </div>
 
-        <div class="form-group col-md-4">
+        <div class="form-group col-md-4" id="providerPick">
           <!-- Select Stylist Dropdown -->
           <label for="providerChoice">Select Provider</label>
-          <select id="proiderChoice" class="form-control">
+          <select id="providerChoice" class="form-control">
             {{!-- {{#each provider_names}} --}}
             <option selected> Select Provider</option>
-            {{!--
-            <option class="dropdown-item2" value="{{name}}">{{name}}</option> --}} {{!-- {{/each}} --}}
+
+          </select>
+        </div>
+
+
+        <div class="form-group col-md-4" id="datePick">
+          <!-- Select Stylist Dropdown -->
+          <label for="dateChoice">Select Day</label>
+          <select id="dateChoice" class="form-control">
+            {{!-- {{#each provider_names}} --}}
+            <option selected> Select Day</option>
+
           </select>
         </div>
       </div>
+  </div>
 
-      <div class="form-row col-md-4">
-        <div class="form-group">
-          <input id="date" type="date">
-        </div>
+  <div class="form-group col-md-4 " id="appointmentPick">
+    <input id="time-2" type="text">
+  </div>
+ 
 
-        <div class="form-group">
-          <input id="time-2" type="text">
-        </div>
+<button type="button" id="reviewChoices" class="btn btn-secondary col-md-4" data-toggle="modal" data-target="#Review">Review</button>
+</div>
+</form>
+
+</div>
+</div>
+{{!-- Appointment Review Modal --}}
+
+<div class="modal fade" id="Review" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="appointmentReview">Review Your Appointment Choices</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-
-
-    </form>
+      <div class="modal-body">
+        <form method="post" action='' name="appointment_form">
+          <div class="form-group">
+            <label for="inputServiceChosen">Service Chosen</label>
+            <input type="text" class="form-control" id="inputServiceChosen">
+          </div>
+          <div class="form-group">
+            <label for="inputProviderChosen">Provider Chosen</label>
+            <input type="text" class="form-control" id="inputProviderChosen">
+          </div>
+          <div class="form-group">
+            <label for="inputStart">Day Chosen</label>
+            <input type="text" class="form-control" id="InputDayChoen">
+          </div>
+          <div class="form-group">
+            <label for="inputTime">Time Chosen</label>
+            <input type="text" class="form-control" id="inputTimeChosen">
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
 
   </div>
-</div>
 
 
-
-<link rel="stylesheet" href="/assets/css/appointment-picker.css">
-<script src="/assets/js/appointment-picker.min.js"></script>
+  <link rel="stylesheet" href="/assets/css/appointment-picker.css">
+  <script src="/assets/js/appointment-picker.min.js"></script>

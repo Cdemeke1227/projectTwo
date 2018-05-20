@@ -110,6 +110,32 @@ $("#addNewService").on("click", function(e){
 
 });
 
+
+var providerQuery = `/api/retrieve/providers/?all=yes`;
+console.log(providerQuery);
+//Make the ajax call
+$.ajax(providerQuery, {
+    type: "GET",
+    success: function (data) {
+
+        for (var i = 0; i < data.length; i++) {
+            var providerFirstName = data[i].provider.firstName;
+            var providerID = data[i].provider.id;
+            // console.log('Provider Data: ' + providerFirstName);
+            console.log('Provider Data: ' + providerID);
+
+            var providerList = $("#providerChoice2");
+            var optionProvider = $("<option>");
+            optionProvider.text(providerFirstName);
+            optionProvider.val(providerID);
+            providerList.append(optionProvider);
+        }
+    },
+    error: function (request, error) {
+        alert("Request: " + JSON.stringify(request));
+    }
+});
+
     var providerQuery = `/api/retrieve/providers/?all=yes`;
     console.log(providerQuery);
     //Make the ajax call
@@ -161,4 +187,7 @@ $("#addNewService").on("click", function(e){
                 location.reload();
             }
         );
-    });});
+
+    });
+});
+

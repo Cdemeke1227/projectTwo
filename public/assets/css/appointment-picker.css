@@ -97,3 +97,7 @@
       opacity: 0.3;
       color: #666;
       cursor: auto; }
+
+      .scheduleLabels {
+        color :black
+      }

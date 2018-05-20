@@ -260,6 +260,7 @@ module.exports = function(passport, Customer, Provider) {
  
     },
     function(req, email, password, done) {
+        var Admin = Provider;
         var generateHash = function(password) {
 
             return bCrypt.hashSync(password, bCrypt.genSaltSync(8), null);
@@ -282,7 +283,12 @@ module.exports = function(passport, Customer, Provider) {
             {
          
                 var userPassword = generateHash(password);
-         
+                console.log(req.body.admin);
+                if(req.body.admin === 'on'){
+                    var administrater = true;
+                }else {
+                    var administrater = false;
+                }
                 var data =
          
                     {
@@ -300,7 +306,7 @@ module.exports = function(passport, Customer, Provider) {
 
                         title: req.body.title,
 
-                        admin: req.body.admin,
+                        admin: administrater,
 
                         notes: req.body.notes
          

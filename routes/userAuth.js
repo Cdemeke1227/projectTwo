@@ -52,7 +52,18 @@ module.exports = function(app,passport){
     }),
     function(req,res){
         
-        res.json(req.user);
+        res.redirect('/');
+    });
+
+    app.post('/provider/login', passport.authenticate('admin-local-signin',{
+        failureRedirect: '/',
+        failureFlash: true,
+        successFlash: true
+    }),
+    function(req,res){
+    
+        res.redirect('/')
     });
 
 }
+

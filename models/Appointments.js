@@ -2,13 +2,6 @@
 module.exports = function (sequelize, DataTypes) {
   var Appointments = sequelize.define('Appointments', {
 
-    id: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true,
-      unique: true,
-      field: 'id',
-    },
     appointStart: {
       type: DataTypes.DATE,
       defaultValue: DataTypes.NOW,

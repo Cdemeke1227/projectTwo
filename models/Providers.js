@@ -19,9 +19,6 @@ module.exports = function (sequelize, DataTypes) {
     password: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-        len: [1, 50]
-      }
     },
     email: {
       type: DataTypes.STRING,
@@ -95,8 +92,8 @@ module.exports = function (sequelize, DataTypes) {
       onDelete: "cascade"
     });
     
-    Providers.belongsToMany(models.Schedules, {
-      through: 'Appointments'
+    Providers.hasMany(models.Schedules, {
+
     });
     
 

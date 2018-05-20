@@ -13,7 +13,7 @@ module.exports = function(app){
 //
 
     // GET route to get services within a range defined by the queries range with providers who offer that service
-    app.get('/api/retrieve/services', function (req, res) {
+    app.get('/:schedule?/:userType?/api/retrieve/services', function (req, res) {
         //Check read me for query list
         var data = {};
 
@@ -122,10 +122,10 @@ module.exports = function(app){
 
     
 
-        servicesPack.AllServices(data,function(err,results){
-            console.log(results);
-            res.json(results);
-        })
+        // servicesPack.AllServices(data,function(err,results){
+        //     console.log(results);
+        //     res.json(results);
+        // })
 
 
 
@@ -280,6 +280,10 @@ module.exports = function(app){
             }
         }
 
+        if(req.query.schedule_id){
+            console.log("There qwee")
+            data.schedule_id = req.query.schedule_id;
+        };
 
         schedulesPack.getWithAppRProv(data, function (err, results) {
             if (err) res.json(err);
@@ -337,7 +341,21 @@ module.exports = function(app){
 
 
     //Post route to create a new appointment 
-    app.post('/appointment/new/:id', goTo.createAppointment);
+    app.post('/appointment/new/', function(req,res){
+        console.log(req.body);
+        var startTime = req.body.day;
+        var timeBuilder
+        var count;
+        if(req.body.time.contains(pm)){
+           
+        }
+        var data = {
+            CustomerId : req.body.customerID,
+            ProviderId : req.body.provider_id,
+            ScheduleId : req.body.scheduleID,
+
+        }
+    });
 
 
     app.get('/api/retrieve/customer', function(req,res){

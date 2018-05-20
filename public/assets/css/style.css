@@ -173,8 +173,8 @@ label {
     max-width: 50px;
     float: left;
     background-color: none;
-    padding:0;
-    border:0;
+    padding: 0;
+    border: 0;
     align-self: auto;
 }
 
@@ -184,7 +184,24 @@ label {
 
 .fa-facebook {
     color: #3b5998;
+    background: #d1ecf8;
 }
+
+.fa-instagram {
+    color: #8a3ab9;
+    background: #d1ecf8;
+}
+
+.fa-twitter {
+    color: #1DA1F2;
+    background: #d1ecf8;
+}
+
+.fa-phone {
+    color: rgb(76, 217, 100);
+    background: #d1ecf8;
+}
+
 
 /* ========================== */
 
@@ -332,7 +349,16 @@ p.lead {
     max-width: 320px;
 }
 
+.bookpage{
+    margin-top: 100px;
+}
+
+.providerpage{
+    margin-top: 100px;
+}
+
 #service1 {
+    margin-top: 100px;
     /* height: 300px;
     border: 1px solid green; */
 }
@@ -497,6 +523,7 @@ p.lead {
 .clearing3 {
     height: 250px;
 }
+
 .clearing4 {
     height: 400px;
 }
@@ -559,6 +586,24 @@ footer {
     width: 100%;
 }
 
+.footerpage {
+    margin-top: 30px;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: .8rem;
+}
+.card-group footer {
+    height: 200px;
+    /* width: 60px; */
+}
+.card-text-footer {
+    color: #000000;
+    font-size: .75rem;
+}
+.footerCard {
+    background-color: #d1ecf8;
+}
+
 .footText p {
     padding: 12px;
     color: #FFFFFF;
@@ -575,17 +620,25 @@ footer {
 .appo-picker-list-item {
     color: #50bcc0;
 }
-#products1{
-    height:485px;
+
+#products1 {
+    height: 485px;
 }
-#joicoImg{
+
+#joicoImg {
     max-height: 485px;
 }
-#products2{
-    height:400px;
+
+#products2 {
+    height: 400px;
 }
-#bodyographyPic{
+
+#bodyographyPic {
     max-height: 400px;
+}
+
+#newProviderModal {
+    background-color: black;
 }
 
 @media screen and (max-width:990px) {
@@ -603,3 +656,12 @@ footer {
         display: none;
     }
 }
+/* ========================== */
+
+/* ========================== */
+/* ========================== */
+
+/* ========================== */
+/* ========================== */
+
+/* ========================== */

@@ -5,15 +5,16 @@
 
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
-        <h1 >About</h1>
+        <h1>About</h1>
         <p class="lead">Thanks for stopping by. Read more about us and where to find us.</p>
     </div>
 </div>
 
-<div >
+<div>
     <div class="container" id="overview">
-        <p class = "lead">
-            We love hair and we love to educate. Our stylists are busy slaying hair at the salon for for the runway. Checkout our editorials section to see the latest shows we've worked.
+        <p class="lead">
+            We love hair and we love to educate. Our stylists are busy slaying hair at the salon for for the runway. Checkout our editorials
+            section to see the latest shows we've worked.
         </p>
     </div>
 </div>
@@ -52,13 +53,13 @@
             </div>
             <div class="card col-6">
                 <div class="card-body">
-                    <h5 class="card-title" >{{firstName}} {{lastName}}</h5>
-                    <p class="card-text" >{{notes}}</p>
+                    <h5 class="card-title">{{firstName}} {{lastName}}</h5>
+                    <p class="card-text">{{notes}}</p>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item" >{{title}}</li>
-                    <li class="list-group-item" >{{email}}</li>
-                    <li class="list-group-item" >{{phone}}</li>
+                    <li class="list-group-item">{{title}}</li>
+                    <li class="list-group-item">{{email}}</li>
+                    <li class="list-group-item">{{phone}}</li>
                 </ul>
             </div>
         </div>
@@ -66,12 +67,12 @@
         {{/each}}
     </div>
 </div>
-{{/if}}
-{{!-- <div class="background-color1">
+{{/if}} {{!--
+<div class="background-color1">
     <div class="sectionRow sectionBody" id="featuredStylist1">
         <h5>Featured Stylists</h5>
         <div class="card-group">
-            <div class = "card col-6">
+            <div class="card col-6">
                 <img class="card-img-top" id="stylist1_pic" src="..." alt="Stylist 1 Pic">
             </div>
             <div class="card col-6">
@@ -131,7 +132,7 @@
             </div>
             <div class="card">
                 <div class="card-body">
-                    
+
                 </div>
             </div>
         </div>
@@ -152,29 +153,55 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Find Us</h5>
-                    <p class="card-text">18301 Egret Bay Blvd, Suite 1 <br>
-                                            Webster, Texas</p>
+                    <p class="card-text">18301 Egret Bay Blvd, Suite 1
+                        <br> Webster, Texas</p>
                     <p class="card-text">
                         <small class="text-muted"></small>
                     </p>
-                    <p><i class="fas fa-phone"></i> (832) 390-5555</p>
-                    <p><i class="fab fa-facebook-square"></i> @kellyshouseofstyle</p>
+                    <p>
+                        <i class="fas fa-phone"></i> (832) 390-5555</p>
+                    <p>
+                        <i class="fab fa-facebook-square"></i> @kellyshouseofstyle</p>
                 </div>
                 <div class="card-body">
                     <h5 class="card-title">Hours</h5>
                     <table class="hours">
-                        <tr><td class="card-text hours">Mon: </td><td>Closed<td></td></tr>
-                        <tr><td class="card-text hours">Tue: </td><td>By appointment<td></td></tr>
-                        <tr><td class="card-text hours">Wed: </td><td>10-6</td></tr>
-                        <tr><td class="card-text hours">Thu: </td><td>10-6</td></tr>
-                        <tr><td class="card-text hours">Fri: </td><td>10-6</td></tr>
-                        <tr><td class="card-text hours">Sat: </td><td>10-6</td></tr>
-                        <tr><td class="card-text hours">Sun: </td><td>Closed<td></td></tr>
+                        <tr>
+                            <td class="card-text hours">Mon: </td>
+                            <td>Closed
+                                <td></td>
+                        </tr>
+                        <tr>
+                            <td class="card-text hours">Tue: </td>
+                            <td>By appointment
+                                <td></td>
+                        </tr>
+                        <tr>
+                            <td class="card-text hours">Wed: </td>
+                            <td>10-6</td>
+                        </tr>
+                        <tr>
+                            <td class="card-text hours">Thu: </td>
+                            <td>10-6</td>
+                        </tr>
+                        <tr>
+                            <td class="card-text hours">Fri: </td>
+                            <td>10-6</td>
+                        </tr>
+                        <tr>
+                            <td class="card-text hours">Sat: </td>
+                            <td>10-6</td>
+                        </tr>
+                        <tr>
+                            <td class="card-text hours">Sun: </td>
+                            <td>Closed
+                                <td></td>
+                        </tr>
                     </table>
                 </div>
             </div>
             <div class="card">
-                 <div class="card-body">
+                <div class="card-body">
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3471.0580032322196!2d-95.10472943338627!3d29.5438050910544!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86409cfd06df5b41%3A0x610eecda03c0ec58!2s18301+Egret+Bay+Blvd+%231%2C+Houston%2C+TX+77058!5e0!3m2!1sen!2sus!4v1526618537426"
                         width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
                 </div>
@@ -186,9 +213,4 @@
 </div>
 
 
-
-<footer>
-    <div class="footText">
-        <p> &copy; Copyright 2018 KiCKeM</p>
-    </div>
-</footer>
+{{>footer}}

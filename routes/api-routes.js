@@ -334,13 +334,22 @@ module.exports = function(app){
     // Routes for Appointments
     //
 
-    //Post route to update appointments
     app.post('/appointment/update/:id', goTo.updateAppointment);
 
 
     //Post route to create a new appointment 
-    app.post('/appointment/new/:id', goTo.createAppointment);
+    app.post('/appointment/new/', function(req,res){
+        console.log(req.body);
+        var startTime = req.body.day;
+        var count;
+ 
+        var data = {
+            CustomerId : req.body.customerID,
+            ProviderId : req.body.provider_id,
+            ScheduleId : req.body.scheduleID,
 
+        }
+    });
 
     app.get('/api/retrieve/customer', function(req,res){
 

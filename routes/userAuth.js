@@ -43,6 +43,7 @@ module.exports = function(app,passport){
 //*****************************************ADMIN/PROVIDER AUTHORIZATIONS******************************************* */
 
 
+
     //Creating a new provider
 
     app.post('/provider/register', passport.authenticate('admin-local-signup',{
@@ -52,7 +53,17 @@ module.exports = function(app,passport){
     }),
     function(req,res){
         
-        res.json(req.user);
+        res.redirect("/");
     });
 
+    app.post('/provider/login', passport.authenticate('admin-local-signin',{
+        failureRedirect: '/',
+        failureFlash: true,
+        successFlash: true
+    }),
+    function(req,res){
+    
+        res.json('')
+    });
 }
+

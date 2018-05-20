@@ -14,8 +14,11 @@ var exports = module.exports = {};
 
     //This function will gather all the appointments and return it through a callbac
     exports.viewAllAppointments = function(data,cb){
-
-        db.Appointments.viewAll().then(function(dbAppointments){
+        var query = {};
+        if(data.id){
+            query.id = data.id;
+        };
+        db.Appointments.viewAll(query).then(function(dbAppointments){
             if(dbAppointments.length > 0){
                 cb(null,dbAppointments);
             }else {

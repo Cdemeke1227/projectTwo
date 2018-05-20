@@ -95,8 +95,8 @@ module.exports = function (sequelize, DataTypes) {
       onDelete: "cascade"
     });
     
-    Providers.belongsToMany(models.Schedules, {
-      through: 'Appointments'
+    Providers.hasMany(models.Schedules, {
+
     });
     
 

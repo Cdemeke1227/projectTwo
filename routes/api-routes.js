@@ -122,10 +122,10 @@ module.exports = function(app){
 
     
 
-        servicesPack.AllServices(data,function(err,results){
-            console.log(results);
-            res.json(results);
-        })
+        // servicesPack.AllServices(data,function(err,results){
+        //     console.log(results);
+        //     res.json(results);
+        // })
 
 
 
@@ -280,6 +280,10 @@ module.exports = function(app){
             }
         }
 
+        if(req.query.schedule_id){
+            console.log("There qwee")
+            data.schedule_id = req.query.schedule_id;
+        };
 
         schedulesPack.getWithAppRProv(data, function (err, results) {
             if (err) res.json(err);

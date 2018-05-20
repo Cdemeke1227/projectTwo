@@ -184,7 +184,24 @@ label {
 
 .fa-facebook {
     color: #3b5998;
+    background: #d1ecf8;
 }
+
+.fa-instagram {
+    color: #8a3ab9;
+    background: #d1ecf8;
+}
+
+.fa-twitter {
+    color: #1DA1F2;
+    background: #d1ecf8;
+}
+
+.fa-phone {
+    color: rgb(76, 217, 100);
+    background: #d1ecf8;
+}
+
 
 /* ========================== */
 
@@ -332,7 +349,16 @@ p.lead {
     max-width: 320px;
 }
 
+.bookpage{
+    margin-top: 100px;
+}
+
+.providerpage{
+    margin-top: 100px;
+}
+
 #service1 {
+    margin-top: 100px;
     /* height: 300px;
     border: 1px solid green; */
 }
@@ -560,6 +586,24 @@ footer {
     width: 100%;
 }
 
+.footerpage {
+    margin-top: 30px;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: .8rem;
+}
+.card-group footer {
+    height: 200px;
+    /* width: 60px; */
+}
+.card-text-footer {
+    color: #000000;
+    font-size: .75rem;
+}
+.footerCard {
+    background-color: #d1ecf8;
+}
+
 .footText p {
     padding: 12px;
     color: #FFFFFF;
@@ -612,3 +656,12 @@ footer {
         display: none;
     }
 }
+/* ========================== */
+
+/* ========================== */
+/* ========================== */
+
+/* ========================== */
+/* ========================== */
+
+/* ========================== */

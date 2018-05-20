@@ -1,8 +1,8 @@
 $(function () {
 
 
+var offset = 120;
 
-    var offset = 120;
 
     $('#navPageLinks ul li a').click(function (event) {
         event.preventDefault();
@@ -49,9 +49,33 @@ $(function () {
     });
 
   
-    
+
+    $(this).closest('.settingsParent').children('.childText').text($(this).val().trim());
+});
 
 
+var providerQuery = `/api/retrieve/providers/?all=yes`; 
+    console.log(providerQuery);
+    //Make the ajax call
+    $.ajax(providerQuery, {
+      type: "GET",
+      success: function (data) {
 
+        for (var i = 0; i < data.length; i++) {
+          var providerFirstName = data[i].provider.firstName;
+          var providerID = data[i].provider.id;
+          // console.log('Provider Data: ' + providerFirstName);
+
+          var providerList = $("#providerChoice");
+          var optionProvider = $("<option>");
+          optionProvider.text(providerFirstName);
+          optionProvider.val(providerID);
+          providerList.append(optionProvider);
+        }
+      },
+      error: function (request, error) {
+        alert("Request: " + JSON.stringify(request));
+      }
+    });
 
 });

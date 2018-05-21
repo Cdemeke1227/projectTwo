@@ -144,16 +144,18 @@ $.ajax(providerQuery, {
         success: function (data) {
 
             for (var i = 0; i < data.length; i++) {
+                console.log(data);
                 var providerFirstName = data[i].provider.firstName;
                 var providerID = data[i].provider.id;
                 // console.log('Provider Data: ' + providerFirstName);
                 console.log('Provider Data: ' + providerID);
 
                 var providerList = $("#providerChoice1");
-                var optionProvider = $("<option>");
-                optionProvider.text(providerFirstName);
-                optionProvider.val(providerID);
+                var optionProvider = $("<option>").attr({
+                    value: providerID
+                }).html(providerFirstName);
                 providerList.append(optionProvider);
+
             }
         },
         error: function (request, error) {
@@ -172,7 +174,7 @@ $.ajax(providerQuery, {
         var scheduleInput = {
             startTime: $("#inputStart").val().trim(),
             endTime: $("#inputEnd").val().trim(),
-            ProviderId: 4
+            ProviderId: $("#providerChoice1").val()
         }
         console.log(scheduleInput);
 

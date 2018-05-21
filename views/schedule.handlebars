@@ -1,6 +1,10 @@
 {{>navbar/nav}} {{!-- First selected the type of service --}} {{!-- Second selected the sytlist based on those that perform
 that service --}} {{!-- Third user selects day from calendar --}} {{!-- Fouth user selects time from appointment picker --}}
 {{!-- All of these are stored in appointment table --}}
+<link rel="stylesheet" href="/assets/css/appointment-picker.css">
+
+
+
 
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
@@ -80,7 +84,8 @@ that service --}} {{!-- Third user selects day from calendar --}} {{!-- Fouth us
       <div class="modal-body">
         <form method="post" action='/appointment/new/' name="appointment_form">
           <div class="form-group">
-            <input name='customerID' value={{userId}} hidden>
+            <input name='customerID' value="{{userId}}" hidden>
+            <input name='endTime' id="inputTheEnd" hidden>
           </div>
           <div class="form-group">
             <label class="scheduleLabels"for="inputServiceChosen">Service Chosen</label>
@@ -109,9 +114,9 @@ that service --}} {{!-- Third user selects day from calendar --}} {{!-- Fouth us
 
   </div>
 {{>footer}}
-
-
-<link rel="stylesheet" href="/assets/css/appointment-picker.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-<script src="/assets/js/appointment-picker.min.js"></script>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+{{!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> --}}
+{{!-- <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script> --}}
+<script src="/assets/js/datepicker.js"></script>
+<script src="/assets/js/schedule_appt.js"></script>
+<script src="/assets/js/appointment-picker.js"></script>

@@ -40,6 +40,7 @@ $(function () {
     var signupErr = $("#sign-up-error-msg").text().trim().length;
     var loginErr = $("#login-error-msg").text().trim().length;
     var settingsErr = $("#settings-error-msg").text().trim().length;
+    var appointMsg = $("#appointmentSuccess").text().trim().length;
 
     console.log(signupErr);
     if (signupErr > 1) {
@@ -60,6 +61,11 @@ $(function () {
     if (settingsErr > 1) {
         $("#userSettingsModal").modal('toggle');
         $("#userSettingsModal").modal('show');
+    }
+
+    if(appointMsg > 1){
+        $("#appointSuccess").modal('toggle');
+        $("#appointSuccess").modal('show');
     }
 
 

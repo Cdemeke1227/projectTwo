@@ -39,7 +39,7 @@ $(document).ready(function () {
     serviceChosen = encodeURIComponent(serviceChosen.trim())
 
 
-    var providerQuery = `api/retrieve/services/?all=no&specific=service&service_name=${serviceChosen}`; 
+    var providerQuery = `/api/retrieve/services/?all=no&specific=service&service_name=${serviceChosen}`; 
 
 
 

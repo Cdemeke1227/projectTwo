@@ -273,19 +273,43 @@ $(document).ready(function () {
     var t = $('#time-2').val();
     console.log(t.length);
     if(t.length === 8){
-        var timeBuilder = date +","+ $('#time-2').val();
+        var timeBuilder = date +","+ t
     }else {
-      var timeBuilder = date +",0"+ $('#time-2').val();
+      var timeBuilder = date +",0"+ t
     }
   
     console.log(timeBuilder);
     var theTime = moment(timeBuilder, "YYYY-MM-DD,hh:mm a").format("YYYY-MM-DDThh:mm:ss");  
     $("#startTime").val(theTime);
     $("#duration").val(duration);
+    console.log(duration)
 
-    var endT = moment(theTime,'YYYY-MM-DDThh:mm:ss').add(duration);
-
-    console.log(endT);
+    // var clonedStart = moment(duration);
+    var splitDur = duration.split(":");
+    var splitStartT = t.split(":");
+    var endHrs = parseInt(splitStartT[0]) + parseInt(splitDur[0]);
+    var endMin = parseInt(splitStartT[1]) + parseInt(splitDur[1]);
+    
+    var endT;
+    if(endMin === 60){
+      endHrs++;
+      endMin = "00";
+    }
+    if(endHrs.length ===1){
+      endT = "0" + endHrs + ":";
+    }else {
+      endT = endHrs + ":";
+    }
+      
+      endT += endMin + ":00"
+    if(endT.length === 8){
+        var ending = date +"T"+ endT
+    }else {
+      var ending = date +"T0"+ endT
+    }
+    var realEnding = moment(ending,"YYYY-MM-DD,hh:mm:ss").format("YYYY-MM-DDThh:mm:ss"); 
+    $("#inputTheEnd").val(realEnding);
+    console.log(realEnding);
     console.log(theTime);  
   });
 

@@ -19,9 +19,6 @@ module.exports = function (sequelize, DataTypes) {
 
     duration: {
       type: DataTypes.TIME,
-      validate: {
-        isDate: true,
-      }
 
     },
     completed: {

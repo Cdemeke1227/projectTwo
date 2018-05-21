@@ -50,6 +50,7 @@ exports.home = function (req, res) {
         messageLogIn: req.flash('logInMessage'),
         messageSignIn: req.flash('signUpMessage'),
         messagesettingsMessage: req.flash('settingsMessage'),
+        appointmentMsg: req.flash('AppointmentMsg'),
         admin: false
     };
 

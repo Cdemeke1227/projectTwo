@@ -49,15 +49,7 @@ var exports = module.exports = {};
 
     exports.newAppointment = function(data,cb){
 
-        var startTime = data.startTime;
-        var endTime = data.endTime;
-        var duration = data.duration;
-
-        db.Appointments.create({
-            appointStart: startTime,
-            appointEnd: endTime,
-            duration: duration
-        }).then(function(affectedRows){
+        db.Appointments.create(data).then(function(affectedRows){
             return cb(null,affectedRows);
         })
     };
